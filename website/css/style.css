@@ -1,4 +1,4 @@
-/* V++ website — black + yellow grid, Node.js-inspired layout */
+/* V++ website  -  black + yellow grid, Node.js-inspired layout */
 
 :root {
   --white: #ffffff;
@@ -104,7 +104,7 @@ a { color: var(--text); text-decoration: underline; text-decoration-color: var(-
 
 code, pre { font-family: var(--mono); font-size: 0.875em; }
 
-/* Inline code only — NOT inside pre blocks */
+/* Inline code only  -  NOT inside pre blocks */
 :not(pre) > code {
   background: rgba(255, 255, 255, 0.06);
   color: var(--yellow);
@@ -415,7 +415,7 @@ code, pre { font-family: var(--mono); font-size: 0.875em; }
 
 .home-partners a:hover { background: var(--yellow-muted); color: var(--text); }
 
-/* Code panel — home hero (Prism styling in prism-vpp.css) */
+/* Code panel  -  home hero (Prism styling in prism-vpp.css) */
 .code-panel {
   display: flex;
   flex-direction: column;
@@ -827,7 +827,7 @@ code, pre { font-family: var(--mono); font-size: 0.875em; }
 .docs-article h3 { font-size: 1.35rem; font-weight: 600; margin: 1.35rem 0 0.45rem; color: var(--text); }
 .docs-article h4 { font-size: 1.15rem; font-weight: 600; margin: 1rem 0 0.35rem; color: var(--text); }
 
-/* FAQ — collapsible accordion */
+/* FAQ  -  collapsible accordion */
 .docs-article .faq-list {
   display: flex;
   flex-direction: column;

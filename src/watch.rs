@@ -1,4 +1,4 @@
-//! Live re-run on save — instant feedback without leaving the terminal.
+//! Live re-run on save  -  instant feedback without leaving the terminal.
 
 use std::path::Path;
 use std::time::{Duration, SystemTime};
@@ -26,7 +26,7 @@ pub fn watch_file(path: &Path, debounce_ms: u64) -> VppResult<()> {
         });
     }
 
-    println!("v++ watch v0.7 — live run on save");
+    println!("v++ watch v0.7  -  live run on save");
     println!("  File: {}", path.display());
     println!("  Save in your editor to re-run. Ctrl+C to stop.\n");
 
@@ -38,7 +38,7 @@ pub fn watch_file(path: &Path, debounce_ms: u64) -> VppResult<()> {
         let mtime = file_mtime(path)?;
         if mtime > last_mtime {
             last_mtime = mtime;
-            println!("\n── saved — re-running {} ──", path.file_name().unwrap_or_default().to_string_lossy());
+            println!("\n── saved  -  re-running {} ──", path.file_name().unwrap_or_default().to_string_lossy());
             if let Err(e) = run_once(path) {
                 eprintln!("{e}");
             }

@@ -1,6 +1,6 @@
 # Traits and impls (v0.4+)
 
-Static dispatch — no virtual tables at runtime.
+Static dispatch  -  no virtual tables at runtime.
 
 ```vpp
 trait Display {

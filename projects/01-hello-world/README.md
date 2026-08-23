@@ -1,4 +1,4 @@
-# 01 — Hello World
+# 01  -  Hello World
 
 Your first v++ program.
 

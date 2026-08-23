@@ -259,7 +259,7 @@ def enrich_code_lines(lines: list[str], plang: str) -> list[str]:
 
 
 def finalize_code_lines(lines: list[str], plang: str) -> list[str]:
-    """No blank lines — pad short blocks with comments to MIN_CODE_LINES."""
+    """No blank lines  -  pad short blocks with comments to MIN_CODE_LINES."""
     cleaned = [ln for ln in lines if ln.strip()]
     if not cleaned:
         return [comment_pad(plang, i) for i in range(MIN_CODE_LINES)]
@@ -309,7 +309,7 @@ def clean_prose(text: str) -> str:
     protected = re.sub(r"`[^`]*`", stash, protected)
     protected = re.sub(r"\[[^\]]*\]\([^)]*\)", stash, protected)
     protected = re.sub(r"https?://[^\s)]+", stash, protected)
-    protected = protected.replace("—", " ")
+    protected = protected.replace(" - ", " ")
     protected = protected.replace("–", " ")
     protected = protected.replace("--", " ")
     protected = re.sub(r"-", " ", protected)
@@ -339,7 +339,7 @@ class SlugRegistry:
 
 
 def md_to_html(text: str, slugs: SlugRegistry | None = None) -> str:
-    """Minimal markdown to HTML — enough for our docs."""
+    """Minimal markdown to HTML  -  enough for our docs."""
     registry = slugs or SlugRegistry()
     lines = text.splitlines()
     out: list[str] = []
@@ -694,7 +694,7 @@ def headings_from_html(content: str) -> list[tuple[str, str, str]]:
     return toc
 
 
-LEGAL_DIR = DOCS / "legal"
+LEGAL_DIR = DOCS / "legal"  # deprecated; kept for reference only
 
 LATEST_VERSION = "1.0.4"
 LATEST_TAG = "v1.0.4"
@@ -1362,15 +1362,6 @@ def all_doc_links(course_projects: list[CourseProject] | None = None) -> dict[st
         ("download.html", "Download"),
         ("contribute.html", "Contribute"),
     ]
-    legal = [
-        ("legal.html", "Legal overview"),
-        ("terms.html", "Terms of Service"),
-        ("cookies.html", "Cookie Policy"),
-        ("license.html", "Open Source License"),
-        ("disclaimer.html", "Disclaimer"),
-        ("acceptable-use.html", "Acceptable Use"),
-        ("trademark.html", "Trademark"),
-    ]
     courses_links: list[tuple[str, str]] = [("courses.html", "All projects")]
     if course_projects:
         for p in course_projects:
@@ -1381,7 +1372,6 @@ def all_doc_links(course_projects: list[CourseProject] | None = None) -> dict[st
         "Guides": guides,
         "Project": project,
         "Courses": courses_links,
-        "Legal": legal,
     }
 
 
@@ -1399,7 +1389,7 @@ def main() -> None:
         DOCS / "getting-started" / "vscode-setup.md",
     ]
     write_doc_page("learn.html", "learn.html", "Learn", learn_paths, sidebar, "learn.html#introduction",
-                   f"Learn {BRAND} — installation, syntax, and your first programs.")
+                   f"Learn {BRAND}  -  installation, syntax, and your first programs.")
 
     docs_doc = load_docs()
     write_docs_page(
@@ -1416,7 +1406,7 @@ def main() -> None:
                    ROOT / "SPEC.md", DOCS / "project" / "roadmap.md"]
     write_doc_page(
         "about.html", "about.html", "About The Language", about_paths, sidebar, "about.html",
-        "About The Language — design, architecture, memory model, and roadmap.",
+        "About The Language  -  design, architecture, memory model, and roadmap.",
         page_h1="About The Language",
         strip_h1_from={"README.md"},
     )
@@ -1433,21 +1423,11 @@ def main() -> None:
 
     write_course_pages(course_projects, sidebar)
 
-    legal_pages = [
-        ("legal.html", "legal.html", "Legal", LEGAL_DIR / "index.md"),
-        ("privacy.html", "privacy.html", "Privacy Policy", LEGAL_DIR / "privacy-policy.md"),
-        ("terms.html", "terms.html", "Terms of Service", LEGAL_DIR / "terms-of-service.md"),
-        ("cookies.html", "cookies.html", "Cookie Policy", LEGAL_DIR / "cookie-policy.md"),
-        ("license.html", "license.html", "Open Source License", LEGAL_DIR / "open-source-license.md"),
-        ("disclaimer.html", "disclaimer.html", "Disclaimer", LEGAL_DIR / "disclaimer.md"),
-        ("acceptable-use.html", "acceptable-use.html", "Acceptable Use", LEGAL_DIR / "acceptable-use.md"),
-        ("trademark.html", "trademark.html", "Trademark", LEGAL_DIR / "trademark.md"),
-    ]
-    for filename, active, title, md_path in legal_pages:
-        write_doc_page(
-            filename, active, title, [md_path], sidebar, filename,
-            f"{title} — {BRAND} open-source project.",
-        )
+    write_doc_page(
+        "license.html", "license.html", "License", [DOCS / "LICENSE.md"],
+        sidebar, "license.html", f"MIT License for {BRAND}.",
+        page_h1="License",
+    )
 
     # Download page
     download_body = build_download_page_body()

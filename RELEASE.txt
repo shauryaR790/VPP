@@ -1,7 +1,7 @@
-v++ — quick start (Windows)
+v++  -  quick start (Windows)
 ===========================
 
-IMPORTANT — avoid Windows security prompts
+IMPORTANT  -  avoid Windows security prompts
 ------------------------------------------
 Before extracting the zip:
   Right-click the .zip  ->  Properties  ->  check "Unblock"  ->  OK
@@ -10,7 +10,7 @@ If you already extracted:
   PowerShell in this folder:  Unblock-File -Path . -Recurse
 
 See START-HERE.txt for details. Prompts appear because the download is
-unsigned open-source software — not because anything is malicious.
+unsigned open-source software  -  not because anything is malicious.
 
 
 1. Install VS Code extension (optional but recommended)

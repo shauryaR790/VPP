@@ -4,10 +4,10 @@ v++ combines readable syntax with static typing and optional native compilation.
 
 ## Design goals
 
-- **Readable** — minimal punctuation, familiar control flow
-- **Typed** — catch errors before run; infer locals, explicit function signatures
-- **Fast iteration** — `vpp run` interpreter for development
-- **Native when needed** — `vpp build` produces standalone `.exe` files
+- **Readable**  -  minimal punctuation, familiar control flow
+- **Typed**  -  catch errors before run; infer locals, explicit function signatures
+- **Fast iteration**  -  `vpp run` interpreter for development
+- **Native when needed**  -  `vpp build` produces standalone `.exe` files
 
 ## Quick syntax map
 

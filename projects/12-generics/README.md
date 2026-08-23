@@ -1,4 +1,4 @@
-# 12 — Generics
+# 12  -  Generics
 
 Type-parameterized functions with monomorphization.
 

@@ -29,18 +29,18 @@ The toolchain includes a type checker, formatter, package manager, test runner, 
 
 ## Why use v++ now
 
-- **One language, two modes** — interpret while learning, compile when shipping.
-- **Errors before run** — static types and exhaustiveness checking on `match`.
-- **Real toolchain** — CLI, LSP, VS Code extension, packages, tests, not a toy parser.
-- **Open source** — MIT licensed, compiler and docs in one repository.
-- **Honest scope** — v1.0 SPEC is frozen; Windows is the primary native platform; Unix bundles improving.
+- **One language, two modes**  -  interpret while learning, compile when shipping.
+- **Errors before run**  -  static types and exhaustiveness checking on `match`.
+- **Real toolchain**  -  CLI, LSP, VS Code extension, packages, tests, not a toy parser.
+- **Open source**  -  MIT licensed, compiler and docs in one repository.
+- **Honest scope**  -  v1.0 SPEC is frozen; Windows is the primary native platform; Unix bundles improving.
 
 ## How to learn v++
 
 1. [Install](install.md) the Windows installer or build from source.
-2. Write your [first program](hello-world.md) — types, `fn main`, run/check/build.
+2. Write your [first program](hello-world.md)  -  types, `fn main`, run/check/build.
 3. Scaffold a [project](first-project.md) with `vpp new` and run tests.
-4. Work through the [20 projects](../../projects/README.md) in order — each builds on the last.
+4. Work through the [20 projects](../../projects/README.md) in order  -  each builds on the last.
 5. Read the [language overview](../language/README.md) and [FAQ](../project/faq.md).
 6. Use [Documentation](../../docs.html) as reference while coding.
 

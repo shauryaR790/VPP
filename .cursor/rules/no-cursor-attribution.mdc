@@ -3,7 +3,7 @@ description: Never add Cursor as git co-author or commit on behalf of cursoragen
 alwaysApply: true
 ---
 
-# Git attribution — human author only
+# Git attribution  -  human author only
 
 When creating git commits for this repository:
 

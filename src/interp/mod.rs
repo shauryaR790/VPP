@@ -1089,7 +1089,7 @@ impl ReplSession {
 pub fn run_repl() -> crate::VppResult<()> {
     use std::io::{self, BufRead, Write};
 
-    println!("v++ REPL v0.6 — readable code, instant feedback");
+    println!("v++ REPL v0.6  -  readable code, instant feedback");
     println!("  Same language as `vpp run` and `vpp build`. Type :help for commands.\n");
 
     let mut session = ReplSession::new()?;

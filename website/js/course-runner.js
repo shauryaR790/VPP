@@ -1,4 +1,4 @@
-/** Course playground — test program with terminal output. */
+/** Course playground  -  test program with terminal output. */
 (function () {
   function normalizeSource(source) {
     return source.replace(/\r\n/g, "\n").trim();

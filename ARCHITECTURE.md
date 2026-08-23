@@ -4,8 +4,8 @@
 
 v++ is a statically typed language with a single front-end and two backends:
 
-- **Interpreter** — tree-walking evaluation for development and teaching
-- **Native compiler** — lowers to v++ IR, then LLVM, links the C runtime
+- **Interpreter**  -  tree-walking evaluation for development and teaching
+- **Native compiler**  -  lowers to v++ IR, then LLVM, links the C runtime
 
 Both backends consume the same **typed AST** produced by the type checker.
 
@@ -19,7 +19,7 @@ Both backends consume the same **typed AST** produced by the type checker.
  Parser → AST (src/parser, src/ast)
     │
     ▼
- Module loader (src/modules) — flat merge, path imports (v0.2)
+ Module loader (src/modules)  -  flat merge, path imports (v0.2)
     │
     ▼
  Type checker (src/types/check.rs) → TypedProgram
@@ -72,6 +72,6 @@ See `CHANGELOG.md` and `tests/parity/` for the live matrix. Native codegen must 
 
 ## Version notes
 
-- **v0.2** — native foundation, IR, ABI, parity tests
-- **v0.3** — module redesign, package manager (not in v0.2)
-- **v0.4** — generics, traits, `mut`, compile-time match exhaustiveness
+- **v0.2**  -  native foundation, IR, ABI, parity tests
+- **v0.3**  -  module redesign, package manager (not in v0.2)
+- **v0.4**  -  generics, traits, `mut`, compile-time match exhaustiveness

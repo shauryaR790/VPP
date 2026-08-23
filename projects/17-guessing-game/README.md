@@ -1,6 +1,6 @@
-# 17 — Guessing Game
+# 17  -  Guessing Game
 
-Binary-search style hints — too low, too high, correct.
+Binary-search style hints  -  too low, too high, correct.
 
 ```powershell
 vpp run projects/17-guessing-game/main.vpp

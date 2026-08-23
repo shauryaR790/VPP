@@ -63,7 +63,7 @@ impl DebugSession {
     }
 
     fn run_cli(&mut self) -> VppResult<()> {
-        println!("v++ debugger — same interpreter as run/repl/watch");
+        println!("v++ debugger  -  same interpreter as run/repl/watch");
         println!("  break N | b N   set breakpoint on line N");
         println!("  continue | c     run until next breakpoint");
         println!("  step | s          step one line");

@@ -1,4 +1,4 @@
-# 04 — Loops
+# 04  -  Loops
 
 `while`, range loops, and `for` over arrays. Uses `let mut` for counters.
 

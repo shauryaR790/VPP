@@ -36,7 +36,7 @@ fn check_rust() {
             println!("ok ({})", String::from_utf8_lossy(&out.stdout).trim());
         }
         _ => {
-            println!("not installed (optional — only needed to compile v++ from source)");
+            println!("not installed (optional  -  only needed to compile v++ from source)");
         }
     }
 }
@@ -63,7 +63,7 @@ fn check_llvm() {
         println!("ok ({line})");
         return;
     }
-    println!("not installed (optional — only needed for `vpp build`)");
+    println!("not installed (optional  -  only needed for `vpp build`)");
     if cfg!(target_os = "windows") {
         println!("  Install: winget install LLVM.LLVM");
     } else if cfg!(target_os = "macos") {
@@ -81,7 +81,7 @@ fn check_git() {
             println!("ok ({})", String::from_utf8_lossy(&out.stdout).trim());
         }
         _ => {
-            println!("not installed (optional — only needed for git-based packages)");
+            println!("not installed (optional  -  only needed for git-based packages)");
         }
     }
 }

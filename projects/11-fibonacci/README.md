@@ -1,6 +1,6 @@
-# 11 — Fibonacci
+# 11  -  Fibonacci
 
-Recursive functions — classic algorithm interview question.
+Recursive functions  -  classic algorithm interview question.
 
 ```powershell
 vpp run projects/11-fibonacci/main.vpp

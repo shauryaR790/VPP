@@ -1,6 +1,6 @@
 # Generics (v0.4+)
 
-v++ uses **monomorphization** — generic functions are specialized at each call site.
+v++ uses **monomorphization**  -  generic functions are specialized at each call site.
 
 ```vpp
 fn first[T](items: array[T]) -> Option[T] {

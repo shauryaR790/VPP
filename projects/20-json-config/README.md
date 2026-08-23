@@ -1,4 +1,4 @@
-# 20 — JSON Config
+# 20  -  JSON Config
 
 Parse JSON with `std.json` and model app configuration with structs.
 

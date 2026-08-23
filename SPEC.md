@@ -1,6 +1,6 @@
 # v++ Language Specification
 
-> **v1.0 — FROZEN (2026-08-21).** Breaking changes require v2.0. See [PARITY_PROMISE.md](docs/project/PARITY_PROMISE.md).
+> **v1.0  -  FROZEN (2026-08-21).** Breaking changes require v2.0. See [PARITY_PROMISE.md](docs/project/PARITY_PROMISE.md).
 
 This document describes v++ as implemented in v1.0. If code and spec disagree, parity tests and native execution are authoritative.
 
@@ -118,9 +118,9 @@ import "legacy/path.vpp"   // still supported
 
 ## Execution
 
-- `vpp run file.vpp` — interpreter (calls `fn main()` when defined)
-- `vpp build file.vpp -o out.exe` — native executable (requires LLVM + codegen)
-- `.\stress.ps1` — compare interpreter vs native output for `stress.vpp`
+- `vpp run file.vpp`  -  interpreter (calls `fn main()` when defined)
+- `vpp build file.vpp -o out.exe`  -  native executable (requires LLVM + codegen)
+- `.\stress.ps1`  -  compare interpreter vs native output for `stress.vpp`
 
 Interpreter and native must produce identical stdout for supported programs.
 

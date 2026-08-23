@@ -110,8 +110,8 @@ Write-Host "`nDone. Upload each folder to GitHub Releases:" -ForegroundColor Cya
 Write-Host "  $OutRoot" -ForegroundColor White
 Write-Host @"
 
-For each version (v0.8.0 … v1.0.3):
-  1. https://github.com/shauryaR790/V-/releases/new
+For each version (v0.8.0 … v1.0.4):
+  1. https://github.com/shauryaR790/VPP/releases/new
   2. Choose tag: vX.Y.Z
   3. Title: vX.Y.Z
   4. Drag ALL files from manual-releases/vX.Y.Z/

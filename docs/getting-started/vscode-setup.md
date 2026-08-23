@@ -8,7 +8,7 @@
 ## Run code
 
 1. Open a folder with `.vpp` files.
-2. Open a file — bottom-right should say **v++**.
+2. Open a file  -  bottom-right should say **v++**.
 3. Press **F5** or **Ctrl+Shift+R** to run the active file.
 
 ## Language server (IntelliSense)

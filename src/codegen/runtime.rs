@@ -1,5 +1,5 @@
 //! Runtime shim for v++ native compilation.
-//! Heap strings/arrays use ARC — see MEMORY_MODEL.md.
+//! Heap strings/arrays use ARC  -  see MEMORY_MODEL.md.
 
 use std::path::Path;
 

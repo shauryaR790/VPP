@@ -1,7 +1,7 @@
 {
   "name": "vplusplus",
   "displayName": "v++ Language",
-  "description": "Official v++ — Python-readable syntax, native compilation. Debug, watch, REPL, bench, format, test, LSP.",
+  "description": "Official v++  -  Python-readable syntax, native compilation. Debug, watch, REPL, bench, format, test, LSP.",
   "version": "1.2.1",
   "publisher": "vpp-lang",
   "license": "MIT",

@@ -174,7 +174,7 @@ async function runVpp(subcommand, filePath) {
         output.appendLine("");
         output.appendLine(`Exit code: ${err.code ?? 1}`);
         vscode.window.showErrorMessage(
-          `v++ ${subcommand} failed — see the "v++" output panel`
+          `v++ ${subcommand} failed  -  see the "v++" output panel`
         );
         resolve(false);
       } else {
@@ -203,7 +203,7 @@ async function formatDocument(document) {
 
   const runner = resolveRunner(root);
   if (!runner) {
-    vscode.window.showWarningMessage("v++ compiler not found — cannot format.");
+    vscode.window.showWarningMessage("v++ compiler not found  -  cannot format.");
     return [];
   }
 
@@ -233,7 +233,7 @@ async function formatDocument(document) {
     });
 
     if (!ok) {
-      vscode.window.showErrorMessage("v++ fmt failed — see the v++ output panel");
+      vscode.window.showErrorMessage("v++ fmt failed  -  see the v++ output panel");
       return [];
     }
 
@@ -295,7 +295,7 @@ function updateStatusBar() {
     toolchainStatus.tooltip = `v++ compiler: ${runner.path}\nClick to open settings`;
   } else {
     toolchainStatus.text = "$(warning) v++ not found";
-    toolchainStatus.tooltip = "v++ compiler not found — click to configure";
+    toolchainStatus.tooltip = "v++ compiler not found  -  click to configure";
   }
   toolchainStatus.show();
 
@@ -473,7 +473,7 @@ function setupTestExplorer(context) {
         if (ok) {
           run.passed(test);
         } else {
-          run.failed(test, new vscode.TestMessage("vpp test failed — see terminal"));
+          run.failed(test, new vscode.TestMessage("vpp test failed  -  see terminal"));
         }
       }
       run.end();
@@ -509,7 +509,7 @@ function activate(context) {
         }
         const runner = resolveRunner(root);
         if (!runner) {
-          vscode.window.showErrorMessage("v++ compiler not found — run setup or set vpp.compilerPath.");
+          vscode.window.showErrorMessage("v++ compiler not found  -  run setup or set vpp.compilerPath.");
           return undefined;
         }
         const program = session.configuration.program;
@@ -650,7 +650,7 @@ function activate(context) {
       const term = vscode.window.createTerminal({ name: "v++ watch", cwd: root });
       term.show(true);
       term.sendText([command, ...argv].join(" "));
-      vscode.window.showInformationMessage("Watching — save the file to re-run (Ctrl+C in terminal to stop)");
+      vscode.window.showInformationMessage("Watching  -  save the file to re-run (Ctrl+C in terminal to stop)");
     }),
     vscode.commands.registerCommand("vpp.benchFile", async () => {
       const editor = vscode.window.activeTextEditor;
@@ -712,7 +712,7 @@ function activate(context) {
     context.globalState.update(welcomeKey, true);
     vscode.window
       .showInformationMessage(
-        "v++ Language 1.0.0 — stable. F5 debug, Test Explorer, registry search. Same .vpp for run/repl/watch/build.",
+        "v++ Language 1.0.0  -  stable. F5 debug, Test Explorer, registry search. Same .vpp for run/repl/watch/build.",
         "Open docs",
         "Settings"
       )

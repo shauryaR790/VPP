@@ -1,4 +1,4 @@
-# 05 — Arrays
+# 05  -  Arrays
 
 Work with `array[int]`, iteration, and `std.collections.sum`.
 

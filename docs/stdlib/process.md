@@ -8,4 +8,4 @@ import std.process
 let code = process.run("echo hello")
 ```
 
-Use with care — sandbox and validate commands in user-facing apps.
+Use with care  -  sandbox and validate commands in user-facing apps.

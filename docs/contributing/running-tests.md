@@ -14,4 +14,4 @@ cargo test --features codegen parity
 .\stress.ps1
 ```
 
-CI runs on every push to `main` — see [GitHub Actions](https://github.com/shauryaR790/V-/actions).
+CI runs on every push to `main`  -  see [GitHub Actions](https://github.com/shauryaR790/V-/actions).

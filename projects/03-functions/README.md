@@ -1,4 +1,4 @@
-# 03 — Functions
+# 03  -  Functions
 
 Define functions with typed parameters and return values.
 

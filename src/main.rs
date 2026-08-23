@@ -278,7 +278,7 @@ fn cmd_search(query: &str) -> miette::Result<()> {
         println!("No packages matching `{query}`");
         return Ok(());
     }
-    println!("v++ registry — {} hit(s) for `{query}`\n", hits.len());
+    println!("v++ registry  -  {} hit(s) for `{query}`\n", hits.len());
     for pkg in hits {
         println!("  {} {}", pkg.name, pkg.version);
     }

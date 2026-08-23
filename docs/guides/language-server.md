@@ -2,9 +2,9 @@
 
 `vppls` provides:
 
-- **Diagnostics** — red squiggles from the type checker
-- **Completion** — keyword and context suggestions
-- **Go to definition** — jump to symbols (best-effort)
+- **Diagnostics**  -  red squiggles from the type checker
+- **Completion**  -  keyword and context suggestions
+- **Go to definition**  -  jump to symbols (best-effort)
 
 ## Build
 

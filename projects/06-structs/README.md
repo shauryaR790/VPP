@@ -1,4 +1,4 @@
-# 06 — Structs
+# 06  -  Structs
 
 Custom product types with named fields.
 

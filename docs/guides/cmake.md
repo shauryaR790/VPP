@@ -57,12 +57,12 @@ Reads `entry = "..."` from `vpp.toml` and runs `vpp build` with that file.
 
 ## Environment
 
-- `VPP_EXECUTABLE` — override compiler path
-- `VPP_HOME` — stdlib root (auto-detected from install or repo)
-- `LLVM_SYS_221_PREFIX` — forwarded to `vpp build` when set
+- `VPP_EXECUTABLE`  -  override compiler path
+- `VPP_HOME`  -  stdlib root (auto-detected from install or repo)
+- `LLVM_SYS_221_PREFIX`  -  forwarded to `vpp build` when set
 
 ## Notes
 
 - Each target runs `vpp build` as a custom command; incremental builds re-run when the `.vpp` source changes.
-- Mixed C++/v++ linking is not supported yet — this wraps the v++ compiler only.
+- Mixed C++/v++ linking is not supported yet  -  this wraps the v++ compiler only.
 - Interpreter mode (`vpp run`) is not used; outputs are native LLVM binaries.

@@ -17,7 +17,7 @@ Every executable entry point is `fn main() -> int`. The return value is the proc
 vpp run hello.vpp
 ```
 
-Uses the built-in interpreter — no compile step. Best for learning and quick iteration.
+Uses the built-in interpreter  -  no compile step. Best for learning and quick iteration.
 
 ## Type-check only
 

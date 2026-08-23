@@ -1,4 +1,4 @@
-/** Wavy perspective grid for home hero — grid only, no particles. */
+/** Wavy perspective grid for home hero  -  grid only, no particles. */
 (function () {
   const canvas = document.getElementById("home-grid-canvas");
   if (!canvas) return;

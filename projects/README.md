@@ -1,6 +1,6 @@
 # v++ Example Projects
 
-Twenty open-source projects — simple to complex. All runnable with `vpp run`.
+Twenty open-source projects  -  simple to complex. All runnable with `vpp run`.
 
 | # | Project | Level | Run |
 |---|---------|-------|-----|

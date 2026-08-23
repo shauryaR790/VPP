@@ -1,4 +1,4 @@
-# 18 — Todo List
+# 18  -  Todo List
 
 Track tasks with structs and bool flags.
 

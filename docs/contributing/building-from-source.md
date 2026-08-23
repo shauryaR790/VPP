@@ -2,7 +2,7 @@
 
 ## Requirements
 
-- Rust (stable) — [rustup.rs](https://rustup.rs)
+- Rust (stable)  -  [rustup.rs](https://rustup.rs)
 - LLVM 22 + clang (for `codegen` feature)
 - Git (for git dependencies in tests)
 

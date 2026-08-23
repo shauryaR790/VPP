@@ -452,7 +452,7 @@
         },
         {
           "kind": "version",
-          "text": "Potential focus: broad bug fixing, compatibility work, package ecosystem maturity, and preparation for a stable language contract. v1.0 — Stable language The current roadmap identifies a frozen language specification, debugger extension, VS Code Test Explorer, hosted package registry, and curriculum or interactive tutorial work.",
+          "text": "Potential focus: broad bug fixing, compatibility work, package ecosystem maturity, and preparation for a stable language contract. v1.0  -  Stable language The current roadmap identifies a frozen language specification, debugger extension, VS Code Test Explorer, hosted package registry, and curriculum or interactive tutorial work.",
           "version": "v0.9",
           "title": "Stabilization"
         },

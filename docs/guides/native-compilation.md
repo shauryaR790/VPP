@@ -9,8 +9,8 @@ vpp build examples/hello.vpp -o hello.exe
 
 ## Requirements
 
-- **Release installer** — includes portable `clang` under `llvm\bin`
-- **From source** — LLVM 22 + `LLVM_SYS_221_PREFIX`
+- **Release installer**  -  includes portable `clang` under `llvm\bin`
+- **From source**  -  LLVM 22 + `LLVM_SYS_221_PREFIX`
 
 ```powershell
 $env:LLVM_SYS_221_PREFIX = "C:\Program Files\LLVM"

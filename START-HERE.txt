@@ -1,4 +1,4 @@
-v++ for Windows — start here
+v++ for Windows  -  start here
 ============================
 
 Windows may show a security prompt the first time you run files from this
@@ -31,11 +31,11 @@ Or in PowerShell / cmd:
 
 WHAT WORKS WITHOUT EXTRA INSTALLS
 ---------------------------------
-  vpp run   — run .vpp files (interpreter)
-  vpp check — type-check
-  vppls     — language server (VS Code extension)
+  vpp run    -  run .vpp files (interpreter)
+  vpp check  -  type-check
+  vppls      -  language server (VS Code extension)
 
-Native compile (vpp build) needs LLVM — this bundle includes a portable
+Native compile (vpp build) needs LLVM  -  this bundle includes a portable
 copy under llvm\ when available, or install:  winget install LLVM.LLVM
 
 

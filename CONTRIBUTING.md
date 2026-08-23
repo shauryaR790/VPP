@@ -1,6 +1,6 @@
 # Contributing to v++
 
-**Yes — contributions are welcome.** v++ is MIT-licensed and open source. Issues and pull requests are accepted on GitHub.
+**Yes  -  contributions are welcome.** v++ is MIT-licensed and open source. Issues and pull requests are accepted on GitHub.
 
 This is a young project (small maintainer team, fast-moving `main`). We review PRs as we can; small, focused changes merge faster than large rewrites.
 
@@ -11,11 +11,11 @@ This is a young project (small maintainer team, fast-moving `main`). We review P
 | **Docs** | Fix typos, clarify guides, add examples |
 | **Tests** | `.vpp` test cases, `cargo test` coverage |
 | **Stdlib** | `std/*` modules, registry packages |
-| **Extension** | `editor/vscode-vpp/` — UX, snippets, docs |
+| **Extension** | `editor/vscode-vpp/`  -  UX, snippets, docs |
 | **Examples** | `examples/`, `projects/` |
 | **Bug fixes** | Link a repro in the issue first |
 
-Language-design changes (new syntax, breaking SPEC) — **open an issue first** so we can discuss before you invest time.
+Language-design changes (new syntax, breaking SPEC)  -  **open an issue first** so we can discuss before you invest time.
 
 ## Quick links
 
@@ -27,11 +27,11 @@ Language-design changes (new syntax, breaking SPEC) — **open an issue first** 
 
 ## How to contribute
 
-1. **Issues first** — open an issue for bugs or feature ideas before large PRs
-2. **Fork & branch** — work on a feature branch off `main`
-3. **Test** — `cargo test --all-targets`; if touching codegen, `cargo test --features codegen`
-4. **Format** — `cargo fmt`, `vpp fmt` on any `.vpp` examples you change
-5. **PR** — describe what changed and why; link the issue
+1. **Issues first**  -  open an issue for bugs or feature ideas before large PRs
+2. **Fork & branch**  -  work on a feature branch off `main`
+3. **Test**  -  `cargo test --all-targets`; if touching codegen, `cargo test --features codegen`
+4. **Format**  -  `cargo fmt`, `vpp fmt` on any `.vpp` examples you change
+5. **PR**  -  describe what changed and why; link the issue
 
 ## Code areas
 
@@ -47,7 +47,7 @@ Language-design changes (new syntax, breaking SPEC) — **open an issue first** 
 
 ## Commit messages
 
-Use clear summaries: `Fix …`, `Add …`, `Docs: …` — same style as existing history.
+Use clear summaries: `Fix …`, `Add …`, `Docs: …`  -  same style as existing history.
 
 ## Releases (maintainers)
 

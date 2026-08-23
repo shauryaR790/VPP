@@ -1,4 +1,4 @@
-//! Compare interpreter speed — proves the parity path is fast enough to iterate.
+//! Compare interpreter speed  -  proves the parity path is fast enough to iterate.
 
 use std::path::Path;
 use std::time::{Duration, Instant};
@@ -21,11 +21,11 @@ pub fn bench_file(path: &Path, runs: u32) -> VppResult<()> {
         });
     }
 
-    println!("v++ bench — interpreter path (same as run/repl/watch)");
+    println!("v++ bench  -  interpreter path (same as run/repl/watch)");
     println!("  File: {}", path.display());
     println!("  Runs: {runs}\n");
 
-    // Warmup — populates OS cache, first typecheck
+    // Warmup  -  populates OS cache, first typecheck
     let _ = driver::run("", path);
 
     let mut total = Duration::ZERO;

@@ -1065,7 +1065,7 @@ impl<'ctx> Emit<'ctx> {
                 )
                 .unwrap(),
             IrType::String => {
-                // Compare C strings inside VppString — MVP: len+byte compare via runtime helper later
+                // Compare C strings inside VppString  -  MVP: len+byte compare via runtime helper later
                 // For v0.2 bootstrap: pointer identity for assert_eq on strings is weak; use int compare of data ptr
                 let l = left.into_pointer_value();
                 let r = right.into_pointer_value();

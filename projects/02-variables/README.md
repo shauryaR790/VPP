@@ -1,4 +1,4 @@
-# 02 — Variables & Math
+# 02  -  Variables & Math
 
 Variables, arithmetic, and string concatenation.
 

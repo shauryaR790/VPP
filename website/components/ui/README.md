@@ -1,6 +1,6 @@
 # CodeBlock component (React / shadcn)
 
-The **live V++ website** (`website/*.html`) is static HTML on GitHub Pages — no React build step. Code blocks there are rendered by `generate_pages.py` + Prism (`css/prism-vpp.css`, `js/main.js`).
+The **live V++ website** (`website/*.html`) is static HTML on GitHub Pages  -  no React build step. Code blocks there are rendered by `generate_pages.py` + Prism (`css/prism-vpp.css`, `js/main.js`).
 
 These React files are the shadcn-style source for a future Next.js app or docs redesign.
 

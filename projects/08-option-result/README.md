@@ -1,4 +1,4 @@
-# 08 — Option & Result
+# 08  -  Option & Result
 
 Safe error handling without exceptions.
 

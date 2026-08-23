@@ -283,7 +283,7 @@ def _parse_project_table(lines: list[str], start: int) -> tuple[list[ProjectTabl
 
 
 def _parse_version_entry(line: str) -> VersionEntry | None:
-    match = re.match(r"^(v0\.\d+\.\d+)\s+[–—\-]\s*(.+)$", line)
+    match = re.match(r"^(v0\.\d+\.\d+)\s+[– - \-]\s*(.+)$", line)
     if not match:
         match = re.match(r"^(v0\.\d+\.\d+)\s+(.+)$", line)
     if not match:
@@ -400,7 +400,7 @@ def _parse_section_body(section_num: int, body: str) -> list[DocsBlock]:
 
         if section_num == 18 and re.match(r"^v0\.\d", line):
             flush_para()
-            match = re.match(r"^(v0\.\d+)\s+[–—\-]\s*(.+)$", line)
+            match = re.match(r"^(v0\.\d+)\s+[– - \-]\s*(.+)$", line)
             if match:
                 title = match.group(2).strip()
                 version = match.group(1)

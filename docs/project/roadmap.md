@@ -2,9 +2,9 @@
 
 ## v1.0 (shipped)
 
-- [x] Frozen language spec — [SPEC.md](../SPEC.md)
-- [x] Parity Promise — [PARITY_PROMISE.md](PARITY_PROMISE.md)
-- [x] Compatibility CI — all examples on every push
+- [x] Frozen language spec  -  [SPEC.md](../SPEC.md)
+- [x] Parity Promise  -  [PARITY_PROMISE.md](PARITY_PROMISE.md)
+- [x] Compatibility CI  -  all examples on every push
 - [x] Debugger (CLI + VS Code F5)
 - [x] Test Explorer UI
 - [x] Package registry search (`vpp search`)
@@ -23,15 +23,15 @@
 
 ## v0.7 (shipped)
 
-- [x] **`vpp watch`** — live re-run on save
-- [x] **`vpp bench`** — interpreter timing
+- [x] **`vpp watch`**  -  live re-run on save
+- [x] **`vpp bench`**  -  interpreter timing
 - [x] Cross-platform doctor hints
-- [x] Extension 0.7 — Watch + Benchmark commands
+- [x] Extension 0.7  -  Watch + Benchmark commands
 
 ## v0.6 (shipped)
 
-- [x] **`vpp repl`** — interactive interpreter session
-- [x] Extension 0.6 — format-on-save, REPL command, snippets, lazy LSP
+- [x] **`vpp repl`**  -  interactive interpreter session
+- [x] Extension 0.6  -  format-on-save, REPL command, snippets, lazy LSP
 
 ## Post v1.0 (ideas)
 

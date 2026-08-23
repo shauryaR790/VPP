@@ -1,7 +1,7 @@
-# Privacy Policy — v++
+# Privacy
 
-This document has moved to the website legal section:
+No telemetry. The compiler, LSP, and extension do not phone home.
 
-**[Privacy Policy](https://shauryaR790.github.io/V-/privacy.html)**
+This docs site is static GitHub Pages. We do not run analytics or ad trackers on it.
 
-Source: [`docs/legal/privacy-policy.md`](legal/privacy-policy.md)
+Questions: [GitHub Issues](https://github.com/shauryaR790/VPP/issues).

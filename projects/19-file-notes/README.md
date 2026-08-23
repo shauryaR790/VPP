@@ -1,4 +1,4 @@
-# 19 — File Notes
+# 19  -  File Notes
 
 Read and write files with `std.fs`.
 

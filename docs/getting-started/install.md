@@ -38,7 +38,7 @@ Download `vpp-v1.0.4-windows-x64.zip`, extract, run `GO.bat` or add the folder t
 
 ## Linux / macOS
 
-Interpreter and LSP work from source today. Prebuilt native bundles for Unix are improving — see [GitHub Releases](https://github.com/shauryaR790/VPP/releases) when available, or [build from source](../contributing/building-from-source.md).
+Interpreter and LSP work from source today. Prebuilt native bundles for Unix are improving  -  see [GitHub Releases](https://github.com/shauryaR790/VPP/releases) when available, or [build from source](../contributing/building-from-source.md).
 
 ## Build from source
 

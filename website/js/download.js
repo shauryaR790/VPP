@@ -1,4 +1,4 @@
-/** Download hub — version/OS picker and one-click release links. */
+/** Download hub  -  version/OS picker and one-click release links. */
 (function () {
   const REPO = "shauryaR790/VPP";
   const SOURCE_URL = "/VPP/contribute.html";

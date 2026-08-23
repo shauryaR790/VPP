@@ -1,6 +1,6 @@
 # v++ version roadmap (v0.6 → v1.0)
 
-**Unique promise:** *Same readable `.vpp` file — learn instantly with `vpp run` / `vpp repl`, ship natively with `vpp build`. No other language guarantees interpreter/native parity on Python-style syntax with CI proof.*
+**Unique promise:** *Same readable `.vpp` file  -  learn instantly with `vpp run` / `vpp repl`, ship natively with `vpp build`. No other language guarantees interpreter/native parity on Python-style syntax with CI proof.*
 
 | Version | Codename | Purpose | Status |
 |---------|----------|---------|--------|

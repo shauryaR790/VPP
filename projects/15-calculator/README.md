@@ -1,4 +1,4 @@
-# 15 — Calculator
+# 15  -  Calculator
 
 Enum-driven operations with `Result` for errors.
 

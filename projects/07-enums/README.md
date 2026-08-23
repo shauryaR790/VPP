@@ -1,4 +1,4 @@
-# 07 — Enums
+# 07  -  Enums
 
 Sum types with named variants and pattern matching.
 
