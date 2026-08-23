@@ -84,4 +84,6 @@ jobs:
       - name: Native smoke test
         run: |
           cargo build --release --features codegen,lsp --bin vpp --bin vppls
-          cargo run --features codegen -- run examples/hello.vpp
+          cargo run --release --features codegen -- run examples/hello.vpp
+          cargo run --release --features codegen -- build examples/hello.vpp -o /tmp/vpp-hello
+          /tmp/vpp-hello

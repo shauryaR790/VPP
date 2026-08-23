@@ -21,7 +21,7 @@ pub mod span;
 pub mod symbols;
 pub mod types;
 
-#[cfg(feature = "codegen")]
+#[cfg(all(feature = "codegen", target_os = "windows"))]
 #[link(name = "vpp_llvm_stubs", kind = "static")]
 extern "C" {
     fn vpp_force_llvm_stubs();
@@ -29,7 +29,12 @@ extern "C" {
 
 #[cfg(feature = "codegen")]
 pub fn ensure_llvm_stubs_linked() {
-    unsafe { vpp_force_llvm_stubs() };
+    // Windows LLVM-C.dll omits target-init exports; stubs live in vpp_llvm_stubs.
+    // Unix/macOS link real symbols via llvm-config in build.rs.
+    #[cfg(target_os = "windows")]
+    unsafe {
+        vpp_force_llvm_stubs();
+    }
 }
 
 pub use driver::{
