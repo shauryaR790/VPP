@@ -3,106 +3,48 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>V++ | Write simply. Compile natively.</title>
-  <meta name="description" content="V++ is an open source programming language. Python-style readability, static typing, native executables.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <title>V++</title>
+  <meta name="description" content="V++ programming language">
   <link rel="stylesheet" href="/VPP/css/style.css">
-  <link rel="stylesheet" href="/VPP/css/prism-vpp.css">
   <link rel="icon" href="/VPP/assets/favicon.png">
-  <link rel="apple-touch-icon" href="/VPP/assets/logo-header.png">
 </head>
-<body class="page-home">
-  <canvas id="home-grid-canvas" class="home-grid-canvas" aria-hidden="true"></canvas>
+<body>
   <header class="site-header">
     <div class="header-inner">
-      <a href="/VPP/index.html" class="brand">
-        <img src="/VPP/assets/logo-header.png" alt="V++" class="brand-logo">
-      </a>
-      <nav class="top-nav">
-        <a href="/VPP/learn.html" class="nav-link">Learn</a>
-        <a href="/VPP/about.html" class="nav-link">About</a>
-        <a href="/VPP/download.html" class="nav-link">Download</a>
-        <a href="/VPP/blog.html" class="nav-link">Blog</a>
-        <a href="/VPP/docs.html" class="nav-link">Docs</a>
-        <a href="/VPP/contribute.html" class="nav-link">Contribute</a>
-        <a href="/VPP/courses.html" class="nav-link">Courses</a>
-      </nav>
-      <div class="header-actions">
-        <a href="https://github.com/shauryaR790/VPP" class="icon-btn" aria-label="GitHub" target="_blank" rel="noopener">
-          <svg width="20" height="20" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.18.82.63-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.51-1.04 2.18-.82 2.18-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
-        </a>
-      </div>
-      <button class="nav-toggle" aria-label="Menu">☰</button>
+      <a href="/VPP/index.html" class="brand">V++</a>
+      <nav class="top-nav"><a href="/VPP/index.html" class="active">Main page</a><a href="/VPP/docs.html" class="">Documentation</a><a href="/VPP/download.html" class="">Download</a></nav>
+      <div class="header-actions"><a href="https://github.com/shauryaR790/VPP">GitHub</a></div>
     </div>
   </header>
+  <div class="page-wrap no-sidebar">
+    
+    <main class="wiki-main">
+      <article class="wiki-content">
+        
+<h1 class="wiki-title">V++</h1>
+<p class="wiki-subtitle">From the V++ project</p>
+<p><strong>V++</strong> (vpp) is an open-source programming language and compiler.
+It aims for readable syntax, static typing with local inference, and native compilation via LLVM.</p>
+<p>The compiler is written in Rust. Programs can run through a tree-walking interpreter or compile to native executables.
+The language includes structs, enums, generics, traits, <code>Option</code>/<code>Result</code>, and modules.</p>
+<h2>Getting the compiler</h2>
+<p>Prebuilt Windows releases are on GitHub. See the <a href="/VPP/download.html">Download</a> page.</p>
+<h2>Documentation</h2>
+<p>Language reference, CLI, architecture, and FAQ: <a href="/VPP/docs.html">Documentation</a>.</p>
+<h2>External links</h2>
+<ul>
+  <li><a href="https://github.com/shauryaR790/VPP">Source repository</a></li>
+  <li><a href="https://github.com/shauryaR790/VPP/releases">Releases</a></li>
+  <li><a href="https://marketplace.visualstudio.com/items?itemName=vpp-lang.vplusplus">VS Code extension</a></li>
+</ul>
 
-  <main class="home-main">
-    <div class="home-hero">
-      <div class="home-copy">
-        <h1>Write it simply.<br>Compile it natively.</h1>
-        <p class="lead">Open-source language and compiler. Readable syntax, static types, interpreter for hacking, LLVM backend when you want a native binary.</p>
-        <div class="home-buttons">
-          <a href="/VPP/download.html" class="btn btn-primary">Get V++ v1.0.4</a>
-          <a href="/VPP/learn.html" class="btn btn-outline">Start learning</a>
-        </div>
-        <div class="home-partners">
-          <span>Works with</span>
-          <a href="https://marketplace.visualstudio.com/items?itemName=vpp-lang.vplusplus">VS Code</a>
-          <a href="https://github.com/shauryaR790/VPP/releases">GitHub Releases</a>
-          <a href="https://github.com/shauryaR790/VPP">Open Source MIT</a>
-        </div>
-      </div>
-
-      <div class="code-panel">
-        <div class="code-tabs">
-          <button type="button" class="code-tab active" data-sample="hello">Quick start</button>
-          <button type="button" class="code-tab" data-sample="native">Structs &amp; types</button>
-          <button type="button" class="code-tab" data-sample="build">Build native</button>
-          <button type="button" class="code-tab" data-sample="test">Write tests</button>
-          <button type="button" class="code-tab" data-sample="project">Package manifest</button>
-        </div>
-        <div class="code-block-header code-panel-header">
-          <span class="code-block-filename" id="code-filename">hello.vpp</span>
-          <button type="button" class="code-copy-btn" id="code-copy-header" aria-label="Copy code">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
-          </button>
-        </div>
-        <pre id="code-display"></pre>
-        <div class="code-footer">
-          <span id="code-lang">V++</span>
-        </div>
-      </div>
-    </div>
-  </main>
-
-  <footer class="home-bottom">
-    <div class="home-bottom-inner">
-      <div class="home-bottom-primary">
-        <div class="version-pills">
-          <span class="version-pill yellow">v1.0.4 Stable</span>
-          <span class="version-pill">Extension 1.2.1</span>
-        </div>
-        <div class="home-social">
-          <a href="https://github.com/shauryaR790/VPP">GitHub</a>
-          <a href="/VPP/docs.html">Docs</a>
-          <a href="/VPP/courses.html">20 Projects</a>
-        </div>
-      </div>
-      <div class="home-bottom-legal">
-        <p>&copy; 2026 v++ contributors. <a href="https://github.com/shauryaR790/VPP/blob/main/LICENSE">MIT License</a> · <a href="/VPP/license.html">License text</a></p>
-      </div>
-    </div>
+      </article>
+    </main>
+  </div>
+  <footer class="site-footer">
+    Text is available under the <a href="https://github.com/shauryaR790/VPP/blob/main/LICENSE">MIT License</a>.
+    Documentation from the <a href="https://github.com/shauryaR790/VPP">V++ repository</a>.
   </footer>
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-clike.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-javascript.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-bash.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-toml.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-rust.min.js"></script>
-  <script src="/VPP/js/prism-vpp.js"></script>
-  <script src="/VPP/js/grid-hero.js"></script>
-  <script src="/VPP/js/main.js"></script>
+  
 </body>
 </html>

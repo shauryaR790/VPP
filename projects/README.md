@@ -25,4 +25,4 @@ Twenty open-source projects  -  simple to complex. All runnable with `vpp run`.
 | 19 | [file-notes](19-file-notes/) | Advanced | `vpp run projects/19-file-notes/main.vpp` |
 | 20 | [json-config](20-json-config/) | Advanced | `vpp run projects/20-json-config/main.vpp` |
 
-Browse on the website: [Courses](https://shauryaR790.github.io/V-/courses.html)
+Browse on the website: [Documentation](https://shauryaR790.github.io/VPP/docs.html) · project sources in `projects/`

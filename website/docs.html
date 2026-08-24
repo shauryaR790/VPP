@@ -3,143 +3,63 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Documentation | V++</title>
-  <meta name="description" content="V++ language reference, toolchain, compiler architecture, and documentation hub.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Shrikhand&display=swap" rel="stylesheet">
+  <title>v++ Documentation Master Content - V++</title>
+  <meta name="description" content="V++ language documentation">
   <link rel="stylesheet" href="/VPP/css/style.css">
-  <link rel="stylesheet" href="/VPP/css/prism-vpp.css">
   <link rel="icon" href="/VPP/assets/favicon.png">
-  <link rel="apple-touch-icon" href="/VPP/assets/logo-header.png">
 </head>
-<body class="page-docs">
+<body>
   <header class="site-header">
     <div class="header-inner">
-      <a href="/VPP/index.html" class="brand"><img src="/VPP/assets/logo-header.png" alt="V++" class="brand-logo"></a>
-      <nav class="top-nav"><a href="/VPP/learn.html" class="nav-link">Learn</a>
-<a href="/VPP/about.html" class="nav-link">About</a>
-<a href="/VPP/download.html" class="nav-link">Download</a>
-<a href="/VPP/blog.html" class="nav-link">Blog</a>
-<a href="/VPP/docs.html" class="nav-link active">Docs</a>
-<a href="/VPP/contribute.html" class="nav-link">Contribute</a>
-<a href="/VPP/courses.html" class="nav-link">Courses</a></nav>
-      <div class="header-actions">
-        <a href="https://github.com/shauryaR790/VPP" class="icon-btn" aria-label="GitHub" target="_blank" rel="noopener">
-          <svg width="20" height="20" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53 .63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.18.82.63-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.51-1.04 2.18-.82 2.18-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
-        </a>
-      </div>
-      <button class="nav-toggle" aria-label="Menu">☰</button>
+      <a href="/VPP/index.html" class="brand">V++</a>
+      <nav class="top-nav"><a href="/VPP/index.html" class="">Main page</a><a href="/VPP/docs.html" class="active">Documentation</a><a href="/VPP/download.html" class="">Download</a></nav>
+      <div class="header-actions"><a href="https://github.com/shauryaR790/VPP">GitHub</a></div>
     </div>
   </header>
-  <div class="docs-layout">
-    <aside class="docs-sidebar"><div class="tree-search-wrap">
-<div class="tree-search-field">
-<svg class="tree-search-icon" width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z"/></svg>
-<input type="search" class="tree-search" placeholder="Go to page" aria-label="Filter navigation">
-</div></div>
-<nav class="sidebar-tree" aria-label="Documentation">
-<details class="tree-folder" open>
-<summary class="tree-folder-label"><svg class="tree-chevron" width="12" height="12" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L9.94 8 6.22 4.28a.75.75 0 0 1 0-1.06Z"/></svg><svg class="tree-icon tree-icon-folder" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M1.75 1A1.75 1.75 0 0 0 0 2.75v10.5C0 14.216.784 15 1.75 15h12.5A1.75 1.75 0 0 0 16 13.25V6.75A1.75 1.75 0 0 0 14.25 5H8.06l-.72-1.44A1.75 1.75 0 0 0 5.68 2H1.75Z"/></svg>Getting started</summary>
-<ul class="tree-list">
-<li><a href="/VPP/learn.html#introduction" class="tree-link"><svg class="tree-icon tree-icon-file" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M2 1.75C2 .784 2.784 0 3.75 0h5.086c.464 0 .909.184 1.237.513l3.414 3.414c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 12.25 16h-8.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 8 4.25V1.5Z"/></svg>Introduction</a></li>
-<li><a href="/VPP/learn.html#install" class="tree-link"><svg class="tree-icon tree-icon-file" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M2 1.75C2 .784 2.784 0 3.75 0h5.086c.464 0 .909.184 1.237.513l3.414 3.414c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 12.25 16h-8.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 8 4.25V1.5Z"/></svg>Install</a></li>
-<li><a href="/VPP/learn.html#first-program" class="tree-link"><svg class="tree-icon tree-icon-file" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M2 1.75C2 .784 2.784 0 3.75 0h5.086c.464 0 .909.184 1.237.513l3.414 3.414c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 12.25 16h-8.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 8 4.25V1.5Z"/></svg>First program</a></li>
-<li><a href="/VPP/learn.html#first-project" class="tree-link"><svg class="tree-icon tree-icon-file" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M2 1.75C2 .784 2.784 0 3.75 0h5.086c.464 0 .909.184 1.237.513l3.414 3.414c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 12.25 16h-8.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 8 4.25V1.5Z"/></svg>First project</a></li>
-<li><a href="/VPP/courses.html" class="tree-link"><svg class="tree-icon tree-icon-file" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M2 1.75C2 .784 2.784 0 3.75 0h5.086c.464 0 .909.184 1.237.513l3.414 3.414c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 12.25 16h-8.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 8 4.25V1.5Z"/></svg>Courses &amp; projects</a></li>
-</ul></details>
-<details class="tree-folder" open>
-<summary class="tree-folder-label"><svg class="tree-chevron" width="12" height="12" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L9.94 8 6.22 4.28a.75.75 0 0 1 0-1.06Z"/></svg><svg class="tree-icon tree-icon-folder" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M1.75 1A1.75 1.75 0 0 0 0 2.75v10.5C0 14.216.784 15 1.75 15h12.5A1.75 1.75 0 0 0 16 13.25V6.75A1.75 1.75 0 0 0 14.25 5H8.06l-.72-1.44A1.75 1.75 0 0 0 5.68 2H1.75Z"/></svg>Language</summary>
-<ul class="tree-list">
-<li><a href="/VPP/docs.html#what-is-vpp" class="tree-link"><svg class="tree-icon tree-icon-file" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M2 1.75C2 .784 2.784 0 3.75 0h5.086c.464 0 .909.184 1.237.513l3.414 3.414c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 12.25 16h-8.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 8 4.25V1.5Z"/></svg>What is v++</a></li>
-<li><a href="/VPP/docs.html#language-reference" class="tree-link"><svg class="tree-icon tree-icon-file" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M2 1.75C2 .784 2.784 0 3.75 0h5.086c.464 0 .909.184 1.237.513l3.414 3.414c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 12.25 16h-8.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 8 4.25V1.5Z"/></svg>Language reference</a></li>
-<li><a href="/VPP/docs.html#control-flow" class="tree-link"><svg class="tree-icon tree-icon-file" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M2 1.75C2 .784 2.784 0 3.75 0h5.086c.464 0 .909.184 1.237.513l3.414 3.414c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 12.25 16h-8.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 8 4.25V1.5Z"/></svg>Control flow</a></li>
-<li><a href="/VPP/docs.html#generics" class="tree-link"><svg class="tree-icon tree-icon-file" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M2 1.75C2 .784 2.784 0 3.75 0h5.086c.464 0 .909.184 1.237.513l3.414 3.414c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 12.25 16h-8.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 8 4.25V1.5Z"/></svg>Generics</a></li>
-<li><a href="/VPP/docs.html#traits-and-impl" class="tree-link"><svg class="tree-icon tree-icon-file" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M2 1.75C2 .784 2.784 0 3.75 0h5.086c.464 0 .909.184 1.237.513l3.414 3.414c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 12.25 16h-8.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 8 4.25V1.5Z"/></svg>Traits &amp; impl</a></li>
-<li><a href="/VPP/docs.html#modules-and-packages" class="tree-link"><svg class="tree-icon tree-icon-file" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M2 1.75C2 .784 2.784 0 3.75 0h5.086c.464 0 .909.184 1.237.513l3.414 3.414c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 12.25 16h-8.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 8 4.25V1.5Z"/></svg>Modules &amp; packages</a></li>
-<li><a href="/VPP/docs.html#standard-library" class="tree-link"><svg class="tree-icon tree-icon-file" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M2 1.75C2 .784 2.784 0 3.75 0h5.086c.464 0 .909.184 1.237.513l3.414 3.414c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 12.25 16h-8.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 8 4.25V1.5Z"/></svg>Standard library</a></li>
-<li><a href="/VPP/docs.html#builtins" class="tree-link"><svg class="tree-icon tree-icon-file" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M2 1.75C2 .784 2.784 0 3.75 0h5.086c.464 0 .909.184 1.237.513l3.414 3.414c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 12.25 16h-8.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 8 4.25V1.5Z"/></svg>Builtins</a></li>
-</ul></details>
-<details class="tree-folder" open>
-<summary class="tree-folder-label"><svg class="tree-chevron" width="12" height="12" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L9.94 8 6.22 4.28a.75.75 0 0 1 0-1.06Z"/></svg><svg class="tree-icon tree-icon-folder" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M1.75 1A1.75 1.75 0 0 0 0 2.75v10.5C0 14.216.784 15 1.75 15h12.5A1.75 1.75 0 0 0 16 13.25V6.75A1.75 1.75 0 0 0 14.25 5H8.06l-.72-1.44A1.75 1.75 0 0 0 5.68 2H1.75Z"/></svg>Guides</summary>
-<ul class="tree-list">
-<li><a href="/VPP/docs.html#quick-start" class="tree-link"><svg class="tree-icon tree-icon-file" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M2 1.75C2 .784 2.784 0 3.75 0h5.086c.464 0 .909.184 1.237.513l3.414 3.414c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 12.25 16h-8.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 8 4.25V1.5Z"/></svg>Quick start</a></li>
-<li><a href="/VPP/docs.html#cli" class="tree-link"><svg class="tree-icon tree-icon-file" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M2 1.75C2 .784 2.784 0 3.75 0h5.086c.464 0 .909.184 1.237.513l3.414 3.414c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 12.25 16h-8.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 8 4.25V1.5Z"/></svg>CLI</a></li>
-<li><a href="/VPP/docs.html#compiler-architecture" class="tree-link"><svg class="tree-icon tree-icon-file" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M2 1.75C2 .784 2.784 0 3.75 0h5.086c.464 0 .909.184 1.237.513l3.414 3.414c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 12.25 16h-8.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 8 4.25V1.5Z"/></svg>Compiler architecture</a></li>
-<li><a href="/VPP/docs.html#runtime-and-memory-model" class="tree-link"><svg class="tree-icon tree-icon-file" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M2 1.75C2 .784 2.784 0 3.75 0h5.086c.464 0 .909.184 1.237.513l3.414 3.414c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 12.25 16h-8.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 8 4.25V1.5Z"/></svg>Runtime &amp; memory</a></li>
-<li><a href="/VPP/docs.html#diagnostics" class="tree-link"><svg class="tree-icon tree-icon-file" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M2 1.75C2 .784 2.784 0 3.75 0h5.086c.464 0 .909.184 1.237.513l3.414 3.414c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 12.25 16h-8.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 8 4.25V1.5Z"/></svg>Diagnostics</a></li>
-<li><a href="/VPP/docs.html#testing-and-interpreter-native-parity" class="tree-link"><svg class="tree-icon tree-icon-file" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M2 1.75C2 .784 2.784 0 3.75 0h5.086c.464 0 .909.184 1.237.513l3.414 3.414c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 12.25 16h-8.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 8 4.25V1.5Z"/></svg>Testing &amp; parity</a></li>
-<li><a href="/VPP/docs.html#faq" class="tree-link"><svg class="tree-icon tree-icon-file" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M2 1.75C2 .784 2.784 0 3.75 0h5.086c.464 0 .909.184 1.237.513l3.414 3.414c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 12.25 16h-8.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 8 4.25V1.5Z"/></svg>FAQ</a></li>
-</ul></details>
-<details class="tree-folder" open>
-<summary class="tree-folder-label"><svg class="tree-chevron" width="12" height="12" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L9.94 8 6.22 4.28a.75.75 0 0 1 0-1.06Z"/></svg><svg class="tree-icon tree-icon-folder" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M1.75 1A1.75 1.75 0 0 0 0 2.75v10.5C0 14.216.784 15 1.75 15h12.5A1.75 1.75 0 0 0 16 13.25V6.75A1.75 1.75 0 0 0 14.25 5H8.06l-.72-1.44A1.75 1.75 0 0 0 5.68 2H1.75Z"/></svg>Project</summary>
-<ul class="tree-list">
-<li><a href="/VPP/about.html" class="tree-link"><svg class="tree-icon tree-icon-file" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M2 1.75C2 .784 2.784 0 3.75 0h5.086c.464 0 .909.184 1.237.513l3.414 3.414c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 12.25 16h-8.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 8 4.25V1.5Z"/></svg>About V++</a></li>
-<li><a href="/VPP/about.html#architecture" class="tree-link"><svg class="tree-icon tree-icon-file" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M2 1.75C2 .784 2.784 0 3.75 0h5.086c.464 0 .909.184 1.237.513l3.414 3.414c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 12.25 16h-8.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 8 4.25V1.5Z"/></svg>Architecture</a></li>
-<li><a href="/VPP/about.html#memory-model" class="tree-link"><svg class="tree-icon tree-icon-file" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M2 1.75C2 .784 2.784 0 3.75 0h5.086c.464 0 .909.184 1.237.513l3.414 3.414c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 12.25 16h-8.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 8 4.25V1.5Z"/></svg>Memory model</a></li>
-<li><a href="/VPP/blog.html" class="tree-link"><svg class="tree-icon tree-icon-file" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M2 1.75C2 .784 2.784 0 3.75 0h5.086c.464 0 .909.184 1.237.513l3.414 3.414c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 12.25 16h-8.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 8 4.25V1.5Z"/></svg>Release notes</a></li>
-<li><a href="/VPP/download.html" class="tree-link"><svg class="tree-icon tree-icon-file" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M2 1.75C2 .784 2.784 0 3.75 0h5.086c.464 0 .909.184 1.237.513l3.414 3.414c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 12.25 16h-8.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 8 4.25V1.5Z"/></svg>Download</a></li>
-<li><a href="/VPP/contribute.html" class="tree-link"><svg class="tree-icon tree-icon-file" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M2 1.75C2 .784 2.784 0 3.75 0h5.086c.464 0 .909.184 1.237.513l3.414 3.414c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 12.25 16h-8.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 8 4.25V1.5Z"/></svg>Contribute</a></li>
-</ul></details>
-<details class="tree-folder" open>
-<summary class="tree-folder-label"><svg class="tree-chevron" width="12" height="12" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L9.94 8 6.22 4.28a.75.75 0 0 1 0-1.06Z"/></svg><svg class="tree-icon tree-icon-folder" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M1.75 1A1.75 1.75 0 0 0 0 2.75v10.5C0 14.216.784 15 1.75 15h12.5A1.75 1.75 0 0 0 16 13.25V6.75A1.75 1.75 0 0 0 14.25 5H8.06l-.72-1.44A1.75 1.75 0 0 0 5.68 2H1.75Z"/></svg>Courses</summary>
-<ul class="tree-list">
-<li><a href="/VPP/courses.html" class="tree-link"><svg class="tree-icon tree-icon-file" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M2 1.75C2 .784 2.784 0 3.75 0h5.086c.464 0 .909.184 1.237.513l3.414 3.414c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 12.25 16h-8.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 8 4.25V1.5Z"/></svg>All projects</a></li>
-<li><a href="/VPP/course-01-hello-world.html" class="tree-link"><svg class="tree-icon tree-icon-file" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M2 1.75C2 .784 2.784 0 3.75 0h5.086c.464 0 .909.184 1.237.513l3.414 3.414c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 12.25 16h-8.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 8 4.25V1.5Z"/></svg>01. Hello World</a></li>
-<li><a href="/VPP/course-02-variables.html" class="tree-link"><svg class="tree-icon tree-icon-file" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M2 1.75C2 .784 2.784 0 3.75 0h5.086c.464 0 .909.184 1.237.513l3.414 3.414c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 12.25 16h-8.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 8 4.25V1.5Z"/></svg>02. Variables &amp; Math</a></li>
-<li><a href="/VPP/course-03-functions.html" class="tree-link"><svg class="tree-icon tree-icon-file" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M2 1.75C2 .784 2.784 0 3.75 0h5.086c.464 0 .909.184 1.237.513l3.414 3.414c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 12.25 16h-8.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 8 4.25V1.5Z"/></svg>03. Functions</a></li>
-<li><a href="/VPP/course-04-loops.html" class="tree-link"><svg class="tree-icon tree-icon-file" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M2 1.75C2 .784 2.784 0 3.75 0h5.086c.464 0 .909.184 1.237.513l3.414 3.414c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 12.25 16h-8.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 8 4.25V1.5Z"/></svg>04. Loops</a></li>
-<li><a href="/VPP/course-05-arrays.html" class="tree-link"><svg class="tree-icon tree-icon-file" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M2 1.75C2 .784 2.784 0 3.75 0h5.086c.464 0 .909.184 1.237.513l3.414 3.414c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 12.25 16h-8.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 8 4.25V1.5Z"/></svg>05. Arrays</a></li>
-<li><a href="/VPP/course-06-structs.html" class="tree-link"><svg class="tree-icon tree-icon-file" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M2 1.75C2 .784 2.784 0 3.75 0h5.086c.464 0 .909.184 1.237.513l3.414 3.414c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 12.25 16h-8.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 8 4.25V1.5Z"/></svg>06. Structs</a></li>
-<li><a href="/VPP/course-07-enums.html" class="tree-link"><svg class="tree-icon tree-icon-file" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M2 1.75C2 .784 2.784 0 3.75 0h5.086c.464 0 .909.184 1.237.513l3.414 3.414c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 12.25 16h-8.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 8 4.25V1.5Z"/></svg>07. Enums</a></li>
-<li><a href="/VPP/course-08-option-result.html" class="tree-link"><svg class="tree-icon tree-icon-file" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M2 1.75C2 .784 2.784 0 3.75 0h5.086c.464 0 .909.184 1.237.513l3.414 3.414c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 12.25 16h-8.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 8 4.25V1.5Z"/></svg>08. Option &amp; Result</a></li>
-<li><a href="/VPP/course-09-match.html" class="tree-link"><svg class="tree-icon tree-icon-file" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M2 1.75C2 .784 2.784 0 3.75 0h5.086c.464 0 .909.184 1.237.513l3.414 3.414c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 12.25 16h-8.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 8 4.25V1.5Z"/></svg>09. Pattern Matching</a></li>
-<li><a href="/VPP/course-10-fizzbuzz.html" class="tree-link"><svg class="tree-icon tree-icon-file" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M2 1.75C2 .784 2.784 0 3.75 0h5.086c.464 0 .909.184 1.237.513l3.414 3.414c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 12.25 16h-8.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 8 4.25V1.5Z"/></svg>10. FizzBuzz</a></li>
-<li><a href="/VPP/course-11-fibonacci.html" class="tree-link"><svg class="tree-icon tree-icon-file" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M2 1.75C2 .784 2.784 0 3.75 0h5.086c.464 0 .909.184 1.237.513l3.414 3.414c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 12.25 16h-8.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 8 4.25V1.5Z"/></svg>11. Fibonacci</a></li>
-<li><a href="/VPP/course-12-generics.html" class="tree-link"><svg class="tree-icon tree-icon-file" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M2 1.75C2 .784 2.784 0 3.75 0h5.086c.464 0 .909.184 1.237.513l3.414 3.414c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 12.25 16h-8.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 8 4.25V1.5Z"/></svg>12. Generics</a></li>
-<li><a href="/VPP/course-13-traits.html" class="tree-link"><svg class="tree-icon tree-icon-file" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M2 1.75C2 .784 2.784 0 3.75 0h5.086c.464 0 .909.184 1.237.513l3.414 3.414c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 12.25 16h-8.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 8 4.25V1.5Z"/></svg>13. Traits</a></li>
-<li><a href="/VPP/course-14-modules.html" class="tree-link"><svg class="tree-icon tree-icon-file" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M2 1.75C2 .784 2.784 0 3.75 0h5.086c.464 0 .909.184 1.237.513l3.414 3.414c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 12.25 16h-8.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 8 4.25V1.5Z"/></svg>14. Modules</a></li>
-<li><a href="/VPP/course-15-calculator.html" class="tree-link"><svg class="tree-icon tree-icon-file" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M2 1.75C2 .784 2.784 0 3.75 0h5.086c.464 0 .909.184 1.237.513l3.414 3.414c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 12.25 16h-8.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 8 4.25V1.5Z"/></svg>15. Calculator</a></li>
-<li><a href="/VPP/course-16-word-counter.html" class="tree-link"><svg class="tree-icon tree-icon-file" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M2 1.75C2 .784 2.784 0 3.75 0h5.086c.464 0 .909.184 1.237.513l3.414 3.414c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 12.25 16h-8.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 8 4.25V1.5Z"/></svg>16. Word Counter</a></li>
-<li><a href="/VPP/course-17-guessing-game.html" class="tree-link"><svg class="tree-icon tree-icon-file" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M2 1.75C2 .784 2.784 0 3.75 0h5.086c.464 0 .909.184 1.237.513l3.414 3.414c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 12.25 16h-8.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 8 4.25V1.5Z"/></svg>17. Guessing Game</a></li>
-<li><a href="/VPP/course-18-todo-list.html" class="tree-link"><svg class="tree-icon tree-icon-file" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M2 1.75C2 .784 2.784 0 3.75 0h5.086c.464 0 .909.184 1.237.513l3.414 3.414c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 12.25 16h-8.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 8 4.25V1.5Z"/></svg>18. Todo List</a></li>
-<li><a href="/VPP/course-19-file-notes.html" class="tree-link"><svg class="tree-icon tree-icon-file" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M2 1.75C2 .784 2.784 0 3.75 0h5.086c.464 0 .909.184 1.237.513l3.414 3.414c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 12.25 16h-8.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 8 4.25V1.5Z"/></svg>19. File Notes</a></li>
-<li><a href="/VPP/course-20-json-config.html" class="tree-link"><svg class="tree-icon tree-icon-file" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M2 1.75C2 .784 2.784 0 3.75 0h5.086c.464 0 .909.184 1.237.513l3.414 3.414c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 12.25 16h-8.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 8 4.25V1.5Z"/></svg>20. JSON Config</a></li>
-</ul></details>
-</nav></aside>
-    <main class="docs-main">
-      <article class="docs-article"><div id="top"></div>
-<h1 id="documentation">v++ Documentation Master Content</h1>
-<p>Complete source content for the official Docs hub</p>
-<p>Current release: v1.0.4 (compiler + extension) · License: MIT · Stage: v1.0 stable</p>
+  <div class="page-wrap">
+    <nav class="wiki-sidebar"><h2>Contents</h2><ol><li><a href="#what-is-vpp">What is v++?</a></li><li><a href="#core-design-goals">Core design goals</a></li><li><a href="#quick-start">Quick start</a></li><li><a href="#language-reference">Language reference</a></li><li><a href="#control-flow">Control flow</a></li><li><a href="#generics">Generics</a></li><li><a href="#traits-and-impl">Traits and impl</a></li><li><a href="#modules-and-packages">Modules and packages</a></li><li><a href="#standard-library">Standard library</a></li><li><a href="#builtins">Builtins</a></li><li><a href="#cli">CLI</a></li><li><a href="#compiler-architecture">Compiler architecture</a></li><li><a href="#runtime-and-memory-model">Runtime and memory model</a></li><li><a href="#diagnostics">Diagnostics</a></li><li><a href="#testing-and-interpreter-native-parity">Testing and interpreter/native parity</a></li><li><a href="#complete-version-history">Complete version history</a></li><li><a href="#current-v1-0-4-status">Current v1.0.4 status</a></li><li><a href="#future-roadmap">Future roadmap</a></li><li><a href="#compatibility-policy">Compatibility policy</a></li><li><a href="#recommended-docs-navigation">Recommended Docs navigation</a></li><li><a href="#twenty-official-learning-projects">Twenty official learning projects</a></li><li><a href="#contributing">Contributing</a></li><li><a href="#release-documentation">Release documentation</a></li><li><a href="#faq">FAQ</a></li><li><a href="#documentation-maintenance-rules">Documentation maintenance rules</a></li><li><a href="#suggested-docs-landing-page-copy">Suggested Docs landing page copy</a></li><li><a href="#accuracy-note">Accuracy note</a></li></ol></nav>
+    <main class="wiki-main">
+      <article class="wiki-content">
+        <h1 class="wiki-title">v++ Documentation Master Content</h1>
+<div class="infobox">
+<div class="infobox-title">V++</div>
+<table>
+<tr><th>Paradigm</th><td>Multi-paradigm</td></tr>
+<tr><th>Typing</th><td>Static, inferred</td></tr>
+<tr><th>Implementation</th><td>Rust + LLVM</td></tr>
+<tr><th>Repository</th><td><a href="https://github.com/shauryaR790/VPP">GitHub</a></td></tr>
+<tr><th>License</th><td><a href="https://github.com/shauryaR790/VPP/blob/main/LICENSE">MIT</a></td></tr>
+</table>
+</div>
+<p class="wiki-subtitle">Current release: v1.0.4 (compiler + extension) · License: MIT · Stage: v1.0 stable</p>
 <h2 id="what-is-vpp">1. What is v++?</h2>
-<p>V++ is a compiled programming language designed around readable source code, static typing, local type inference, and native compilation. Its project tagline is Write it simply. Compile it natively. Grow into control when you need it. The compiler has one front end and two execution paths. The interpreter is useful for development and teaching. The native path lowers checked programs into V++ IR, then LLVM, and finally a native executable linked with the V++ runtime. The goal is not to become Python or Rust. V++ is its own language whose identity comes from readable syntax, explicit types where useful, local inference, native compilation, and an integrated toolchain.</p>
+<p>v++ is a compiled programming language designed around readable source code, static typing, local type inference, and native compilation. Its project tagline is Write it simply. Compile it natively. Grow into control when you need it. The compiler has one front end and two execution paths. The interpreter is useful for development and teaching. The native path lowers checked programs into v++ IR, then LLVM, and finally a native executable linked with the v++ runtime. The goal is not to become Python or Rust. v++ is its own language whose identity comes from readable syntax, explicit types where useful, local inference, native compilation, and an integrated toolchain.</p>
 <h2 id="core-design-goals">2. Core design goals</h2>
-<p><strong>Readable by default:</strong> Simple programs should not require excessive ceremony.</p>
-<p><strong>Statically typed:</strong> The compiler checks types before native execution while inference reduces unnecessary repetition.</p>
-<p><strong>Native compilation:</strong> Supported programs can be compiled through LLVM and clang into native executables.</p>
-<p><strong>Two execution paths:</strong> Interpreter and native execution share the same checked language model and are tested for parity.</p>
-<p><strong>Tooling included:</strong> V++, the language server, VS Code extension, formatter, tests, package manager, standard library, documentation, and release tooling are all part of the project.</p>
+<p><strong>Readable by default</strong> Simple programs should not require excessive ceremony.</p>
+<p><strong>Statically typed</strong> The compiler checks types before native execution while inference reduces unnecessary repetition.</p>
+<p><strong>Native compilation</strong> Supported programs can be compiled through LLVM and clang into native executables.</p>
+<p><strong>Two execution paths</strong> Interpreter and native execution share the same checked language model and are tested for parity.</p>
+<p><strong>Tooling included</strong> v++, the language server, VS Code extension, formatter, tests, package manager, standard library, documentation, and release tooling are all part of the project.</p>
 <h2 id="quick-start">3. Quick start</h2>
-<p>Windows release users can install the V++ installer, install the V++ Language VS Code extension, and run a program from a terminal.</p>
-<div class="code-block-wrap"><div class="code-block-header"><span class="code-block-filename">terminal</span></div><pre class="language-bash"><code class="language-bash">vpp run examples\hello.vpp
+<p>Windows release users can install the v++ installer, install the v++ Language VS Code extension, and run a program from a terminal.</p>
+<pre><code>vpp run examples\hello.vpp
 vpp build examples\hello.vpp -o hello.exe
-.\hello.exe</code></pre></div>
+.\hello.exe</code></pre>
 <p>Contributors can build from source with:</p>
-<div class="code-block-wrap"><div class="code-block-header"><span class="code-block-filename">terminal</span></div><pre class="language-bash"><code class="language-bash">git clone https://github.com/shauryaR790/V-.git
+<pre><code>git clone https://github.com/shauryaR790/V-.git
 cd V-
 cargo build --release --features codegen,lsp
-cargo test --all-targets</code></pre></div>
+cargo test --all-targets</code></pre>
 <p>Keep installation instructions version aware. Distribution artifacts and supported platforms can change between releases.</p>
 <h2 id="language-reference">4. Language reference</h2>
 <h3 id="language-reference-primitive-values">Primitive values</h3>
-<div class="code-block-wrap"><div class="code-block-header"><span class="code-block-filename">main.vpp</span></div><pre class="language-vpp"><code class="language-vpp">let count = 42
+<pre><code>let count = 42
 let ratio = 3.14
 let ready = true
-let name = &quot;Shaurya&quot;</code></pre></div>
+let name = &quot;Shaurya&quot;</code></pre>
 <p>The current specification defines int as a 64 bit signed integer, float as a 64 bit IEEE value, bool as true or false, and string as a UTF 8 heap string in the native runtime.</p>
 <h3 id="language-reference-arrays-and-user-types">Arrays and user types</h3>
-<div class="code-block-wrap"><div class="code-block-header"><span class="code-block-filename">main.vpp</span></div><pre class="language-vpp"><code class="language-vpp">let numbers: array[int] = [1, 2, 3]
+<pre><code>let numbers: array[int] = [1, 2, 3]
 struct User {
 name: string
 age: int
@@ -147,25 +67,25 @@ age: int
 enum Status {
 Active
 Inactive
-}</code></pre></div>
+}</code></pre>
 <p>Option and Result are built in sum types for representing optional values and successful or failed operations.</p>
-<div class="code-block-wrap"><div class="code-block-header"><span class="code-block-filename">main.vpp</span></div><pre class="language-vpp"><code class="language-vpp">let value: Option[int] = Some(42)
-let answer: Result[int, string] = Ok(42)</code></pre></div>
+<pre><code>let value: Option[int] = Some(42)
+let answer: Result[int, string] = Ok(42)</code></pre>
 <h3 id="language-reference-variables-and-mutability">Variables and mutability</h3>
-<div class="code-block-wrap"><div class="code-block-header"><span class="code-block-filename">main.vpp</span></div><pre class="language-vpp"><code class="language-vpp">let x = 10
+<pre><code>let x = 10
 let mut total = 0
-total = total + x</code></pre></div>
+total = total + x</code></pre>
 <p>Bindings are immutable by default. Reassignment requires let mut.</p>
 <h3 id="language-reference-functions">Functions</h3>
-<div class="code-block-wrap"><div class="code-block-header"><span class="code-block-filename">main.vpp</span></div><pre class="language-vpp"><code class="language-vpp">fn add(a: int, b: int) -&gt; int {
+<pre><code>fn add(a: int, b: int) -&gt; int {
 return a + b
 }
 fn main() -&gt; int {
 return add(20, 22)
-}</code></pre></div>
+}</code></pre>
 <p>When present, fn main() -&gt; int is the program entry point for both interpreter and native execution.</p>
 <h2 id="control-flow">5. Control flow</h2>
-<div class="code-block-wrap"><div class="code-block-header"><span class="code-block-filename">main.vpp</span></div><pre class="language-vpp"><code class="language-vpp">if score &gt; 50 {
+<pre><code>if score &gt; 50 {
 print(&quot;pass&quot;)
 } else {
 print(&quot;try again&quot;)
@@ -178,29 +98,29 @@ print(i)
 }
 for item in numbers {
 print(item)
-}</code></pre></div>
-<p>V++ supports if and else, while, half open range loops, array iteration, break, continue, and match.</p>
+}</code></pre>
+<p>v++ supports if and else, while, half open range loops, array iteration, break, continue, and match.</p>
 <h3 id="control-flow-pattern-matching">Pattern matching</h3>
-<div class="code-block-wrap"><div class="code-block-header"><span class="code-block-filename">main.vpp</span></div><pre class="language-vpp"><code class="language-vpp">match status {
+<pre><code>match status {
 Active =&gt; {
 print(&quot;active&quot;)
 }
 Inactive =&gt; {
 print(&quot;inactive&quot;)
-}</code></pre></div>
-<div class="code-block-wrap"><div class="code-block-header"><span class="code-block-filename">main.vpp</span></div><pre class="language-vpp"><code class="language-vpp">}</code></pre></div>
+}</code></pre>
+<pre><code>}</code></pre>
 <p>The v0.4 language core added compile time exhaustiveness checking for enums, Option, and Result. An underscore pattern can be used where appropriate.</p>
 <h2 id="generics">6. Generics</h2>
-<div class="code-block-wrap"><div class="code-block-header"><span class="code-block-filename">main.vpp</span></div><pre class="language-vpp"><code class="language-vpp">fn id[T](x: T) -&gt; T {
+<pre><code>fn id[T](x: T) -&gt; T {
 return x
 }
 fn main() -&gt; int {
 let value = id[int](42)
 return value
-}</code></pre></div>
+}</code></pre>
 <p>Generics currently use monomorphization. Generic calls require explicit type arguments at call sites in the current specification.</p>
 <h2 id="traits-and-impl">7. Traits and impl</h2>
-<div class="code-block-wrap"><div class="code-block-header"><span class="code-block-filename">main.vpp</span></div><pre class="language-vpp"><code class="language-vpp">trait Display {
+<pre><code>trait Display {
 fn to_text(self) -&gt; string
 }
 impl Display for User {
@@ -208,23 +128,23 @@ fn to_text(self) -&gt; string {
 return self.name
 }
 }
-print(user.to_text())</code></pre></div>
+print(user.to_text())</code></pre>
 <p>Traits provide interfaces with static dispatch. The current specification does not claim trait objects or dynamic dispatch.</p>
 <h2 id="modules-and-packages">8. Modules and packages</h2>
-<div class="code-block-wrap"><div class="code-block-header"><span class="code-block-filename">main.vpp</span></div><pre class="language-vpp"><code class="language-vpp">import std.io
+<pre><code>import std.io
 import std.fs
-import &quot;legacy/path.vpp&quot;</code></pre></div>
+import &quot;legacy/path.vpp&quot;</code></pre>
 <p>Canonical imports use paths such as std.io. Public declarations use pub. Namespaced calls such as math.add(1, 2) are supported. Circular and duplicate imports are errors. Projects use vpp.toml and vpp.lock. The package manager supports path, git, and registry semver dependencies in the current implementation.</p>
-<div class="code-block-wrap"><div class="code-block-header"><span class="code-block-filename">terminal</span></div><pre class="language-bash"><code class="language-bash">vpp new myapp
+<pre><code>vpp new myapp
 vpp add helper --path ../helper
 vpp add lib --git https://github.com/example/lib --tag v1.0.0
 vpp update
-vpp remove helper</code></pre></div>
+vpp remove helper</code></pre>
 <p>The current repository contains a registry index for semver resolution. Hosted package publishing is a future roadmap item.</p>
 <h2 id="standard-library">9. Standard library</h2>
 <p>Current standard library modules are std.io, std.math, std.string, std.collections, std.fs, std.json, and std.process. Native runtime support includes file reading, file writing, file existence checks, JSON parsing and stringifying, and process execution. The language reference and standard library guides should be kept synchronized with the actual builtin registry.</p>
 <h2 id="builtins">10. Builtins</h2>
-<div class="code-block-wrap"><div class="code-block-header"><span class="code-block-filename">main.vpp</span></div><pre class="language-vpp"><code class="language-vpp">print(value)
+<pre><code>print(value)
 len(value)
 assert(condition)
 assert_eq(a, b)
@@ -233,10 +153,10 @@ write_file(path, data)
 file_exists(path)
 json_parse(text)
 json_stringify(value)
-process_run(command)</code></pre></div>
+process_run(command)</code></pre>
 <h2 id="cli">11. CLI</h2>
 <p>The toolchain includes commands for running, building, checking, compiling, formatting, testing, initialization, package management, language server operation, and toolchain health.</p>
-<div class="code-block-wrap"><div class="code-block-header"><span class="code-block-filename">terminal</span></div><pre class="language-bash"><code class="language-bash">vpp run file.vpp
+<pre><code>vpp run file.vpp
 vpp build file.vpp -o output.exe
 vpp check file.vpp
 vpp compile file.vpp
@@ -248,10 +168,10 @@ vpp lsp
 vpp new project
 vpp add package
 vpp remove package
-vpp update</code></pre></div>
+vpp update</code></pre>
 <p>The detailed CLI reference should be versioned because flags and subcommands may evolve.</p>
 <h2 id="compiler-architecture">12. Compiler architecture</h2>
-<div class="code-block-wrap"><div class="code-block-header"><span class="code-block-filename">main.vpp</span></div><pre class="language-vpp"><code class="language-vpp">.vpp source
+<pre><code>.vpp source
 |
 Lexer
 |
@@ -260,31 +180,31 @@ Parser -&gt; AST
 Module loader
 |
 Type checker -&gt; TypedProgram
-| |</code></pre></div>
+| |</code></pre>
 <p>v v</p>
-<h3 id="compiler-architecture-interpreter-v-ir">Interpreter v++ IR</h3>
-<div class="code-block-wrap"><div class="code-block-header"><span class="code-block-filename">main.vpp</span></div><pre class="language-vpp"><code class="language-vpp">|</code></pre></div>
+<h3 id="compiler-architecture-interpreter-vpp-ir">Interpreter v++ IR</h3>
+<pre><code>|</code></pre>
 <h3 id="compiler-architecture-llvm">LLVM</h3>
-<div class="code-block-wrap"><div class="code-block-header"><span class="code-block-filename">main.vpp</span></div><pre class="language-vpp"><code class="language-vpp">|</code></pre></div>
+<pre><code>|</code></pre>
 <h3 id="compiler-architecture-c-runtime">C runtime</h3>
-<div class="code-block-wrap"><div class="code-block-header"><span class="code-block-filename">main.vpp</span></div><pre class="language-vpp"><code class="language-vpp">|</code></pre></div>
+<pre><code>|</code></pre>
 <h3 id="compiler-architecture-native-executable">Native executable</h3>
-<p>The lexer and recursive descent parser create the AST. The type checker produces the typed program. The interpreter evaluates it directly. The native backend lowers it to V++ IR, emits LLVM, invokes clang, and links the runtime. The project architecture document describes the LLVM backend as feature gated through codegen. The runtime provides the C ABI used by native code generation.</p>
+<p>The lexer and recursive descent parser create the AST. The type checker produces the typed program. The interpreter evaluates it directly. The native backend lowers it to v++ IR, emits LLVM, invokes clang, and links the runtime. The project architecture document describes the LLVM backend as feature gated through codegen. The runtime provides the C ABI used by native code generation.</p>
 <h2 id="runtime-and-memory-model">13. Runtime and memory model</h2>
 <p>Native strings and arrays use runtime managed representations. The runtime exposes a C ABI, and the native backend emits calls to that ABI. The memory model documentation describes the heap headers and ARC behavior. The public Docs site should separate language level behavior from compiler implementation details. Beginners need to know what a value does. Compiler contributors need to know how the value is represented.</p>
 <h2 id="diagnostics">14. Diagnostics</h2>
-<p>V++ uses numbered compiler errors and source spans. The compiler uses miette based diagnostics and the language server can surface diagnostics in the editor. The repository documents E0107 for non exhaustive match checking and E0400 through E0404 for module and import related errors. The long term Docs site should provide a searchable error reference so users can search an error code and immediately see its cause, example, and fix.</p>
+<p>v++ uses numbered compiler errors and source spans. The compiler uses miette based diagnostics and the language server can surface diagnostics in the editor. The repository documents E0107 for non exhaustive match checking and E0400 through E0404 for module and import related errors. The long term Docs site should provide a searchable error reference so users can search an error code and immediately see its cause, example, and fix.</p>
 <h2 id="testing-and-interpreter-native-parity">15. Testing and interpreter/native parity</h2>
-<p>A major engineering property of V++ is parity between its interpreter and native backend. Supported programs should produce equivalent behavior, with the repository using parity tests and a stress script.</p>
-<div class="code-block-wrap"><div class="code-block-header"><span class="code-block-filename">terminal</span></div><pre class="language-bash"><code class="language-bash">vpp run stress.vpp
+<p>A major engineering property of v++ is parity between its interpreter and native backend. Supported programs should produce equivalent behavior, with the repository using parity tests and a stress script.</p>
+<pre><code>vpp run stress.vpp
 vpp build stress.vpp -o stress.exe
-.\stress.exe</code></pre></div>
+.\stress.exe</code></pre>
 <p>Compiler changes should normally add or update tests. Native features should include parity coverage whenever practical.</p>
 <h2 id="complete-version-history">16. Complete version history</h2>
 <p><strong>v0.1.0</strong> Initial release</p>
 <p>Established the interpreter complete language, partial LLVM backend, CLI, extension, standard library, and CI.</p>
 <p><strong>v0.2.0</strong> Native foundation</p>
-<p>Introduced V++ IR between the typed AST and LLVM, a shared builtin registry, architecture and memory model documentation, native strings and arrays, scoped locals, native structs, enums, Option, Result, match, break and continue, and differential parity tests. Important native ABI, scope, and floating point comparison issues were fixed.</p>
+<p>Introduced v++ IR between the typed AST and LLVM, a shared builtin registry, architecture and memory model documentation, native strings and arrays, scoped locals, native structs, enums, Option, Result, match, break and continue, and differential parity tests. Important native ABI, scope, and floating point comparison issues were fixed.</p>
 <p><strong>v0.3.0</strong> Usable language and ecosystem</p>
 <p>Added the module system, package manager, registry semver resolution, standard library modules, native filesystem, JSON and process helpers, doctor, improved LSP diagnostics, release automation, and expanded syntax highlighting.</p>
 <p><strong>v0.3.1</strong> Phase A polish</p>
@@ -292,7 +212,7 @@ vpp build stress.vpp -o stress.exe
 <p><strong>v0.4.0</strong> Language Core Phase B</p>
 <p>Added let mut, monomorphized generics, traits and impl with static dispatch, and compile time match exhaustiveness checking. Examples, tests, and the language specification were updated.</p>
 <p><strong>v0.4.4</strong> Distribution milestone</p>
-<p>Added GitHub release bundles, Marketplace publication of the V++ Language extension, release and Marketplace documentation, and fixes to the LSP and Windows setup flow.</p>
+<p>Added GitHub release bundles, Marketplace publication of the v++ Language extension, release and Marketplace documentation, and fixes to the LSP and Windows setup flow.</p>
 <p><strong>v0.5.0</strong> Documentation and project experience</p>
 <p>Added the official website, twenty guided projects, GitHub Pages deployment, a documentation hub with more than thirty guides, contributing, security and code of conduct paperwork, a v0.5.0 extension update, and installer PATH handling for vpp and bundled clang.</p>
 <p><strong>v1.0.0</strong> Stable language</p>
@@ -317,97 +237,50 @@ vpp build stress.vpp -o stress.exe
 <h2 id="compatibility-policy">19. Compatibility policy</h2>
 <p>Before v1.0, language breaking changes may occur as the project evolves. Once the specification is frozen, breaking language changes should require a major version. Each release should document language changes, compiler changes, tooling changes, runtime changes, known compatibility effects, and any course examples that need updating.</p>
 <h2 id="recommended-docs-navigation">20. Recommended Docs navigation</h2>
-<p><strong>Getting Started:</strong> installation, Hello World, first project, VS Code setup, CLI basics.</p>
-<p><strong>Language:</strong> syntax, types, variables, functions, control flow, arrays, structs, enums, Option, Result, match, generics,</p>
+<p><strong>Getting Started</strong> installation, Hello World, first project, VS Code setup, CLI basics.</p>
+<p><strong>Language</strong> syntax, types, variables, functions, control flow, arrays, structs, enums, Option, Result, match, generics,</p>
 <p>traits, modules, mutability.</p>
-<p><strong>Standard Library:</strong> io, math, string, collections, fs, json, process, plus future modules as they ship.</p>
-<p><strong>Toolchain:</strong> CLI, formatter, tests, parity, LSP, VS Code extension, package manager, registry.</p>
-<p><strong>Compiler:</strong> architecture, IR, LLVM backend, runtime, memory model, diagnostics, compiler development.</p>
-<p><strong>Projects:</strong> the twenty guided builds.</p>
-<p><strong>Reference:</strong> formal specification, builtins, error codes, CLI, compatibility.</p>
-<p><strong>Project:</strong> history, roadmap, contributing, security, privacy, releases, FAQ.</p>
+<p><strong>Standard Library</strong> io, math, string, collections, fs, json, process, plus future modules as they ship.</p>
+<p><strong>Toolchain</strong> CLI, formatter, tests, parity, LSP, VS Code extension, package manager, registry.</p>
+<p><strong>Compiler</strong> architecture, IR, LLVM backend, runtime, memory model, diagnostics, compiler development.</p>
+<p><strong>Projects</strong> the twenty guided builds.</p>
+<p><strong>Reference</strong> formal specification, builtins, error codes, CLI, compatibility.</p>
+<p><strong>Project</strong> history, roadmap, contributing, security, privacy, releases, FAQ.</p>
 <h2 id="twenty-official-learning-projects">21. Twenty official learning projects</h2>
-<div class="table-wrap"><table><thead><tr><th>#</th><th>Project</th><th>Teaches</th></tr></thead><tbody><tr><td>01</td><td>Hello World</td><td>First program, output and entry point.</td></tr><tr><td>02</td><td>Variables and Math</td><td>let, inference, arithmetic and string concatenation.</td></tr><tr><td>03</td><td>Functions</td><td>Typed parameters and return values.</td></tr><tr><td>04</td><td>Loops</td><td>while, ranges, arrays, mutability, break and continue.</td></tr><tr><td>05</td><td>Arrays</td><td>Homogeneous arrays, indexing, iteration and collection helpers.</td></tr><tr><td>06</td><td>Structs</td><td>Named product types, fields, construction and access.</td></tr><tr><td>07</td><td>Enums</td><td>Named variants and multiple program states.</td></tr><tr><td>08</td><td>Option and Result</td><td>Explicit absence and recoverable success or failure.</td></tr><tr><td>09</td><td>Pattern Matching</td><td>Exhaustive match over sum types.</td></tr><tr><td>10</td><td>FizzBuzz</td><td>Conditions, loops, arithmetic and divisibility.</td></tr><tr><td>11</td><td>Fibonacci</td><td>Recursive functions and algorithm structure.</td></tr><tr><td>12</td><td>Generics</td><td>Type parameterized functions and monomorphization.</td></tr><tr><td>13</td><td>Traits</td><td>Interfaces, impl blocks and static dispatch.</td></tr><tr><td>14</td><td>Modules</td><td>Imports, files and public declarations.</td></tr><tr><td>15</td><td>Calculator</td><td>Enum driven operations and Result based errors.</td></tr><tr><td>16</td><td>Word Counter</td><td>Array processing, counts, totals and longest value.</td></tr><tr><td>17</td><td>Guessing Game</td><td>Control flow and higher or lower hints.</td></tr><tr><td>18</td><td>Todo List</td><td>Struct based state and mutable values.</td></tr><tr><td>19</td><td>File Notes</td><td>Reading and writing through std.fs.</td></tr><tr><td>20</td><td>JSON Config</td><td>JSON parsing and configuration structs.</td></tr></tbody></table></div>
+<table><thead><tr><th>#</th><th>Project</th><th>Teaches</th></tr></thead><tbody><tr><td>01</td><td>Hello World</td><td>First program, output and entry point.</td></tr><tr><td>02</td><td>Variables and Math</td><td>let, inference, arithmetic and string concatenation.</td></tr><tr><td>03</td><td>Functions</td><td>Typed parameters and return values.</td></tr><tr><td>04</td><td>Loops</td><td>while, ranges, arrays, mutability, break and continue.</td></tr><tr><td>05</td><td>Arrays</td><td>Homogeneous arrays, indexing, iteration and collection helpers.</td></tr><tr><td>06</td><td>Structs</td><td>Named product types, fields, construction and access.</td></tr><tr><td>07</td><td>Enums</td><td>Named variants and multiple program states.</td></tr><tr><td>08</td><td>Option and Result</td><td>Explicit absence and recoverable success or failure.</td></tr><tr><td>09</td><td>Pattern Matching</td><td>Exhaustive match over sum types.</td></tr><tr><td>10</td><td>FizzBuzz</td><td>Conditions, loops, arithmetic and divisibility.</td></tr><tr><td>11</td><td>Fibonacci</td><td>Recursive functions and algorithm structure.</td></tr><tr><td>12</td><td>Generics</td><td>Type parameterized functions and monomorphization.</td></tr><tr><td>13</td><td>Traits</td><td>Interfaces, impl blocks and static dispatch.</td></tr><tr><td>14</td><td>Modules</td><td>Imports, files and public declarations.</td></tr><tr><td>15</td><td>Calculator</td><td>Enum driven operations and Result based errors.</td></tr><tr><td>16</td><td>Word Counter</td><td>Array processing, counts, totals and longest value.</td></tr><tr><td>17</td><td>Guessing Game</td><td>Control flow and higher or lower hints.</td></tr><tr><td>18</td><td>Todo List</td><td>Struct based state and mutable values.</td></tr><tr><td>19</td><td>File Notes</td><td>Reading and writing through std.fs.</td></tr><tr><td>20</td><td>JSON Config</td><td>JSON parsing and configuration structs.</td></tr></tbody></table>
 <p>Each project page should contain an outcome, prerequisites, the problem, theory, incremental code blocks, explanation after each block, expected output, run instructions, common mistakes, a complete final program, and optional challenges. The examples should always be tested against the current compiler.</p>
 <h2 id="contributing">22. Contributing</h2>
-<p>V++ is open source under the MIT license. Contributors should be able to clone the repository, build it, run tests, understand the compiler architecture, make a focused change, and verify behavior.</p>
-<div class="code-block-wrap"><div class="code-block-header"><span class="code-block-filename">terminal</span></div><pre class="language-bash"><code class="language-bash">git clone https://github.com/shauryaR790/V-.git
+<p>v++ is open source under the MIT license. Contributors should be able to clone the repository, build it, run tests, understand the compiler architecture, make a focused change, and verify behavior.</p>
+<pre><code>git clone https://github.com/shauryaR790/V-.git
 cd V-
 cargo build --release --features codegen,lsp
-cargo test --all-targets</code></pre></div>
+cargo test --all-targets</code></pre>
 <p>Language changes should update the specification, changelog, examples, relevant documentation, and parity coverage where native execution is affected.</p>
 <h2 id="release-documentation">23. Release documentation</h2>
 <p>Releases use versioned numbers such as v0.5.0. Release automation builds distribution artifacts from version tags. The exact platform matrix and signing state can change, so the live release documentation should remain authoritative. The website history should distinguish language milestones from patch and distribution milestones so users can understand what changed.</p>
 <h2 id="faq">24. FAQ</h2>
-<div class="faq-list">
-<details class="faq-item" id="is-v-interpreted-or-compiled"><summary class="faq-question"><svg class="faq-chevron" width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L9.94 8 6.22 4.28a.75.75 0 0 1 0-1.06Z"/></svg><span class="faq-question-text">Is V++ interpreted or compiled?</span></summary><div class="faq-answer"><p>Both. vpp run uses the interpreter and vpp build produces a native executable through the LLVM based backend.</p></div></details>
-<details class="faq-item" id="is-v-statically-typed"><summary class="faq-question"><svg class="faq-chevron" width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L9.94 8 6.22 4.28a.75.75 0 0 1 0-1.06Z"/></svg><span class="faq-question-text">Is V++ statically typed?</span></summary><div class="faq-answer"><p>Yes, with local type inference.</p></div></details>
-<details class="faq-item" id="does-v-have-generics"><summary class="faq-question"><svg class="faq-chevron" width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L9.94 8 6.22 4.28a.75.75 0 0 1 0-1.06Z"/></svg><span class="faq-question-text">Does V++ have generics?</span></summary><div class="faq-answer"><p>Yes. v0.4 introduced monomorphized generics with explicit type arguments at current call sites.</p></div></details>
-<details class="faq-item" id="does-v-have-interfaces"><summary class="faq-question"><svg class="faq-chevron" width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L9.94 8 6.22 4.28a.75.75 0 0 1 0-1.06Z"/></svg><span class="faq-question-text">Does V++ have interfaces?</span></summary><div class="faq-answer"><p>Traits and impl blocks provide interfaces with static dispatch.</p></div></details>
-<details class="faq-item" id="does-v-support-modules"><summary class="faq-question"><svg class="faq-chevron" width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L9.94 8 6.22 4.28a.75.75 0 0 1 0-1.06Z"/></svg><span class="faq-question-text">Does V++ support modules?</span></summary><div class="faq-answer"><p>Yes. v0.3 introduced canonical imports, public exports, namespaced calls, and legacy path imports.</p></div></details>
-<details class="faq-item" id="can-i-install-packages"><summary class="faq-question"><svg class="faq-chevron" width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L9.94 8 6.22 4.28a.75.75 0 0 1 0-1.06Z"/></svg><span class="faq-question-text">Can I install packages?</span></summary><div class="faq-answer"><p>The package manager supports manifests, lockfiles, path dependencies, git dependencies, and registry semver resolution. Hosted publishing is a future goal.</p></div></details>
-<details class="faq-item" id="is-v-v1-0"><summary class="faq-question"><svg class="faq-chevron" width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L9.94 8 6.22 4.28a.75.75 0 0 1 0-1.06Z"/></svg><span class="faq-question-text">Is V++ v1.0?</span></summary><div class="faq-answer"><p>Yes. SPEC v1.0 is frozen, debugger and Test Explorer ship in the VS Code extension, and v1.0.4 is on GitHub Releases for Windows. Linux/macOS prebuilt bundles are still improving.</p></div></details>
-</div>
+<h3 id="is-vpp-interpreted-or-compiled">Is v++ interpreted or compiled?</h3><p>Both. vpp run uses the interpreter and vpp build produces a native executable through the LLVM based backend.</p>
+<h3 id="is-vpp-statically-typed">Is v++ statically typed?</h3><p>Yes, with local type inference.</p>
+<h3 id="does-vpp-have-generics">Does v++ have generics?</h3><p>Yes. v0.4 introduced monomorphized generics with explicit type arguments at current call sites.</p>
+<h3 id="does-vpp-have-interfaces">Does v++ have interfaces?</h3><p>Traits and impl blocks provide interfaces with static dispatch.</p>
+<h3 id="does-vpp-support-modules">Does v++ support modules?</h3><p>Yes. v0.3 introduced canonical imports, public exports, namespaced calls, and legacy path imports.</p>
+<h3 id="can-i-install-packages">Can I install packages?</h3><p>The package manager supports manifests, lockfiles, path dependencies, git dependencies, and registry semver resolution. Hosted publishing is a future goal.</p>
+<h3 id="is-vpp-v1-0">Is v++ v1.0?</h3><p>Yes. SPEC v1.0 is frozen, debugger and Test Explorer ship in the VS Code extension, and v1.0.4 is on GitHub Releases for Windows. Linux/macOS prebuilt bundles are still improving.</p>
 <h2 id="documentation-maintenance-rules">25. Documentation maintenance rules</h2>
 <p>Never present a roadmap item as shipped. Keep examples executable against the current release whenever possible. When implementation and documentation disagree, verify behavior with the compiler and tests before changing the public documentation. Every breaking language change should update the specification, changelog, examples, and affected learning projects. Use version labels on language reference pages so users know which syntax they are reading.</p>
 <h2 id="suggested-docs-landing-page-copy">26. Suggested Docs landing page copy</h2>
-<p>Learn V++ A readable compiled language with static typing, local inference, native compilation, and a growing toolchain. Start here Install V++ Create your first .vpp file</p>
+<p>Learn v++ A readable compiled language with static typing, local inference, native compilation, and a growing toolchain. Start here Install v++ Create your first .vpp file</p>
 <h3 id="suggested-docs-landing-page-copy-run-it-with-vpp-run">Run it with vpp run</h3>
-<p>Build it with vpp build Continue with the twenty guided projects Explore the language Learn variables, functions, control flow, arrays, structs, enums, Option, Result, match, generics, traits, modules, and mutability. Understand the compiler Follow source code from lexing and parsing through type checking, interpretation or V++ IR, LLVM, the runtime, and a native executable. Build with V++ Use the CLI, standard library, package manager, LSP, VS Code extension, formatter, tests, and native compiler. See where it is going Read the history and roadmap to distinguish stable features from planned work.</p>
+<p>Build it with vpp build Continue with the twenty guided projects Explore the language Learn variables, functions, control flow, arrays, structs, enums, Option, Result, match, generics, traits, modules, and mutability. Understand the compiler Follow source code from lexing and parsing through type checking, interpretation or v++ IR, LLVM, the runtime, and a native executable. Build with v++ Use the CLI, standard library, package manager, LSP, VS Code extension, formatter, tests, and native compiler. See where it is going Read the history and roadmap to distinguish stable features from planned work.</p>
 <h2 id="accuracy-note">27. Accuracy note</h2>
-<p>This master content was assembled from the public V++ repository as available on August 20, 2026, especially its README, CHANGELOG, SPEC, compiler architecture document, and roadmap. The repository currently reports v0.5.0 while its formal specification file is still titled v0.4. The website should either update the specification title or clearly label it as the v0.4 language reference. This avoids presenting an older reference as the complete v0.5 specification. Future releases in this document are intentionally marked as plans. They should be converted to shipped status only after the implementation and release notes confirm them.</p></article>
+<p>This master content was assembled from the public v++ repository as available on August 20, 2026, especially its README, CHANGELOG, SPEC, compiler architecture document, and roadmap. The repository currently reports v0.5.0 while its formal specification file is still titled v0.4. The website should either update the specification title or clearly label it as the v0.4 language reference. This avoids presenting an older reference as the complete v0.5 specification. Future releases in this document are intentionally marked as plans. They should be converted to shipped status only after the implementation and release notes confirm them.</p>
+      </article>
     </main>
-    <aside class="docs-toc">
-      <p class="toc-label">On this page</p>
-      <nav class="toc-tree" aria-label="On this page"><ul>
-<li class=""><a href="#documentation" class="tree-link"><svg class="tree-icon tree-icon-file" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M2 1.75C2 .784 2.784 0 3.75 0h5.086c.464 0 .909.184 1.237.513l3.414 3.414c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 12.25 16h-8.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 8 4.25V1.5Z"/></svg>v++ Documentation Master Content</a></li>
-<li class="toc-h2"><a href="#what-is-vpp" class="tree-link"><svg class="tree-icon tree-icon-file" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M2 1.75C2 .784 2.784 0 3.75 0h5.086c.464 0 .909.184 1.237.513l3.414 3.414c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 12.25 16h-8.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 8 4.25V1.5Z"/></svg>1. What is v++?</a></li>
-<li class="toc-h2"><a href="#core-design-goals" class="tree-link"><svg class="tree-icon tree-icon-file" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M2 1.75C2 .784 2.784 0 3.75 0h5.086c.464 0 .909.184 1.237.513l3.414 3.414c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 12.25 16h-8.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 8 4.25V1.5Z"/></svg>2. Core design goals</a></li>
-<li class="toc-h2"><a href="#quick-start" class="tree-link"><svg class="tree-icon tree-icon-file" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M2 1.75C2 .784 2.784 0 3.75 0h5.086c.464 0 .909.184 1.237.513l3.414 3.414c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 12.25 16h-8.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 8 4.25V1.5Z"/></svg>3. Quick start</a></li>
-<li class="toc-h2"><a href="#language-reference" class="tree-link"><svg class="tree-icon tree-icon-file" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M2 1.75C2 .784 2.784 0 3.75 0h5.086c.464 0 .909.184 1.237.513l3.414 3.414c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 12.25 16h-8.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 8 4.25V1.5Z"/></svg>4. Language reference</a></li>
-<li class="toc-h3"><a href="#language-reference-primitive-values" class="tree-link"><svg class="tree-icon tree-icon-file" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M2 1.75C2 .784 2.784 0 3.75 0h5.086c.464 0 .909.184 1.237.513l3.414 3.414c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 12.25 16h-8.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 8 4.25V1.5Z"/></svg>Primitive values</a></li>
-<li class="toc-h3"><a href="#language-reference-arrays-and-user-types" class="tree-link"><svg class="tree-icon tree-icon-file" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M2 1.75C2 .784 2.784 0 3.75 0h5.086c.464 0 .909.184 1.237.513l3.414 3.414c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 12.25 16h-8.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 8 4.25V1.5Z"/></svg>Arrays and user types</a></li>
-<li class="toc-h3"><a href="#language-reference-variables-and-mutability" class="tree-link"><svg class="tree-icon tree-icon-file" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M2 1.75C2 .784 2.784 0 3.75 0h5.086c.464 0 .909.184 1.237.513l3.414 3.414c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 12.25 16h-8.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 8 4.25V1.5Z"/></svg>Variables and mutability</a></li>
-<li class="toc-h3"><a href="#language-reference-functions" class="tree-link"><svg class="tree-icon tree-icon-file" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M2 1.75C2 .784 2.784 0 3.75 0h5.086c.464 0 .909.184 1.237.513l3.414 3.414c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 12.25 16h-8.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 8 4.25V1.5Z"/></svg>Functions</a></li>
-<li class="toc-h2"><a href="#control-flow" class="tree-link"><svg class="tree-icon tree-icon-file" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M2 1.75C2 .784 2.784 0 3.75 0h5.086c.464 0 .909.184 1.237.513l3.414 3.414c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 12.25 16h-8.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 8 4.25V1.5Z"/></svg>5. Control flow</a></li>
-<li class="toc-h3"><a href="#control-flow-pattern-matching" class="tree-link"><svg class="tree-icon tree-icon-file" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M2 1.75C2 .784 2.784 0 3.75 0h5.086c.464 0 .909.184 1.237.513l3.414 3.414c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 12.25 16h-8.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 8 4.25V1.5Z"/></svg>Pattern matching</a></li>
-<li class="toc-h2"><a href="#generics" class="tree-link"><svg class="tree-icon tree-icon-file" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M2 1.75C2 .784 2.784 0 3.75 0h5.086c.464 0 .909.184 1.237.513l3.414 3.414c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 12.25 16h-8.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 8 4.25V1.5Z"/></svg>6. Generics</a></li>
-<li class="toc-h2"><a href="#traits-and-impl" class="tree-link"><svg class="tree-icon tree-icon-file" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M2 1.75C2 .784 2.784 0 3.75 0h5.086c.464 0 .909.184 1.237.513l3.414 3.414c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 12.25 16h-8.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 8 4.25V1.5Z"/></svg>7. Traits and impl</a></li>
-<li class="toc-h2"><a href="#modules-and-packages" class="tree-link"><svg class="tree-icon tree-icon-file" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M2 1.75C2 .784 2.784 0 3.75 0h5.086c.464 0 .909.184 1.237.513l3.414 3.414c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 12.25 16h-8.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 8 4.25V1.5Z"/></svg>8. Modules and packages</a></li>
-<li class="toc-h2"><a href="#standard-library" class="tree-link"><svg class="tree-icon tree-icon-file" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M2 1.75C2 .784 2.784 0 3.75 0h5.086c.464 0 .909.184 1.237.513l3.414 3.414c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 12.25 16h-8.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 8 4.25V1.5Z"/></svg>9. Standard library</a></li>
-<li class="toc-h2"><a href="#builtins" class="tree-link"><svg class="tree-icon tree-icon-file" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M2 1.75C2 .784 2.784 0 3.75 0h5.086c.464 0 .909.184 1.237.513l3.414 3.414c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 12.25 16h-8.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 8 4.25V1.5Z"/></svg>10. Builtins</a></li>
-<li class="toc-h2"><a href="#cli" class="tree-link"><svg class="tree-icon tree-icon-file" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M2 1.75C2 .784 2.784 0 3.75 0h5.086c.464 0 .909.184 1.237.513l3.414 3.414c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 12.25 16h-8.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 8 4.25V1.5Z"/></svg>11. CLI</a></li>
-<li class="toc-h2"><a href="#compiler-architecture" class="tree-link"><svg class="tree-icon tree-icon-file" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M2 1.75C2 .784 2.784 0 3.75 0h5.086c.464 0 .909.184 1.237.513l3.414 3.414c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 12.25 16h-8.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 8 4.25V1.5Z"/></svg>12. Compiler architecture</a></li>
-<li class="toc-h3"><a href="#compiler-architecture-interpreter-v-ir" class="tree-link"><svg class="tree-icon tree-icon-file" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M2 1.75C2 .784 2.784 0 3.75 0h5.086c.464 0 .909.184 1.237.513l3.414 3.414c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 12.25 16h-8.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 8 4.25V1.5Z"/></svg>Interpreter v++ IR</a></li>
-<li class="toc-h3"><a href="#compiler-architecture-llvm" class="tree-link"><svg class="tree-icon tree-icon-file" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M2 1.75C2 .784 2.784 0 3.75 0h5.086c.464 0 .909.184 1.237.513l3.414 3.414c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 12.25 16h-8.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 8 4.25V1.5Z"/></svg>LLVM</a></li>
-<li class="toc-h3"><a href="#compiler-architecture-c-runtime" class="tree-link"><svg class="tree-icon tree-icon-file" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M2 1.75C2 .784 2.784 0 3.75 0h5.086c.464 0 .909.184 1.237.513l3.414 3.414c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 12.25 16h-8.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 8 4.25V1.5Z"/></svg>C runtime</a></li>
-<li class="toc-h3"><a href="#compiler-architecture-native-executable" class="tree-link"><svg class="tree-icon tree-icon-file" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M2 1.75C2 .784 2.784 0 3.75 0h5.086c.464 0 .909.184 1.237.513l3.414 3.414c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 12.25 16h-8.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 8 4.25V1.5Z"/></svg>Native executable</a></li>
-<li class="toc-h2"><a href="#runtime-and-memory-model" class="tree-link"><svg class="tree-icon tree-icon-file" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M2 1.75C2 .784 2.784 0 3.75 0h5.086c.464 0 .909.184 1.237.513l3.414 3.414c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 12.25 16h-8.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 8 4.25V1.5Z"/></svg>13. Runtime and memory model</a></li>
-<li class="toc-h2"><a href="#diagnostics" class="tree-link"><svg class="tree-icon tree-icon-file" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M2 1.75C2 .784 2.784 0 3.75 0h5.086c.464 0 .909.184 1.237.513l3.414 3.414c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 12.25 16h-8.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 8 4.25V1.5Z"/></svg>14. Diagnostics</a></li>
-<li class="toc-h2"><a href="#testing-and-interpreter-native-parity" class="tree-link"><svg class="tree-icon tree-icon-file" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M2 1.75C2 .784 2.784 0 3.75 0h5.086c.464 0 .909.184 1.237.513l3.414 3.414c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 12.25 16h-8.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 8 4.25V1.5Z"/></svg>15. Testing and interpreter/native parity</a></li>
-<li class="toc-h2"><a href="#complete-version-history" class="tree-link"><svg class="tree-icon tree-icon-file" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M2 1.75C2 .784 2.784 0 3.75 0h5.086c.464 0 .909.184 1.237.513l3.414 3.414c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 12.25 16h-8.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 8 4.25V1.5Z"/></svg>16. Complete version history</a></li>
-<li class="toc-h2"><a href="#current-v1-0-4-status" class="tree-link"><svg class="tree-icon tree-icon-file" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M2 1.75C2 .784 2.784 0 3.75 0h5.086c.464 0 .909.184 1.237.513l3.414 3.414c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 12.25 16h-8.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 8 4.25V1.5Z"/></svg>17. Current v1.0.4 status</a></li>
-<li class="toc-h2"><a href="#future-roadmap" class="tree-link"><svg class="tree-icon tree-icon-file" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M2 1.75C2 .784 2.784 0 3.75 0h5.086c.464 0 .909.184 1.237.513l3.414 3.414c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 12.25 16h-8.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 8 4.25V1.5Z"/></svg>18. Future roadmap</a></li>
-<li class="toc-h2"><a href="#compatibility-policy" class="tree-link"><svg class="tree-icon tree-icon-file" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M2 1.75C2 .784 2.784 0 3.75 0h5.086c.464 0 .909.184 1.237.513l3.414 3.414c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 12.25 16h-8.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 8 4.25V1.5Z"/></svg>19. Compatibility policy</a></li>
-<li class="toc-h2"><a href="#recommended-docs-navigation" class="tree-link"><svg class="tree-icon tree-icon-file" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M2 1.75C2 .784 2.784 0 3.75 0h5.086c.464 0 .909.184 1.237.513l3.414 3.414c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 12.25 16h-8.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 8 4.25V1.5Z"/></svg>20. Recommended Docs navigation</a></li>
-<li class="toc-h2"><a href="#twenty-official-learning-projects" class="tree-link"><svg class="tree-icon tree-icon-file" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M2 1.75C2 .784 2.784 0 3.75 0h5.086c.464 0 .909.184 1.237.513l3.414 3.414c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 12.25 16h-8.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 8 4.25V1.5Z"/></svg>21. Twenty official learning projects</a></li>
-<li class="toc-h2"><a href="#contributing" class="tree-link"><svg class="tree-icon tree-icon-file" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M2 1.75C2 .784 2.784 0 3.75 0h5.086c.464 0 .909.184 1.237.513l3.414 3.414c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 12.25 16h-8.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 8 4.25V1.5Z"/></svg>22. Contributing</a></li>
-<li class="toc-h2"><a href="#release-documentation" class="tree-link"><svg class="tree-icon tree-icon-file" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M2 1.75C2 .784 2.784 0 3.75 0h5.086c.464 0 .909.184 1.237.513l3.414 3.414c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 12.25 16h-8.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 8 4.25V1.5Z"/></svg>23. Release documentation</a></li>
-<li class="toc-h2"><a href="#faq" class="tree-link"><svg class="tree-icon tree-icon-file" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M2 1.75C2 .784 2.784 0 3.75 0h5.086c.464 0 .909.184 1.237.513l3.414 3.414c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 12.25 16h-8.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 8 4.25V1.5Z"/></svg>24. FAQ</a></li>
-<li class="toc-h2"><a href="#documentation-maintenance-rules" class="tree-link"><svg class="tree-icon tree-icon-file" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M2 1.75C2 .784 2.784 0 3.75 0h5.086c.464 0 .909.184 1.237.513l3.414 3.414c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 12.25 16h-8.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 8 4.25V1.5Z"/></svg>25. Documentation maintenance rules</a></li>
-<li class="toc-h2"><a href="#suggested-docs-landing-page-copy" class="tree-link"><svg class="tree-icon tree-icon-file" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M2 1.75C2 .784 2.784 0 3.75 0h5.086c.464 0 .909.184 1.237.513l3.414 3.414c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 12.25 16h-8.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 8 4.25V1.5Z"/></svg>26. Suggested Docs landing page copy</a></li>
-<li class="toc-h3"><a href="#suggested-docs-landing-page-copy-run-it-with-vpp-run" class="tree-link"><svg class="tree-icon tree-icon-file" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M2 1.75C2 .784 2.784 0 3.75 0h5.086c.464 0 .909.184 1.237.513l3.414 3.414c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 12.25 16h-8.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 8 4.25V1.5Z"/></svg>Run it with vpp run</a></li>
-<li class="toc-h2"><a href="#accuracy-note" class="tree-link"><svg class="tree-icon tree-icon-file" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M2 1.75C2 .784 2.784 0 3.75 0h5.086c.464 0 .909.184 1.237.513l3.414 3.414c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 12.25 16h-8.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 8 4.25V1.5Z"/></svg>27. Accuracy note</a></li>
-</ul></nav>
-    </aside>
   </div>
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-clike.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-javascript.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-bash.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-toml.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-rust.min.js"></script>
-  <script src="/VPP/js/prism-vpp.js"></script>
-  <script src="/VPP/js/main.js"></script>
+  <footer class="site-footer">
+    Text is available under the <a href="https://github.com/shauryaR790/VPP/blob/main/LICENSE">MIT License</a>.
+    Documentation from the <a href="https://github.com/shauryaR790/VPP">V++ repository</a>.
+  </footer>
+  
 </body>
 </html>

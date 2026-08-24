@@ -23,7 +23,7 @@ Language-design changes (new syntax, breaking SPEC)  -  **open an issue first** 
 - [Build from source](docs/contributing/building-from-source.md)
 - [Run tests](docs/contributing/running-tests.md)
 - [Report a bug](https://github.com/shauryaR790/VPP/issues/new)
-- [Contribute page](https://shauryaR790.github.io/VPP/contribute.html)
+- [Contributing guide](CONTRIBUTING.md) · [GitHub](https://github.com/shauryaR790/VPP)
 
 ## How to contribute
 
