@@ -1,5 +1,40 @@
-// Process helpers via runtime builtins.
+// Process execution (v1.3 typed argv API + legacy shell helper).
 
+pub struct ProcessOutput {
+    exit_code: int
+    stdout: string
+    stderr: string
+}
+
+pub struct ProcessOptions {
+    cwd: string
+    timeout_ms: int
+}
+
+pub fn default_options() -> ProcessOptions {
+    return ProcessOptions {
+        cwd: ""
+        timeout_ms: 0
+    }
+}
+
+pub fn exec(program: string, args: array[string], opts: ProcessOptions) -> Result<ProcessOutput, string> {
+    let code = command_run(program, args, opts.cwd, opts.timeout_ms)
+    if code == -1 {
+        return Err("failed to spawn process")
+    }
+    if code == -2 {
+        return Err("process timed out")
+    }
+    let out = ProcessOutput {
+        exit_code: code
+        stdout: command_stdout()
+        stderr: command_stderr()
+    }
+    return Ok(out)
+}
+
+// Legacy: shell string, exit code only.
 pub fn run(cmd: string) -> int {
     return process_run(cmd)
 }

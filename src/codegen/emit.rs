@@ -348,6 +348,50 @@ impl<'ctx> Emit<'ctx> {
             i64.fn_type(&[str_ptr.into()], false),
             None,
         );
+        self.module.add_function(
+            "vpp_command_run",
+            i64.fn_type(
+                &[str_ptr.into(), arr_ptr.into(), str_ptr.into(), i64.into()],
+                false,
+            ),
+            None,
+        );
+        self.module.add_function(
+            "vpp_command_stdout",
+            str_ptr.fn_type(&[], false),
+            None,
+        );
+        self.module.add_function(
+            "vpp_command_stderr",
+            str_ptr.fn_type(&[], false),
+            None,
+        );
+        self.module.add_function("vpp_env_get", str_ptr.fn_type(&[str_ptr.into()], false), None);
+        self.module.add_function(
+            "vpp_env_set",
+            void.fn_type(&[str_ptr.into(), str_ptr.into()], false),
+            None,
+        );
+        self.module.add_function(
+            "vpp_dir_list",
+            arr_ptr.fn_type(&[str_ptr.into()], false),
+            None,
+        );
+        self.module.add_function(
+            "vpp_dir_exists",
+            i32.fn_type(&[str_ptr.into()], false),
+            None,
+        );
+        self.module.add_function(
+            "vpp_dir_create",
+            void.fn_type(&[str_ptr.into()], false),
+            None,
+        );
+        self.module.add_function(
+            "vpp_log_line",
+            void.fn_type(&[str_ptr.into(), str_ptr.into()], false),
+            None,
+        );
         Ok(())
     }
 
@@ -392,13 +436,9 @@ impl<'ctx> Emit<'ctx> {
 
         if self.builder.get_insert_block().unwrap().get_terminator().is_none() {
             self.exit_scope();
-            if func.ret == IrType::Void {
-                self.builder.build_return(None).unwrap();
-            } else {
-                self.builder
-                    .build_return(Some(&self.default_value(&func.ret)))
-                    .unwrap();
-            }
+            self.builder
+                .build_return(Some(&self.default_value(&func.ret)))
+                .unwrap();
         } else {
             self.clear_scope_state();
         }
@@ -597,7 +637,9 @@ impl<'ctx> Emit<'ctx> {
                 if let Some(compiled) = ret_val {
                     self.builder.build_return(Some(&compiled)).unwrap();
                 } else {
-                    self.builder.build_return(None).unwrap();
+                    self.builder
+                        .build_return(Some(&self.i64_type.const_int(0, true)))
+                        .unwrap();
                 }
             }
             IrStmt::Block(stmts) => {
@@ -865,6 +907,19 @@ impl<'ctx> Emit<'ctx> {
                 BuiltinKind::JsonParse => self.emit_unary_runtime("vpp_json_parse", args, ret_ty),
                 BuiltinKind::JsonStringify => self.emit_unary_runtime("vpp_json_stringify", args, ret_ty),
                 BuiltinKind::ProcessRun => self.emit_unary_runtime("vpp_process_run", args, ret_ty),
+                BuiltinKind::CommandRun => self.emit_command_run(args),
+                BuiltinKind::CommandStdout => {
+                    self.emit_nullary_runtime("vpp_command_stdout", ret_ty)
+                }
+                BuiltinKind::CommandStderr => {
+                    self.emit_nullary_runtime("vpp_command_stderr", ret_ty)
+                }
+                BuiltinKind::EnvGet => self.emit_unary_runtime("vpp_env_get", args, ret_ty),
+                BuiltinKind::EnvSet => self.emit_binary_runtime_void("vpp_env_set", args),
+                BuiltinKind::DirList => self.emit_unary_runtime("vpp_dir_list", args, ret_ty),
+                BuiltinKind::DirExists => self.emit_dir_exists(args),
+                BuiltinKind::DirCreate => self.emit_unary_runtime_void("vpp_dir_create", args),
+                BuiltinKind::LogLine => self.emit_binary_runtime_void("vpp_log_line", args),
                 _ => Err(VppError::Other {
                     message: format!("native codegen: `{name}` not supported yet"),
                 }),
@@ -979,6 +1034,67 @@ impl<'ctx> Emit<'ctx> {
             .build_call(f, &[a.into(), b.into()], runtime_fn)
             .unwrap();
         Ok(self.i64_type.const_int(0, true).into())
+    }
+
+    fn emit_unary_runtime_void(
+        &mut self,
+        runtime_fn: &str,
+        args: &[IrValue],
+    ) -> VppResult<BasicValueEnum<'ctx>> {
+        let a = self.compile_value(&args[0])?;
+        let f = self.module.get_function(runtime_fn).unwrap();
+        self.builder.build_call(f, &[a.into()], runtime_fn).unwrap();
+        Ok(self.i64_type.const_int(0, true).into())
+    }
+
+    fn emit_nullary_runtime(
+        &mut self,
+        runtime_fn: &str,
+        _ret_ty: &IrType,
+    ) -> VppResult<BasicValueEnum<'ctx>> {
+        let f = self.module.get_function(runtime_fn).unwrap();
+        Ok(self.call_value(
+            self.builder.build_call(f, &[], runtime_fn).unwrap(),
+        ))
+    }
+
+    fn emit_command_run(&mut self, args: &[IrValue]) -> VppResult<BasicValueEnum<'ctx>> {
+        let program = self.compile_value(&args[0])?;
+        let mut argv = self.compile_value(&args[1])?;
+        if args[1].ty().is_array() {
+            let retain = self.module.get_function("vpp_array_retain").unwrap();
+            argv = self.call_value(
+                self.builder
+                    .build_call(retain, &[argv.into()], "arr_retain")
+                    .unwrap(),
+            );
+        }
+        let cwd = self.compile_value(&args[2])?;
+        let timeout = self.compile_value(&args[3])?;
+        let f = self.module.get_function("vpp_command_run").unwrap();
+        Ok(self.call_value(
+            self.builder
+                .build_call(
+                    f,
+                    &[program.into(), argv.into(), cwd.into(), timeout.into()],
+                    "command_run",
+                )
+                .unwrap(),
+        ))
+    }
+
+    fn emit_dir_exists(&mut self, args: &[IrValue]) -> VppResult<BasicValueEnum<'ctx>> {
+        let raw = self.emit_unary_runtime("vpp_dir_exists", args, &IrType::Int)?;
+        Ok(self
+            .builder
+            .build_int_compare(
+                IntPredicate::NE,
+                raw.into_int_value(),
+                self.context.i32_type().const_int(0, false),
+                "dir_exists",
+            )
+            .unwrap()
+            .into())
     }
 
     fn emit_file_exists(&mut self, args: &[IrValue]) -> VppResult<BasicValueEnum<'ctx>> {

@@ -1,0 +1,13 @@
+// Directory helpers (v1.3).
+
+pub fn list(path: string) -> array[string] {
+    return dir_list(path)
+}
+
+pub fn exists(path: string) -> bool {
+    return dir_exists(path)
+}
+
+pub fn create(path: string) -> void {
+    dir_create(path)
+}

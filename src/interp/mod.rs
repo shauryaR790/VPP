@@ -674,6 +674,172 @@ impl Interpreter {
             return Ok(Value::Int(status.code().unwrap_or(1) as i64));
         }
 
+        if name == "command_run" {
+            let program = match self.eval_expr(&args[0])? {
+                Value::String(s) => s,
+                other => {
+                    return Err(VppError::Other {
+                        message: format!("command_run expects string program, found {other:?}"),
+                    });
+                }
+            };
+            let argv = match self.eval_expr(&args[1])? {
+                Value::Array(items) => items,
+                other => {
+                    return Err(VppError::Other {
+                        message: format!("command_run expects array[string] args, found {other:?}"),
+                    });
+                }
+            };
+            let mut arg_strings = Vec::new();
+            for item in argv.iter() {
+                match item {
+                    Value::String(s) => arg_strings.push(s.clone()),
+                    other => {
+                        return Err(VppError::Other {
+                            message: format!(
+                                "command_run args must be strings, found {other:?}"
+                            ),
+                        });
+                    }
+                }
+            }
+            let cwd = match self.eval_expr(&args[2])? {
+                Value::String(s) => s,
+                other => {
+                    return Err(VppError::Other {
+                        message: format!("command_run expects string cwd, found {other:?}"),
+                    });
+                }
+            };
+            let timeout = self.eval_expr(&args[3])?.as_int()?;
+            let code = crate::automation::command_run(
+                program.as_str(),
+                &arg_strings,
+                cwd.as_str(),
+                timeout,
+            )?;
+            return Ok(Value::Int(code));
+        }
+
+        if name == "command_stdout" {
+            let (out, _) = crate::automation::take_last_cmd_io();
+            return Ok(Value::String(Rc::new(out)));
+        }
+
+        if name == "command_stderr" {
+            let (_, err) = crate::automation::take_last_cmd_io();
+            return Ok(Value::String(Rc::new(err)));
+        }
+
+        if name == "env_get" {
+            let key = match self.eval_expr(&args[0])? {
+                Value::String(s) => s,
+                other => {
+                    return Err(VppError::Other {
+                        message: format!("env_get expects string key, found {other:?}"),
+                    });
+                }
+            };
+            let val = std::env::var(key.as_str()).unwrap_or_default();
+            return Ok(Value::String(Rc::new(val)));
+        }
+
+        if name == "env_set" {
+            let key = match self.eval_expr(&args[0])? {
+                Value::String(s) => s,
+                other => {
+                    return Err(VppError::Other {
+                        message: format!("env_set expects string key, found {other:?}"),
+                    });
+                }
+            };
+            let val = match self.eval_expr(&args[1])? {
+                Value::String(s) => s,
+                other => {
+                    return Err(VppError::Other {
+                        message: format!("env_set expects string value, found {other:?}"),
+                    });
+                }
+            };
+            std::env::set_var(key.as_str(), val.as_str());
+            return Ok(Value::Void);
+        }
+
+        if name == "dir_exists" {
+            let path = match self.eval_expr(&args[0])? {
+                Value::String(s) => s,
+                other => {
+                    return Err(VppError::Other {
+                        message: format!("dir_exists expects string path, found {other:?}"),
+                    });
+                }
+            };
+            let ok = std::fs::metadata(path.as_str())
+                .map(|m| m.is_dir())
+                .unwrap_or(false);
+            return Ok(Value::Bool(ok));
+        }
+
+        if name == "dir_create" {
+            let path = match self.eval_expr(&args[0])? {
+                Value::String(s) => s,
+                other => {
+                    return Err(VppError::Other {
+                        message: format!("dir_create expects string path, found {other:?}"),
+                    });
+                }
+            };
+            std::fs::create_dir_all(path.as_str()).map_err(|e| VppError::Other {
+                message: format!("dir_create failed: {e}"),
+            })?;
+            return Ok(Value::Void);
+        }
+
+        if name == "dir_list" {
+            let path = match self.eval_expr(&args[0])? {
+                Value::String(s) => s,
+                other => {
+                    return Err(VppError::Other {
+                        message: format!("dir_list expects string path, found {other:?}"),
+                    });
+                }
+            };
+            let mut names = Vec::new();
+            for entry in std::fs::read_dir(path.as_str()).map_err(|e| VppError::Other {
+                message: format!("dir_list failed: {e}"),
+            })? {
+                let entry = entry.map_err(|e| VppError::Other {
+                    message: format!("dir_list failed: {e}"),
+                })?;
+                names.push(Value::String(Rc::new(
+                    entry.file_name().to_string_lossy().into_owned(),
+                )));
+            }
+            return Ok(Value::Array(Rc::new(names)));
+        }
+
+        if name == "log_line" {
+            let level = match self.eval_expr(&args[0])? {
+                Value::String(s) => s,
+                other => {
+                    return Err(VppError::Other {
+                        message: format!("log_line expects string level, found {other:?}"),
+                    });
+                }
+            };
+            let message = match self.eval_expr(&args[1])? {
+                Value::String(s) => s,
+                other => {
+                    return Err(VppError::Other {
+                        message: format!("log_line expects string message, found {other:?}"),
+                    });
+                }
+            };
+            eprintln!("[{}] {}", level.as_str(), message.as_str());
+            return Ok(Value::Void);
+        }
+
         let func = self
             .functions
             .get(name)
@@ -682,7 +848,7 @@ impl Interpreter {
                 message: format!("undefined function `{name}`"),
             })?;
 
-        if self.debug.is_some() && !matches!(name, "print" | "len" | "assert" | "assert_eq" | "read_file" | "write_file" | "file_exists" | "json_parse" | "json_stringify" | "process_run") {
+        if self.debug.is_some() && !matches!(name, "print" | "len" | "assert" | "assert_eq" | "read_file" | "write_file" | "file_exists" | "json_parse" | "json_stringify" | "process_run" | "command_run" | "command_stdout" | "command_stderr" | "env_get" | "env_set" | "dir_list" | "dir_exists" | "dir_create" | "log_line") {
             if let Some(dbg) = &mut self.debug {
                 dbg.call_depth += 1;
             }
@@ -721,7 +887,7 @@ impl Interpreter {
         self.return_value = saved_return;
         self.pop_scope();
 
-        if self.debug.is_some() && !matches!(name, "print" | "len" | "assert" | "assert_eq" | "read_file" | "write_file" | "file_exists" | "json_parse" | "json_stringify" | "process_run") {
+        if self.debug.is_some() && !matches!(name, "print" | "len" | "assert" | "assert_eq" | "read_file" | "write_file" | "file_exists" | "json_parse" | "json_stringify" | "process_run" | "command_run" | "command_stdout" | "command_stderr" | "env_get" | "env_set" | "dir_list" | "dir_exists" | "dir_create" | "log_line") {
             if let Some(dbg) = &mut self.debug {
                 dbg.call_depth = dbg.call_depth.saturating_sub(1);
             }

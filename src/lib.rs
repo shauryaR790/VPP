@@ -1,6 +1,7 @@
 pub mod debug;
 pub mod watch;
 pub mod bench;
+pub mod automation;
 pub mod ast;
 pub mod builtins;
 pub mod codegen;

@@ -16,6 +16,15 @@ pub enum BuiltinKind {
     JsonParse,
     JsonStringify,
     ProcessRun,
+    CommandRun,
+    CommandStdout,
+    CommandStderr,
+    EnvGet,
+    EnvSet,
+    DirList,
+    DirExists,
+    DirCreate,
+    LogLine,
     Some,
     Ok,
     Err,
@@ -49,7 +58,7 @@ impl BuiltinSig {
     }
 }
 
-static BUILTINS: [BuiltinSig; 13] = [
+static BUILTINS: [BuiltinSig; 22] = [
     BuiltinSig::variadic("print", BuiltinKind::Print),
     BuiltinSig::fixed("len", BuiltinKind::Len, 1),
     BuiltinSig::fixed("assert", BuiltinKind::Assert, 1),
@@ -60,6 +69,15 @@ static BUILTINS: [BuiltinSig; 13] = [
     BuiltinSig::fixed("json_parse", BuiltinKind::JsonParse, 1),
     BuiltinSig::fixed("json_stringify", BuiltinKind::JsonStringify, 1),
     BuiltinSig::fixed("process_run", BuiltinKind::ProcessRun, 1),
+    BuiltinSig::fixed("command_run", BuiltinKind::CommandRun, 4),
+    BuiltinSig::fixed("command_stdout", BuiltinKind::CommandStdout, 0),
+    BuiltinSig::fixed("command_stderr", BuiltinKind::CommandStderr, 0),
+    BuiltinSig::fixed("env_get", BuiltinKind::EnvGet, 1),
+    BuiltinSig::fixed("env_set", BuiltinKind::EnvSet, 2),
+    BuiltinSig::fixed("dir_list", BuiltinKind::DirList, 1),
+    BuiltinSig::fixed("dir_exists", BuiltinKind::DirExists, 1),
+    BuiltinSig::fixed("dir_create", BuiltinKind::DirCreate, 1),
+    BuiltinSig::fixed("log_line", BuiltinKind::LogLine, 2),
     BuiltinSig::fixed("Some", BuiltinKind::Some, 1),
     BuiltinSig::fixed("Ok", BuiltinKind::Ok, 1),
     BuiltinSig::fixed("Err", BuiltinKind::Err, 1),

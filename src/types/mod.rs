@@ -53,6 +53,7 @@ impl Type {
             TypeAnn::Array(inner) => {
                 Type::Array(Box::new(Type::from_ann(inner, structs, enums)))
             }
+            TypeAnn::Named(name) if name == "void" => Type::Void,
             TypeAnn::Named(name) => {
                 if let Some(s) = structs.get(name) {
                     Type::Struct {

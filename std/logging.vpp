@@ -1,0 +1,13 @@
+// Structured logging to stderr (v1.3).
+
+pub fn info(message: string) -> void {
+    log_line("info", message)
+}
+
+pub fn warn(message: string) -> void {
+    log_line("warn", message)
+}
+
+pub fn log_error(message: string) -> void {
+    log_line("error", message)
+}

@@ -29,7 +29,11 @@ pub fn generate_and_build(
 }
 
 pub fn runtime_c_source() -> &'static str {
-    include_str!("../../runtime/vpp_runtime.c")
+    concat!(
+        include_str!("../../runtime/vpp_runtime.c"),
+        "\n",
+        include_str!("../../runtime/vpp_automation.c"),
+    )
 }
 
 pub fn emit_runtime_c(path: &Path) -> VppResult<()> {

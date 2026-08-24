@@ -1,0 +1,19 @@
+import std.process
+import std.logging
+
+fn main() -> int {
+    logging.info("automation smoke test")
+
+    let r = process.exec("git", ["--version"], process.default_options())
+    match r {
+        Ok(out) => {
+            print(out.exit_code)
+            print(out.stdout)
+            return 0
+        }
+        Err(e) => {
+            print(e)
+            return 1
+        }
+    }
+}

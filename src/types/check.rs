@@ -1827,6 +1827,99 @@ impl<'source> TypeChecker<'source> {
                 args: vec![arg],
                 ty: Type::Int,
             })
+        } else if name == "command_run" {
+            if args.len() != 4 {
+                return Err(VppError::WrongArgCount {
+                    name: name.to_string(),
+                    expected: 4,
+                    found: args.len(),
+                    span: span_to_source(self.source, span),
+                });
+            }
+            let program = self.check_expr(&args[0])?;
+            self.expect_type(&program, &Type::String, args[0].span())?;
+            let argv = self.check_expr(&args[1])?;
+            self.expect_array_elem(&argv, &Type::String, args[1].span())?;
+            let cwd = self.check_expr(&args[2])?;
+            self.expect_type(&cwd, &Type::String, args[2].span())?;
+            let timeout = self.check_expr(&args[3])?;
+            self.expect_type(&timeout, &Type::Int, args[3].span())?;
+            Ok(TypedExpr::Call {
+                name: name.to_string(),
+                args: vec![program, argv, cwd, timeout],
+                ty: Type::Int,
+            })
+        } else if name == "command_stdout" || name == "command_stderr" {
+            if !args.is_empty() {
+                return Err(VppError::WrongArgCount {
+                    name: name.to_string(),
+                    expected: 0,
+                    found: args.len(),
+                    span: span_to_source(self.source, span),
+                });
+            }
+            Ok(TypedExpr::Call {
+                name: name.to_string(),
+                args: vec![],
+                ty: Type::String,
+            })
+        } else if name == "env_get" || name == "dir_list" || name == "dir_exists" {
+            if args.len() != 1 {
+                return Err(VppError::WrongArgCount {
+                    name: name.to_string(),
+                    expected: 1,
+                    found: args.len(),
+                    span: span_to_source(self.source, span),
+                });
+            }
+            let arg = self.check_expr(&args[0])?;
+            self.expect_type(&arg, &Type::String, args[0].span())?;
+            let ty = if name == "dir_list" {
+                Type::Array(Box::new(Type::String))
+            } else if name == "dir_exists" {
+                Type::Bool
+            } else {
+                Type::String
+            };
+            Ok(TypedExpr::Call {
+                name: name.to_string(),
+                args: vec![arg],
+                ty,
+            })
+        } else if name == "env_set" || name == "log_line" {
+            if args.len() != 2 {
+                return Err(VppError::WrongArgCount {
+                    name: name.to_string(),
+                    expected: 2,
+                    found: args.len(),
+                    span: span_to_source(self.source, span),
+                });
+            }
+            let a0 = self.check_expr(&args[0])?;
+            let a1 = self.check_expr(&args[1])?;
+            self.expect_type(&a0, &Type::String, args[0].span())?;
+            self.expect_type(&a1, &Type::String, args[1].span())?;
+            Ok(TypedExpr::Call {
+                name: name.to_string(),
+                args: vec![a0, a1],
+                ty: Type::Void,
+            })
+        } else if name == "dir_create" {
+            if args.len() != 1 {
+                return Err(VppError::WrongArgCount {
+                    name: name.to_string(),
+                    expected: 1,
+                    found: args.len(),
+                    span: span_to_source(self.source, span),
+                });
+            }
+            let arg = self.check_expr(&args[0])?;
+            self.expect_type(&arg, &Type::String, args[0].span())?;
+            Ok(TypedExpr::Call {
+                name: name.to_string(),
+                args: vec![arg],
+                ty: Type::Void,
+            })
         } else {
             if let Some(generic) = self.generic_functions.get(name).cloned() {
                 if type_args.len() != generic.type_params.len() {
@@ -1940,6 +2033,28 @@ impl<'source> TypeChecker<'source> {
         Ok(())
     }
 
+    fn expect_array_elem(&self, expr: &TypedExpr, expected_elem: &Type, span: Span) -> VppResult<()> {
+        let Type::Array(elem) = expr.ty() else {
+            return Err(type_mismatch(
+                self.source,
+                span,
+                &format!("array[{expected_elem}]"),
+                &expr.ty().name(),
+                "expected array type".to_string(),
+            ));
+        };
+        if elem.as_ref() != expected_elem {
+            return Err(type_mismatch(
+                self.source,
+                span,
+                &format!("array[{expected_elem}]"),
+                &expr.ty().name(),
+                format!("expected array element `{}`", expected_elem.name()),
+            ));
+        }
+        Ok(())
+    }
+
     fn push_scope(&mut self) {
         self.scopes.push(HashMap::new());
     }
@@ -1979,6 +2094,7 @@ impl<'source> TypeChecker<'source> {
             TypeAnn::Float => Type::Float,
             TypeAnn::Bool => Type::Bool,
             TypeAnn::String => Type::String,
+            TypeAnn::Named(name) if name == "void" => Type::Void,
             TypeAnn::Named(name) if self.active_type_params.contains(name) => {
                 Type::TypeParam(name.clone())
             }

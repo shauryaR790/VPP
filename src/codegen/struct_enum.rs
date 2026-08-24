@@ -19,6 +19,15 @@ impl<'ctx> Emit<'ctx> {
     }
 
     pub(super) fn build_all_types(&mut self) -> VppResult<()> {
+        for (name, fields) in &self.struct_defs.clone() {
+            let field_tys: Vec<BasicTypeEnum<'ctx>> = fields
+                .iter()
+                .map(|(_, t)| self.llvm_value_type(t))
+                .collect();
+            let st = self.context.struct_type(&field_tys, false);
+            self.struct_types.insert(name.clone(), st);
+        }
+
         for (name, variants) in &self.enum_defs.clone() {
             let st = self.build_enum_struct_type(name, variants);
             self.enum_types.insert(name.clone(), st);
@@ -28,14 +37,6 @@ impl<'ctx> Emit<'ctx> {
             }
         }
 
-        for (name, fields) in &self.struct_defs.clone() {
-            let field_tys: Vec<BasicTypeEnum<'ctx>> = fields
-                .iter()
-                .map(|(_, t)| self.llvm_value_type(t))
-                .collect();
-            let st = self.context.struct_type(&field_tys, false);
-            self.struct_types.insert(name.clone(), st);
-        }
         Ok(())
     }
 
