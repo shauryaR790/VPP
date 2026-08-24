@@ -12,7 +12,7 @@ All notable changes to v++ are documented here.
 - **C automation runtime** — `runtime/vpp_automation.c` wired into native builds
 - **Parity tests** — `tests/automation.rs` (interpreter + native)
 - **North Star roadmap** — [AUTOMATION_ROADMAP.md](docs/project/AUTOMATION_ROADMAP.md) (v1.0.5 → v2.0.0)
-- **VS Code extension 1.0.5** — aligned with compiler version
+- **VS Code extension 1.2.3** — pairs with compiler v1.0.5
 
 ## [1.0.4]  -  2026-08-22
 

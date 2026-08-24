@@ -27,7 +27,7 @@ The installer includes `cmake/FindVpp.cmake` and `cmake/Vpp.cmake` under your in
 ## VS Code extension
 
 1. Extensions → search **v++ Language**
-2. Publisher must be **vpp-lang** (version **1.0.5**)
+2. Publisher must be **vpp-lang** (version **1.2.3**)
 3. [Marketplace link](https://marketplace.visualstudio.com/items?itemName=vpp-lang.vplusplus)
 
 See [VS Code setup](vscode-setup.md).

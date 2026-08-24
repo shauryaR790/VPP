@@ -1,7 +1,7 @@
 {
   "title": "v++ Documentation Master Content",
   "subtitle": "Complete source content for the official Docs hub",
-  "meta_line": "Current release: v1.0.5 (compiler + extension) · License: MIT · Stage: v1.0 stable",
+  "meta_line": "Current release: compiler v1.0.5 · extension 1.2.3 · License: MIT · Stage: v1.0 stable",
   "sections": [
     {
       "num": 1,
@@ -425,7 +425,7 @@
       "blocks": [
         {
           "kind": "paragraph",
-          "text": "The repository ships compiler and VS Code extension v1.0.5. v1.0.5 adds typed automation primitives: process.exec with argv and captured stdout/stderr, environment and directory helpers, and structured logging. v1.0.4 shipped CMake integration in the Windows installer. SPEC v1.0 is frozen with a Parity Promise: the same .vpp file runs in the interpreter, debugger, and native build. See docs/project/AUTOMATION_ROADMAP.md for the path to v2.0. Linux and macOS native bundles are optional CI targets; build from source on Unix today."
+          "text": "The repository ships compiler v1.0.5 and VS Code extension 1.2.3. v1.0.5 adds typed automation primitives: process.exec with argv and captured stdout/stderr, environment and directory helpers, and structured logging. v1.0.4 shipped CMake integration in the Windows installer. SPEC v1.0 is frozen with a Parity Promise: the same .vpp file runs in the interpreter, debugger, and native build. See docs/project/AUTOMATION_ROADMAP.md for the path to v2.0. Linux and macOS native bundles are optional CI targets; build from source on Unix today."
         }
       ]
     },

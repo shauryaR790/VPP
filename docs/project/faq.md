@@ -59,7 +59,7 @@ If you know Python or JavaScript, expect a few days for syntax; a few weeks for 
 
 ## Which VS Code extension is official?
 
-**v++ Language**  -  publisher `vpp-lang` (`vpp-lang.vplusplus`). Extension **1.0.5** (pairs with compiler **v1.0.5**).
+**v++ Language**  -  publisher `vpp-lang` (`vpp-lang.vplusplus`). Extension **1.2.3** (pairs with compiler **v1.0.5**).
 
 ## Can I contribute?
 

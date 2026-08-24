@@ -19,7 +19,7 @@ Docs: [website](https://shauryaR790.github.io/VPP/) · [hello-world guide](docs/
 - `vpp run` interpreter + `vpp build` native codegen
 - **Automation v1.0.5:** typed `process.exec`, env, dirs, structured logging ([roadmap](docs/project/AUTOMATION_ROADMAP.md))
 - LSP, debugger (F5), tests, fmt, packages (`vpp.toml`)
-- VS Code extension v1.0.5 (VSIX on Releases; Marketplace upload by publisher)
+- VS Code extension **1.2.3** (VSIX on Releases; upload to Marketplace)
 - Windows installer with bundled LLVM; Unix from source
 
 ## Build from source

@@ -31,7 +31,7 @@
 <tr><th>License</th><td><a href="https://github.com/shauryaR790/VPP/blob/main/LICENSE">MIT</a></td></tr>
 </table>
 </div>
-<p class="wiki-subtitle">Current release: v1.0.5 (compiler + extension) · License: MIT · Stage: v1.0 stable</p>
+<p class="wiki-subtitle">Current release: compiler v1.0.5 · extension 1.2.3 · License: MIT · Stage: v1.0 stable</p>
 <h2 id="what-is-vpp">1. What is v++?</h2>
 <p>v++ is a compiled programming language designed around readable source code, static typing, local type inference, and native compilation. Its project tagline is Write it simply. Compile it natively. Grow into control when you need it. The compiler has one front end and two execution paths. The interpreter is useful for development and teaching. The native path lowers checked programs into v++ IR, then LLVM, and finally a native executable linked with the v++ runtime. The goal is not to become Python or Rust. v++ is its own language whose identity comes from readable syntax, explicit types where useful, local inference, native compilation, and an integrated toolchain.</p>
 <h2 id="core-design-goals">2. Core design goals</h2>
@@ -233,7 +233,7 @@ vpp build stress.vpp -o stress.exe
 <p><strong>v1.0.5</strong> Automation foundation</p>
 <p>Typed process.exec with argv arrays and stdout/stderr capture; std.env, std.dir, std.logging; automation C runtime; North Star roadmap (v1.0.5 → v2.0.0). See examples/automation_smoke.vpp.</p>
 <h2 id="current-v1-0-5-status">17. Current v1.0.5 status</h2>
-<p>The repository ships compiler and VS Code extension v1.0.5. v1.0.5 adds typed automation primitives: process.exec with argv and captured stdout/stderr, environment and directory helpers, and structured logging. v1.0.4 shipped CMake integration in the Windows installer. SPEC v1.0 is frozen with a Parity Promise: the same .vpp file runs in the interpreter, debugger, and native build. See docs/project/AUTOMATION_ROADMAP.md for the path to v2.0. Linux and macOS native bundles are optional CI targets; build from source on Unix today.</p>
+<p>The repository ships compiler v1.0.5 and VS Code extension 1.2.3. v1.0.5 adds typed automation primitives: process.exec with argv and captured stdout/stderr, environment and directory helpers, and structured logging. v1.0.4 shipped CMake integration in the Windows installer. SPEC v1.0 is frozen with a Parity Promise: the same .vpp file runs in the interpreter, debugger, and native build. See docs/project/AUTOMATION_ROADMAP.md for the path to v2.0. Linux and macOS native bundles are optional CI targets; build from source on Unix today.</p>
 <h2 id="future-roadmap">18. Future roadmap</h2>
 <p>Automation roadmap (v1.0.5 → v2.0.0): v1.0.6 workflows, v1.0.7 Git/HTTP/Docker integrations, v1.0.8 deployable automation, v1.0.9 intelligent execution graphs, v2.0.0 full BUILD→TEST→PACKAGE→DEPLOY→VERIFY in one native program. Full plan: docs/project/AUTOMATION_ROADMAP.md on GitHub.</p>
 <p><strong>v0.6</strong> Interactive development</p>

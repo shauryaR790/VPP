@@ -1,20 +1,20 @@
 # Changelog
 
-## 1.0.5 (2026-08-24)
+## 1.2.3 (2026-08-24)
 
-Aligned with compiler **v1.0.5** automation foundation release.
+Pairs with compiler **v1.0.5** (automation foundation).
 
-- Same extension features as 1.2.x: debug (F5), Test Explorer, watch, REPL, bench, LSP, format-on-save
-- Works with new automation stdlib: `std.process.exec`, `std.env`, `std.dir`, `std.logging`
-- Pairs with Windows installer / zip from GitHub Releases (`vplusplus-1.0.5.vsix` attached)
-
-## 1.0.4 (2026-08-22)
-
-Compiler: CMake modules in Windows installer. Extension features unchanged from 1.2.x line.
+- Docs/README updated for `std.process.exec`, `std.env`, `std.dir`, `std.logging`
+- Same features as 1.2.2: debug (F5), Test Explorer, watch, REPL, bench, LSP, format-on-save
+- VSIX: `vplusplus-1.2.3.vsix`
 
 ## 1.2.2 (2026-08-23)
 
 Marketplace copy cleanup: no em dashes, shorter README.
+
+## 1.2.1 (2026-08-22)
+
+Corrected changelog and docs. Pairs with compiler v1.0.4.
 
 ## 1.2.0 (2026-08-21)
 
