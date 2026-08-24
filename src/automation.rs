@@ -1,4 +1,4 @@
-//! Interpreter-side automation helpers (v1.0.4).
+//! Interpreter-side automation helpers (v1.0.5).
 
 use std::cell::RefCell;
 use std::process::{Command, Stdio};

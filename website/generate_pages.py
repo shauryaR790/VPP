@@ -190,7 +190,7 @@ def build_index_page() -> str:
 <p><strong>V++</strong> (vpp) is an open-source programming language and compiler.
 It aims for readable syntax, static typing with local inference, and native compilation via LLVM.</p>
 <p>The compiler is written in Rust. Programs can run through a tree-walking interpreter or compile to native executables.
-The language includes structs, enums, generics, traits, <code>Option</code>/<code>Result</code>, modules, and v1.0.4 automation APIs (typed process I/O, env, directories, logging).</p>
+The language includes structs, enums, generics, traits, <code>Option</code>/<code>Result</code>, modules, and v1.0.5 automation APIs (typed process I/O, env, directories, logging).</p>
 <h2>Getting the compiler</h2>
 <p>Prebuilt Windows releases are on GitHub. See the <a href="{ASSET_PREFIX}download.html">Download</a> page.</p>
 <h2>Documentation</h2>

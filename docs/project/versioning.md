@@ -1,11 +1,11 @@
 # Version numbers
 
-Compiler and VS Code extension **use the same version** (currently **v1.0.4**).
+Compiler and VS Code extension **use the same version** (currently **v1.0.5**).
 
 | Product | Version | Where |
 |---------|---------|--------|
-| **Compiler** (`vpp`) | **v1.0.4** | [GitHub Releases](https://github.com/shauryaR790/VPP/releases) |
-| **VS Code extension** | **1.0.4** | [Marketplace](https://marketplace.visualstudio.com/items?itemName=vpp-lang.vplusplus) |
+| **Compiler** (`vpp`) | **v1.0.5** | [GitHub Releases](https://github.com/shauryaR790/VPP/releases) |
+| **VS Code extension** | **1.0.5** | [Marketplace](https://marketplace.visualstudio.com/items?itemName=vpp-lang.vplusplus) |
 
 Install both for the full toolchain: `vpp` CLI + debug, LSP, Test Explorer.
 

@@ -1,4 +1,4 @@
-// Structured logging to stderr (v1.0.4).
+// Structured logging to stderr (v1.0.5).
 
 pub fn info(message: string) -> void {
     log_line("info", message)

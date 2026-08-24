@@ -1,7 +1,7 @@
-v1.0.4 — Automation foundation + CMake
-======================================
+v1.0.5 — Automation foundation
+================================
 
-## Automation (v1.0.4)
+## Automation
 
 - **Typed process execution** — `process.exec(program, args, opts) -> Result<ProcessOutput, string>` with stdout/stderr capture
 - **Environment** — `std/env.vpp` (`get`, `set`)
@@ -9,18 +9,18 @@ v1.0.4 — Automation foundation + CMake
 - **Structured logging** — `std/logging.vpp` (`info`, `warn`, `log_error`)
 - **C runtime** — `runtime/vpp_automation.c` (native builds)
 - **Example** — `examples/automation_smoke.vpp`
-- **Roadmap** — [AUTOMATION_ROADMAP.md](docs/project/AUTOMATION_ROADMAP.md) (v1.0.4 → v2.0.0)
+- **Roadmap** — [AUTOMATION_ROADMAP.md](docs/project/AUTOMATION_ROADMAP.md) (v1.0.5 → v2.0.0)
 
 ## Tooling
 
-- **CMake** — `FindVpp.cmake` and `Vpp.cmake` in Windows installer and zip
-- **VS Code extension 1.0.4** — `vplusplus-1.0.4.vsix` attached (upload to Marketplace separately if needed)
+- **VS Code extension 1.0.5** — `vplusplus-1.0.5.vsix` attached (upload to Marketplace separately if needed)
 - Debug (F5), Test Explorer, watch, REPL, LSP, formatter fix
+- CMake modules remain from v1.0.4 in the installer
 
 ## Install
 
-- Windows: `vpp-1.0.4-setup.exe` or portable zip
-- VS Code: install `vplusplus-1.0.4.vsix` from this release, or Marketplace when published
+- Windows: `vpp-1.0.5-setup.exe` or portable zip
+- VS Code: install `vplusplus-1.0.5.vsix` from this release, or Marketplace when published
 
 ## Docs
 

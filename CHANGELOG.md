@@ -2,16 +2,19 @@
 
 All notable changes to v++ are documented here.
 
-## [1.0.4]  -  2026-08-22
+## [1.0.5]  -  2026-08-24
 
-### Added  -  Automation foundation (v1.0.4)
+### Added  -  Automation foundation
 
 - **Typed process execution** — `process.exec(program, args, opts) -> Result<ProcessOutput, string>` with stdout/stderr capture
 - **Environment + directories** — `std/env`, `std/dir` over new builtins
 - **Structured logging** — `std/logging` (`info`, `warn`, `log_error`) via `log_line` builtin
 - **C automation runtime** — `runtime/vpp_automation.c` wired into native builds
 - **Parity tests** — `tests/automation.rs` (interpreter + native)
-- **North Star roadmap** — [AUTOMATION_ROADMAP.md](docs/project/AUTOMATION_ROADMAP.md) (v1.0.4 → v2.0.0)
+- **North Star roadmap** — [AUTOMATION_ROADMAP.md](docs/project/AUTOMATION_ROADMAP.md) (v1.0.5 → v2.0.0)
+- **VS Code extension 1.0.5** — aligned with compiler version
+
+## [1.0.4]  -  2026-08-22
 
 ### Added  -  CMake integration + aligned extension version
 

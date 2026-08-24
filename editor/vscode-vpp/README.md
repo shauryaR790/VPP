@@ -2,11 +2,11 @@
 
 Official VS Code support for [v++](https://github.com/shauryaR790/VPP): Python-ish syntax, static types, native binaries.
 
-Compiler and extension **v1.0.4** on [GitHub Releases](https://github.com/shauryaR790/VPP/releases/latest) (Windows installer + `vplusplus-1.0.4.vsix`).
+Compiler and extension **v1.0.5** on [GitHub Releases](https://github.com/shauryaR790/VPP/releases/latest) (Windows installer + `vplusplus-1.0.5.vsix`).
 
 ## Quick start
 
-1. Install `vpp-1.0.4-setup.exe` from GitHub Releases (Windows).
+1. Install `vpp-1.0.5-setup.exe` from GitHub Releases (Windows).
 2. Install this extension (publisher: **vpp-lang**) from Marketplace or the release VSIX.
 3. Open a `.vpp` file. **F5** to debug, **Ctrl+F5** to run.
 
@@ -28,7 +28,7 @@ vpp test
 | Format on save | `vpp fmt` (needs `vpp` 1.0.1+) |
 | LSP | Diagnostics, completion, go-to-definition (`vppls`) |
 
-## v1.0.4 automation APIs
+## v1.0.5 automation APIs
 
 The compiler ships typed process and filesystem helpers (interpreter + native parity):
 
@@ -37,7 +37,7 @@ The compiler ships typed process and filesystem helpers (interpreter + native pa
 - `std.dir.list` / `exists` / `create`
 - `std.logging.info` / `warn` / `log_error`
 
-See [AUTOMATION_ROADMAP.md](https://github.com/shauryaR790/VPP/blob/main/docs/project/AUTOMATION_ROADMAP.md) for the v1.0.4 → v2.0.0 plan.
+See [AUTOMATION_ROADMAP.md](https://github.com/shauryaR790/VPP/blob/main/docs/project/AUTOMATION_ROADMAP.md) for the v1.0.5 → v2.0.0 plan.
 
 ## Requirements
 

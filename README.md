@@ -2,12 +2,12 @@
 
 A small compiled language: Python-ish syntax, static types, native binaries via LLVM.
 
-**License:** MIT · **Version:** 1.0.4 · [Releases](https://github.com/shauryaR790/VPP/releases)
+**License:** MIT · **Version:** 1.0.5 · [Releases](https://github.com/shauryaR790/VPP/releases)
 
 ## Quick start (Windows)
 
 ```powershell
-# 1. Install vpp-1.0.4-setup.exe from GitHub Releases
+# 1. Install vpp-1.0.5-setup.exe from GitHub Releases
 # 2. Install "v++ Language" in VS Code (publisher: vpp-lang)
 vpp run examples\hello.vpp
 ```
@@ -17,9 +17,9 @@ Docs: [website](https://shauryaR790.github.io/VPP/) · [hello-world guide](docs/
 ## What works
 
 - `vpp run` interpreter + `vpp build` native codegen
-- **Automation v1.0.4:** typed `process.exec`, env, dirs, structured logging ([roadmap](docs/project/AUTOMATION_ROADMAP.md))
+- **Automation v1.0.5:** typed `process.exec`, env, dirs, structured logging ([roadmap](docs/project/AUTOMATION_ROADMAP.md))
 - LSP, debugger (F5), tests, fmt, packages (`vpp.toml`)
-- VS Code extension v1.0.4 (VSIX on Releases; Marketplace upload by publisher)
+- VS Code extension v1.0.5 (VSIX on Releases; Marketplace upload by publisher)
 - Windows installer with bundled LLVM; Unix from source
 
 ## Build from source

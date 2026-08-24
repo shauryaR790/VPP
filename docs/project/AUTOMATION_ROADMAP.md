@@ -1,4 +1,4 @@
-# V++ North Star — Automation Roadmap v1.0.4 → v2.0.0
+# V++ North Star — Automation Roadmap v1.0.5 → v2.0.0
 
 > **Product thesis:** V++ is a language for building **programs that talk to other programs**.
 >
@@ -17,7 +17,7 @@ Current V++ (compiler 1.0.x, frozen SPEC v1.0) remains the foundation. Extend it
 5. Native performance matters; benchmark major subsystems.
 6. **Interpreter/native parity** on every new API.
 7. **Additive changes** — existing programs keep working.
-8. Syntax changes only when stdlib design fails in real programs (v1.0.8+ gate).
+8. Syntax changes only when stdlib design fails in real programs (v1.0.9+ gate).
 
 ---
 
@@ -25,16 +25,16 @@ Current V++ (compiler 1.0.x, frozen SPEC v1.0) remains the foundation. Extend it
 
 | Version | Name | Ship criteria |
 |---------|------|---------------|
-| **v1.0.4** | Automation foundation | Typed process I/O, env, dirs, structured errors, timeouts, logging primitives |
-| **v1.0.5** | Workflows | Parallel/sequential composition, retry, cancel, failure propagation (stdlib first) |
-| **v1.0.6** | Program-to-program integrations | Git, HTTP, Docker, archives — consistent typed stdlib, not compiler keywords |
-| **v1.0.7** | Deployable automation | Config, secrets, profiles, structured logs, CI-friendly exit/JSON output |
-| **v1.0.8** | Intelligent workflow execution | Dependency graphs, caching, incremental runs, safe auto-parallelization |
-| **v1.0.9** | Performance + ecosystem | Runtime efficiency, portable integrations, tooling for third-party modules |
-| **v1.1.0** | Stabilization | Benchmarks, diagnostics, docs, reliability — no random features |
+| **v1.0.5** | Automation foundation | Typed process I/O, env, dirs, structured errors, timeouts, logging primitives |
+| **v1.0.6** | Workflows | Parallel/sequential composition, retry, cancel, failure propagation (stdlib first) |
+| **v1.0.7** | Program-to-program integrations | Git, HTTP, Docker, archives — consistent typed stdlib, not compiler keywords |
+| **v1.0.8** | Deployable automation | Config, secrets, profiles, structured logs, CI-friendly exit/JSON output |
+| **v1.0.9** | Intelligent workflow execution | Dependency graphs, caching, incremental runs, safe auto-parallelization |
+| **v1.1.0** | Performance + ecosystem | Runtime efficiency, portable integrations, tooling for third-party modules |
+| **v1.1.1** | Stabilization | Benchmarks, diagnostics, docs, reliability — no random features |
 | **v2.0.0** | The automation language | BUILD→TEST→PACKAGE→DEPLOY→VERIFY as one native program; compiler understands automation |
 
-**The differentiator is v1.0.8 → v2.0:** not “we have Docker APIs,” but **the compiler/runtime understands dependencies, failures, caching, and concurrency.**
+**The differentiator is v1.0.9 → v2.0:** not “we have Docker APIs,” but **the compiler/runtime understands dependencies, failures, caching, and concurrency.**
 
 ---
 
@@ -44,7 +44,7 @@ Current V++ (compiler 1.0.x, frozen SPEC v1.0) remains the foundation. Extend it
 |--------|-----|
 | `Result`, `Option`, `match`, structs, modules | I/O does not use `Result` everywhere |
 | `std.process.run(cmd) -> int` (shell string) | Legacy; prefer `process.exec` |
-| `std.fs` read/write/exists | Directories via `std.dir` (v1.0.4+) |
+| `std.fs` read/write/exists | Directories via `std.dir` (v1.0.5+) |
 | JSON string validate/escape | No typed JSON values |
 | Interpreter catchable errors | Native runtime `exit(1)` on some I/O failure |
 | `vpp test`, `watch`, packages | No workflow model in language |
@@ -53,7 +53,7 @@ Current V++ (compiler 1.0.x, frozen SPEC v1.0) remains the foundation. Extend it
 
 ---
 
-## v1.0.4 — Automation foundation
+## v1.0.5 — Automation foundation
 
 ### Goal
 
@@ -70,13 +70,13 @@ Replace stringly glue with typed operations and structured errors.
 | Errors | Structured `Result` from exec; string err payload |
 | Logging | `logging.info/warn/log_error` → structured lines (stderr) |
 | Timeouts | `ProcessOptions.timeout_ms` (interpreter; native follow-up) |
-| HTTP | Basic GET/POST via runtime (v1.0.5 if lib integration slips) |
+| HTTP | Basic GET/POST via runtime (v1.0.6 if lib integration slips) |
 
-### Do not ship in v1.0.4
+### Do not ship in v1.0.5
 
 - Workflow syntax (`parallel {}`, `retry N {}`)
-- Git/Docker wrappers (v1.0.6)
-- YAML config loader (v1.0.7)
+- Git/Docker wrappers (v1.0.7)
+- YAML config loader (v1.0.8)
 
 ### Files touched
 
@@ -109,7 +109,7 @@ Runs identically under `vpp run` and `vpp build`.
 
 ---
 
-## v1.0.5 — Workflows
+## v1.0.6 — Workflows
 
 ### Goal
 
@@ -130,11 +130,11 @@ No closures/function values today. **Phase 1:** stdlib registry / named tasks. *
 
 ### Runtime
 
-Fixed thread pool; no async/await in v1.0.5.
+Fixed thread pool; no async/await in v1.0.6.
 
 ---
 
-## v1.0.6 — Program-to-program integrations
+## v1.0.7 — Program-to-program integrations
 
 ### Goal
 
@@ -156,7 +156,7 @@ No vendor APIs in `src/builtins/` except shared HTTP/process primitives.
 
 ---
 
-## v1.0.7 — Deployable automation
+## v1.0.8 — Deployable automation
 
 - `std/config.vpp` — load typed config (TOML-like or JSON strings v1)
 - `std/secrets.vpp` — env + file paths, never log values
@@ -168,9 +168,9 @@ Same `.vpp` source locally and in CI.
 
 ---
 
-## v1.0.8 — Intelligent workflow execution
+## v1.0.9 — Intelligent workflow execution
 
-Review v1.0.4–v1.0.7 real programs. Ship only proven features:
+Review v1.0.5–v1.0.8 real programs. Ship only proven features:
 
 - Dependency graph (stdlib + optional IR pass)
 - Content-hash cache in `.vpp/cache/`
@@ -182,7 +182,7 @@ Review v1.0.4–v1.0.7 real programs. Ship only proven features:
 
 ---
 
-## v1.0.9 — Performance + ecosystem
+## v1.1.0 — Performance + ecosystem
 
 - Benchmark suite vs Python/Go on automation workloads
 - Streaming I/O; bounded buffers
@@ -191,7 +191,7 @@ Review v1.0.4–v1.0.7 real programs. Ship only proven features:
 
 ---
 
-## v1.1.0 — Stabilization
+## v1.1.1 — Stabilization
 
 - No new features
 - Parity gaps closed
@@ -218,7 +218,7 @@ One V++ program that:
 11. Compiles to **one native executable**  
 12. **No Bash/YAML orchestration layer**
 
-SPEC v2.0 may add proven language features from v1.0.8 experiments.
+SPEC v2.0 may add proven language features from v1.0.9 experiments.
 
 ---
 
@@ -232,7 +232,7 @@ SPEC v2.0 may add proven language features from v1.0.8 experiments.
 
 ---
 
-## v1.0.4 implementation checklist
+## v1.0.5 implementation checklist
 
 - [x] This roadmap document  
 - [x] Process exec with argv + stdout/stderr + timeout (interpreter)  
@@ -241,6 +241,6 @@ SPEC v2.0 may add proven language features from v1.0.8 experiments.
 - [x] `std/logging.vpp`  
 - [x] `tests/automation.rs` + `examples/automation_smoke.vpp`  
 - [ ] Native process timeout in C runtime  
-- [ ] HTTP (track v1.0.5 if needed)
+- [ ] HTTP (track v1.0.6 if needed)
 
 See [roadmap.md](roadmap.md) for shipped compiler milestones.

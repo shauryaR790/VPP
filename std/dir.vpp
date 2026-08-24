@@ -1,4 +1,4 @@
-// Directory helpers (v1.0.4).
+// Directory helpers (v1.0.5).
 
 pub fn list(path: string) -> array[string] {
     return dir_list(path)

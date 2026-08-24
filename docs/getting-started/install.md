@@ -2,7 +2,7 @@
 
 ## Windows (recommended)
 
-1. Download **`vpp-1.0.4-setup.exe`** from [GitHub Releases](https://github.com/shauryaR790/VPP/releases/latest).
+1. Download **`vpp-1.0.5-setup.exe`** from [GitHub Releases](https://github.com/shauryaR790/VPP/releases/latest).
 2. Run the installer. If Windows SmartScreen appears, choose **More info → Run anyway**.
 3. Open a **new** terminal:
 
@@ -27,14 +27,14 @@ The installer includes `cmake/FindVpp.cmake` and `cmake/Vpp.cmake` under your in
 ## VS Code extension
 
 1. Extensions → search **v++ Language**
-2. Publisher must be **vpp-lang** (version **1.2.1**)
+2. Publisher must be **vpp-lang** (version **1.0.5**)
 3. [Marketplace link](https://marketplace.visualstudio.com/items?itemName=vpp-lang.vplusplus)
 
 See [VS Code setup](vscode-setup.md).
 
 ## Portable zip (advanced)
 
-Download `vpp-v1.0.4-windows-x64.zip`, extract, run `GO.bat` or add the folder to PATH manually.
+Download `vpp-v1.0.5-windows-x64.zip`, extract, run `GO.bat` or add the folder to PATH manually.
 
 ## Linux / macOS
 

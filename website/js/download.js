@@ -116,7 +116,7 @@
   }
 
   function updateUI() {
-    const version = $("dl-version")?.value || "1.0.4";
+    const version = $("dl-version")?.value || "1.0.5";
     const osKey = $("dl-os")?.value || "windows";
     const formatId = $("dl-format")?.value;
     const tag = releaseTag(version);
