@@ -223,7 +223,7 @@
       "blocks": [
         {
           "kind": "paragraph",
-          "text": "Current standard library modules are std.io, std.math, std.string, std.collections, std.fs, std.json, and std.process. Native runtime support includes file reading, file writing, file existence checks, JSON parsing and stringifying, and process execution. The language reference and standard library guides should be kept synchronized with the actual builtin registry."
+          "text": "Current standard library modules include std.io, std.math, std.string, std.collections, std.fs, std.json, std.process, std.env, std.dir, and std.logging. Native runtime support includes file I/O, JSON parse/stringify, shell and argv process execution (with stdout/stderr capture), environment variables, directory listing, and structured logging to stderr."
         }
       ]
     },
@@ -234,7 +234,7 @@
       "blocks": [
         {
           "kind": "code",
-          "text": "print(value)\nlen(value)\nassert(condition)\nassert_eq(a, b)\nread_file(path)\nwrite_file(path, data)\nfile_exists(path)\njson_parse(text)\njson_stringify(value)\nprocess_run(command)"
+          "text": "print(value)\nlen(value)\nassert(condition)\nassert_eq(a, b)\nread_file(path)\nwrite_file(path, data)\nfile_exists(path)\njson_parse(text)\njson_stringify(value)\nprocess_run(command)\ncommand_run(program, args, cwd, timeout_ms)\ncommand_stdout()\ncommand_stderr()\nenv_get(key)\nenv_set(key, value)\ndir_list(path)\ndir_exists(path)\ndir_create(path)\nlog_line(level, message)"
         }
       ]
     },
@@ -409,6 +409,12 @@
           "text": "CMake modules (FindVpp, vpp_add_executable) ship in the Windows installer and portable zip.",
           "version": "v1.0.4",
           "title": "CMake integration"
+        },
+        {
+          "kind": "version",
+          "text": "Typed process.exec with argv arrays and stdout/stderr capture; std.env, std.dir, std.logging; automation C runtime; North Star roadmap (v1.0.4 → v2.0.0). See examples/automation_smoke.vpp.",
+          "version": "v1.0.4",
+          "title": "Automation foundation"
         }
       ]
     },
@@ -419,7 +425,7 @@
       "blocks": [
         {
           "kind": "paragraph",
-          "text": "The repository ships compiler and VS Code extension v1.0.4. v1.0.4 adds CMake integration: FindVpp.cmake and Vpp.cmake are bundled under the install folder, plus debug, Test Explorer, watch, and a formatter fix. SPEC v1.0 is frozen with a Parity Promise: the same .vpp file runs in the interpreter, debugger, and native build. Linux and macOS native bundles are optional CI targets; build from source on Unix today."
+          "text": "The repository ships compiler and VS Code extension v1.0.4. v1.0.4 adds typed automation primitives: process.exec with argv and captured stdout/stderr, environment and directory helpers, structured logging, plus CMake integration in the Windows installer. SPEC v1.0 is frozen with a Parity Promise: the same .vpp file runs in the interpreter, debugger, and native build. See docs/project/AUTOMATION_ROADMAP.md for the path to v2.0. Linux and macOS native bundles are optional CI targets; build from source on Unix today."
         }
       ]
     },
@@ -430,7 +436,7 @@
       "blocks": [
         {
           "kind": "paragraph",
-          "text": "Future versions are plans, not promises. The Docs page should visually distinguish roadmap items from shipped features."
+          "text": "Automation roadmap (v1.0.4 → v2.0.0): v1.0.5 workflows, v1.0.6 Git/HTTP/Docker integrations, v1.0.7 deployable automation, v1.0.8 intelligent execution graphs, v2.0.0 full BUILD→TEST→PACKAGE→DEPLOY→VERIFY in one native program. Full plan: docs/project/AUTOMATION_ROADMAP.md on GitHub."
         },
         {
           "kind": "version",
@@ -494,7 +500,7 @@
         },
         {
           "kind": "labeled",
-          "text": "io, math, string, collections, fs, json, process, plus future modules as they ship.",
+          "text": "io, math, string, collections, fs, json, process, env, dir, logging, plus future modules as they ship.",
           "label": "Standard Library"
         },
         {

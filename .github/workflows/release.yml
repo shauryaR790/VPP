@@ -139,6 +139,7 @@ jobs:
             vpp-*-windows-x64.zip.sha256
             vplusplus-*.vsix
           generate_release_notes: true
+          body_path: RELEASE_NOTES_v1.0.4.md
 
   build-linux:
     runs-on: ubuntu-latest

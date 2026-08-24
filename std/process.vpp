@@ -1,4 +1,4 @@
-// Process execution (v1.3 typed argv API + legacy shell helper).
+// Process execution (v1.0.4 typed argv API + legacy shell helper).
 
 pub struct ProcessOutput {
     exit_code: int

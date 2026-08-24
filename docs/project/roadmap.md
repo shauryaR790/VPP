@@ -35,7 +35,7 @@
 
 ## Post v1.0 (ideas)
 
-- **Automation roadmap v1.3 → v2.0** — [AUTOMATION_ROADMAP.md](AUTOMATION_ROADMAP.md) (north star; v1.3 foundation landed)
+- **Automation roadmap v1.0.4 → v2.0** — [AUTOMATION_ROADMAP.md](AUTOMATION_ROADMAP.md) (north star; v1.0.4 foundation landed)
 - Native debug symbols
 - Hosted registry on GitHub Pages
 - v2.0 language extensions (only with major version)

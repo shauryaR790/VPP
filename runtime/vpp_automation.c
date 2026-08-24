@@ -1,4 +1,4 @@
-// Automation primitives for v1.3 (process argv, env, directories).
+// Automation primitives for v1.0.4 (process argv, env, directories).
 // Included into the linked runtime via runtime_c_source().
 
 #include <stdio.h>
@@ -62,7 +62,7 @@ static char* vpp_read_pipe_to_string(int fd) {
 
 #if !defined(_WIN32)
 int64_t vpp_command_run(VppString* program, VppArray* args, VppString* cwd, int64_t timeout_ms) {
-    (void)timeout_ms; /* v1.3.0: timeout wired in interpreter; native follow-up */
+    (void)timeout_ms; /* v1.0.4: timeout wired in interpreter; native follow-up */
     const char* prog = vpp_string_cstr(program);
     int64_t argc = vpp_array_len(args);
     char** argv = (char**)calloc((size_t)argc + 2, sizeof(char*));

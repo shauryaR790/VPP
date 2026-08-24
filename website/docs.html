@@ -142,7 +142,7 @@ vpp update
 vpp remove helper</code></pre>
 <p>The current repository contains a registry index for semver resolution. Hosted package publishing is a future roadmap item.</p>
 <h2 id="standard-library">9. Standard library</h2>
-<p>Current standard library modules are std.io, std.math, std.string, std.collections, std.fs, std.json, and std.process. Native runtime support includes file reading, file writing, file existence checks, JSON parsing and stringifying, and process execution. The language reference and standard library guides should be kept synchronized with the actual builtin registry.</p>
+<p>Current standard library modules include std.io, std.math, std.string, std.collections, std.fs, std.json, std.process, std.env, std.dir, and std.logging. Native runtime support includes file I/O, JSON parse/stringify, shell and argv process execution (with stdout/stderr capture), environment variables, directory listing, and structured logging to stderr.</p>
 <h2 id="builtins">10. Builtins</h2>
 <pre><code>print(value)
 len(value)
@@ -153,7 +153,16 @@ write_file(path, data)
 file_exists(path)
 json_parse(text)
 json_stringify(value)
-process_run(command)</code></pre>
+process_run(command)
+command_run(program, args, cwd, timeout_ms)
+command_stdout()
+command_stderr()
+env_get(key)
+env_set(key, value)
+dir_list(path)
+dir_exists(path)
+dir_create(path)
+log_line(level, message)</code></pre>
 <h2 id="cli">11. CLI</h2>
 <p>The toolchain includes commands for running, building, checking, compiling, formatting, testing, initialization, package management, language server operation, and toolchain health.</p>
 <pre><code>vpp run file.vpp
@@ -221,10 +230,12 @@ vpp build stress.vpp -o stress.exe
 <p>Formatter fix, GitHub Releases publish reliably on Windows, extension 1.2.0 for Marketplace.</p>
 <p><strong>v1.0.4</strong> CMake integration</p>
 <p>CMake modules (FindVpp, vpp_add_executable) ship in the Windows installer and portable zip.</p>
+<p><strong>v1.0.4</strong> Automation foundation</p>
+<p>Typed process.exec with argv arrays and stdout/stderr capture; std.env, std.dir, std.logging; automation C runtime; North Star roadmap (v1.0.4 → v2.0.0). See examples/automation_smoke.vpp.</p>
 <h2 id="current-v1-0-4-status">17. Current v1.0.4 status</h2>
-<p>The repository ships compiler and VS Code extension v1.0.4. v1.0.4 adds CMake integration: FindVpp.cmake and Vpp.cmake are bundled under the install folder, plus debug, Test Explorer, watch, and a formatter fix. SPEC v1.0 is frozen with a Parity Promise: the same .vpp file runs in the interpreter, debugger, and native build. Linux and macOS native bundles are optional CI targets; build from source on Unix today.</p>
+<p>The repository ships compiler and VS Code extension v1.0.4. v1.0.4 adds typed automation primitives: process.exec with argv and captured stdout/stderr, environment and directory helpers, structured logging, plus CMake integration in the Windows installer. SPEC v1.0 is frozen with a Parity Promise: the same .vpp file runs in the interpreter, debugger, and native build. See docs/project/AUTOMATION_ROADMAP.md for the path to v2.0. Linux and macOS native bundles are optional CI targets; build from source on Unix today.</p>
 <h2 id="future-roadmap">18. Future roadmap</h2>
-<p>Future versions are plans, not promises. The Docs page should visually distinguish roadmap items from shipped features.</p>
+<p>Automation roadmap (v1.0.4 → v2.0.0): v1.0.5 workflows, v1.0.6 Git/HTTP/Docker integrations, v1.0.7 deployable automation, v1.0.8 intelligent execution graphs, v2.0.0 full BUILD→TEST→PACKAGE→DEPLOY→VERIFY in one native program. Full plan: docs/project/AUTOMATION_ROADMAP.md on GitHub.</p>
 <p><strong>v0.6</strong> Interactive development</p>
 <p>Potential focus: finish the REPL, improve the standard library, and make interactive experimentation easier.</p>
 <p><strong>v0.7</strong> Platform and distribution</p>
@@ -240,7 +251,7 @@ vpp build stress.vpp -o stress.exe
 <p><strong>Getting Started</strong> installation, Hello World, first project, VS Code setup, CLI basics.</p>
 <p><strong>Language</strong> syntax, types, variables, functions, control flow, arrays, structs, enums, Option, Result, match, generics,</p>
 <p>traits, modules, mutability.</p>
-<p><strong>Standard Library</strong> io, math, string, collections, fs, json, process, plus future modules as they ship.</p>
+<p><strong>Standard Library</strong> io, math, string, collections, fs, json, process, env, dir, logging, plus future modules as they ship.</p>
 <p><strong>Toolchain</strong> CLI, formatter, tests, parity, LSP, VS Code extension, package manager, registry.</p>
 <p><strong>Compiler</strong> architecture, IR, LLVM backend, runtime, memory model, diagnostics, compiler development.</p>
 <p><strong>Projects</strong> the twenty guided builds.</p>
