@@ -92,7 +92,7 @@ enum Commands {
     /// Time repeated interpreter runs (same engine as run/repl/watch)
     Bench {
         file: PathBuf,
-        #[arg(short, long, default_value_t = 5)]
+        #[arg(short, long, default_value_t = vpp::bench::DEFAULT_RUNS)]
         runs: u32,
     },
     /// Line debugger (interpreter; breakpoints, step, locals)
@@ -151,8 +151,14 @@ fn resolve_run_path(file: &Option<PathBuf>) -> miette::Result<PathBuf> {
         return resolve_user_file(path.clone());
     }
     let cwd = std::env::current_dir().into_diagnostic()?;
-    let (entry, _) = vpp::project_entry(&cwd).map_err(miette::Report::new)?;
-    Ok(entry)
+    if let Ok((entry, _)) = vpp::project_entry(&cwd) {
+        return Ok(entry);
+    }
+    Err(miette::miette!(
+        "no file given and no vpp.toml in this directory.\n\
+         Usage: vpp run path/to/file.vpp\n\
+         Or: vpp init  then  vpp run  (runs src/main.vpp)"
+    ))
 }
 
 fn project_root() -> miette::Result<PathBuf> {

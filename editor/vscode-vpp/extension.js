@@ -36,6 +36,28 @@ function invalidateRunnerCache() {
   runnerCache = undefined;
 }
 
+/** @param {string} root @returns {string | undefined} */
+function findBundledVppExe(root) {
+  const candidates = [
+    path.join(process.env.LOCALAPPDATA || "", "Programs", "vpp", "vpp.exe"),
+    path.join(root, ".vpp-bin", "vpp.exe"),
+  ];
+  const binRoot = path.join(root, ".vpp-bin");
+  if (fs.existsSync(binRoot)) {
+    for (const ent of fs.readdirSync(binRoot, { withFileTypes: true })) {
+      if (ent.isDirectory() && ent.name.startsWith("vpp-v")) {
+        candidates.push(path.join(binRoot, ent.name, "vpp.exe"));
+      }
+    }
+  }
+  for (const candidate of candidates) {
+    if (fs.existsSync(candidate)) {
+      return candidate;
+    }
+  }
+  return undefined;
+}
+
 /** @param {string} root */
 function resolveRunner(root) {
   if (runnerCache && runnerCache.root === root) {
@@ -46,6 +68,12 @@ function resolveRunner(root) {
   const configured = config.get("compilerPath", "");
   if (configured && fs.existsSync(configured)) {
     runnerCache = { root, runner: { kind: "exe", path: configured } };
+    return runnerCache.runner;
+  }
+
+  const bundled = findBundledVppExe(root);
+  if (bundled) {
+    runnerCache = { root, runner: { kind: "exe", path: bundled } };
     return runnerCache.runner;
   }
 
@@ -86,6 +114,27 @@ function resolveLanguageServer(root) {
     return fs.existsSync(configured) ? configured : undefined;
   }
 
+  const bundledRoots = [
+    path.join(process.env.LOCALAPPDATA || "", "Programs", "vpp"),
+    path.join(root, ".vpp-bin"),
+  ];
+  for (const base of bundledRoots) {
+    const direct = path.join(base, `${configured}.exe`);
+    if (fs.existsSync(direct)) {
+      return direct;
+    }
+    if (fs.existsSync(base)) {
+      for (const ent of fs.readdirSync(base, { withFileTypes: true })) {
+        if (ent.isDirectory() && ent.name.startsWith("vpp-v")) {
+          const nested = path.join(base, ent.name, `${configured}.exe`);
+          if (fs.existsSync(nested)) {
+            return nested;
+          }
+        }
+      }
+    }
+  }
+
   for (const sub of [
     `target/debug/${configured}.exe`,
     `target/release/${configured}.exe`,
@@ -121,6 +170,36 @@ function runRunner(runner, args) {
   };
 }
 
+/** Run vpp in the integrated terminal so stdout/stderr show like a normal program. */
+function runInTerminal(subcommand, filePath) {
+  const root = workspaceRoot();
+  if (!root) {
+    vscode.window.showErrorMessage("Open the v++ project folder first.");
+    return false;
+  }
+  if (!filePath || !filePath.endsWith(".vpp")) {
+    vscode.window.showErrorMessage("Open a .vpp file first.");
+    return false;
+  }
+
+  let runner = resolveRunner(root);
+  if (!runner) {
+    vscode.window.showErrorMessage(
+      "v++ not found. Run .\\setup.ps1 once (downloads compiler — no Rust needed)."
+    );
+    return false;
+  }
+
+  const { command, argv } = runRunner(runner, [subcommand, filePath]);
+  const label = subcommand === "run" ? "v++ run" : `v++ ${subcommand}`;
+  const term =
+    vscode.window.terminals.find((t) => t.name === label) ??
+    vscode.window.createTerminal({ name: label, cwd: root });
+  term.show(true);
+  term.sendText([command, ...argv.map((a) => (/\s/.test(a) ? `"${a}"` : a))].join(" "));
+  return true;
+}
+
 /** @param {string} subcommand @param {string} filePath */
 async function runVpp(subcommand, filePath) {
   const root = workspaceRoot();
@@ -137,18 +216,20 @@ async function runVpp(subcommand, filePath) {
   let runner = resolveRunner(root);
   if (!runner) {
     const choice = await vscode.window.showInformationMessage(
-      "Build v++ compiler now? (one time, ~30 seconds)",
-      "Build",
+      "v++ not installed yet. Run setup.ps1 (downloads prebuilt compiler, no Rust).",
+      "Run setup",
       "Cancel"
     );
-    if (choice !== "Build") {
+    if (choice !== "Run setup") {
       return false;
     }
-    await buildCompiler(root);
+    await runSetup(root);
     invalidateRunnerCache();
     runner = resolveRunner(root);
     if (!runner) {
-      vscode.window.showErrorMessage("Build finished but vpp was not found. Run .\\setup.ps1 in the project folder.");
+      vscode.window.showErrorMessage(
+        "Setup finished but vpp was not found. Run .\\setup.ps1 in the project folder."
+      );
       return false;
     }
   }
@@ -250,6 +331,39 @@ async function formatDocument(document) {
   } finally {
     fs.rmSync(tmpDir, { recursive: true, force: true });
   }
+}
+
+/** @param {string} root */
+function runSetup(root) {
+  return new Promise((resolve, reject) => {
+    const setup = path.join(root, "setup.ps1");
+    if (!fs.existsSync(setup)) {
+      vscode.window.showErrorMessage("setup.ps1 not found in the project folder.");
+      reject(new Error("setup.ps1 missing"));
+      return;
+    }
+    exec(
+      "powershell -NoProfile -ExecutionPolicy Bypass -File setup.ps1 -SkipExtension -SkipTest",
+      { cwd: root, maxBuffer: 10 * 1024 * 1024 },
+      (err, stdout, stderr) => {
+        const output = getOutput();
+        output.show(true);
+        if (stdout) {
+          output.append(stdout);
+        }
+        if (stderr) {
+          output.append(stderr);
+        }
+        if (err) {
+          vscode.window.showErrorMessage(`setup.ps1 failed: ${stderr || err.message}`);
+          reject(err);
+          return;
+        }
+        invalidateRunnerCache();
+        resolve(undefined);
+      }
+    );
+  });
 }
 
 /** @param {string} root */
@@ -591,7 +705,7 @@ function activate(context) {
         vscode.window.showErrorMessage("No file open.");
         return;
       }
-      await runVpp("run", editor.document.uri.fsPath);
+      runInTerminal("run", editor.document.uri.fsPath);
     }),
     vscode.commands.registerCommand("vpp.checkFile", async () => {
       const editor = vscode.window.activeTextEditor;
@@ -623,7 +737,9 @@ function activate(context) {
       }
       const runner = resolveRunner(root);
       if (!runner) {
-        vscode.window.showErrorMessage("v++ compiler not found. Run .\\setup.ps1 once.");
+        vscode.window.showErrorMessage(
+      "v++ not found. Run .\\setup.ps1 once (downloads compiler — no Rust needed)."
+    );
         return;
       }
       const { command, argv } = runRunner(runner, ["repl"]);
@@ -666,7 +782,9 @@ function activate(context) {
       }
       const runner = resolveRunner(root);
       if (!runner) {
-        vscode.window.showErrorMessage("v++ compiler not found. Run .\\setup.ps1 once.");
+        vscode.window.showErrorMessage(
+      "v++ not found. Run .\\setup.ps1 once (downloads compiler — no Rust needed)."
+    );
         return;
       }
       const { command, argv } = runRunner(runner, ["test"]);

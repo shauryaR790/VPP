@@ -42,7 +42,7 @@ copy under llvm\ when available, or install:  winget install LLVM.LLVM
 VERIFY DOWNLOAD (optional)
 --------------------------
 Compare SHA256 of the zip with the .sha256 file on the GitHub Release page:
-  https://github.com/shauryaR790/V-/releases
+  https://github.com/shauryaR790/VPP/releases
 
 
-Source code: https://github.com/shauryaR790/V-
+Source code: https://github.com/shauryaR790/VPP

@@ -760,7 +760,7 @@ impl<'ctx> Emit<'ctx> {
                 let r = self.compile_value(right)?;
                 self.compile_binary(*op, l, r, &left.ty(), &right.ty(), ty)
             }
-            IrValue::Unary { op, expr, ty } => {
+            IrValue::Unary { op, expr, ty: _ } => {
                 let val = self.compile_value(expr)?;
                 match op {
                     crate::ast::UnOp::Not => Ok(self.builder.build_not(self.to_bool(val), "not").unwrap().into()),
@@ -863,8 +863,7 @@ impl<'ctx> Emit<'ctx> {
             .builder
             .build_pointer_cast(
                 data,
-                self.llvm_elem_type(elem_ty)
-                    .ptr_type(AddressSpace::default()),
+                self.context.ptr_type(AddressSpace::default()),
                 "arr_data",
             )
             .unwrap();
@@ -1363,8 +1362,7 @@ impl<'ctx> Emit<'ctx> {
             .builder
             .build_pointer_cast(
                 raw,
-                self.llvm_elem_type(elem_ty)
-                    .ptr_type(AddressSpace::default()),
+                self.context.ptr_type(AddressSpace::default()),
                 "elem_ptr",
             )
             .unwrap();

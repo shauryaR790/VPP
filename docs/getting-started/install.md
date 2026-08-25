@@ -2,6 +2,8 @@
 
 ## Windows (recommended)
 
+**Option A — installer (easiest, no Rust):**
+
 1. Download **`vpp-1.0.5-setup.exe`** from [GitHub Releases](https://github.com/shauryaR790/VPP/releases/latest).
 2. Run the installer. If Windows SmartScreen appears, choose **More info → Run anyway**.
 3. Open a **new** terminal:
@@ -10,6 +12,17 @@
 vpp run examples\hello.vpp
 vpp doctor
 ```
+
+**Option B — git clone:**
+
+```powershell
+git clone https://github.com/shauryaR790/VPP.git
+cd VPP
+.\setup.ps1
+.\vpp.ps1 run examples\hello.vpp
+```
+
+`setup.ps1` downloads the prebuilt compiler from Releases. Rust is **not** required unless you pass `-Dev` to build from source.
 
 If `vpp` is not found, add the install folder to PATH:
 

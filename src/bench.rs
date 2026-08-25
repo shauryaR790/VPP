@@ -6,7 +6,7 @@ use std::time::{Duration, Instant};
 use crate::driver;
 use crate::error::{VppError, VppResult};
 
-const DEFAULT_RUNS: u32 = 5;
+pub const DEFAULT_RUNS: u32 = 5;
 
 /// Time repeated interpreter runs (same engine as `vpp run` / `vpp repl`).
 pub fn bench_file(path: &Path, runs: u32) -> VppResult<()> {

@@ -14,7 +14,7 @@ thread_local! {
 
 pub(crate) fn take_last_cmd_io() -> (String, String) {
     LAST_CMD_IO.with(|cell| {
-        let mut guard = cell.borrow_mut();
+        let guard = cell.borrow_mut();
         (guard.0.clone(), guard.1.clone())
     })
 }

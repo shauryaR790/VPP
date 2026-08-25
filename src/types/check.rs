@@ -2098,7 +2098,7 @@ impl<'source> TypeChecker<'source> {
             TypeAnn::Named(name) if self.active_type_params.contains(name) => {
                 Type::TypeParam(name.clone())
             }
-            TypeAnn::Named(name) => self.resolve_ann(ann),
+            TypeAnn::Named(_) => self.resolve_ann(ann),
             TypeAnn::Array(inner) => {
                 Type::Array(Box::new(self.resolve_ann_in_scope(inner)))
             }

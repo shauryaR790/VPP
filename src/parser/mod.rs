@@ -52,7 +52,7 @@ impl Parser {
         let start = self.current_span();
         self.expect(&TokenKind::Import)?;
         let spec = match self.peek_kind() {
-            TokenKind::StringLit(path) => {
+            TokenKind::StringLit(_) => {
                 let TokenKind::StringLit(path) = self.advance_kind() else {
                     unreachable!()
                 };

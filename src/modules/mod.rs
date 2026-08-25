@@ -223,7 +223,6 @@ fn load_recursive(
 
     program.items.retain(|item| !matches!(item, Item::Import(_)));
 
-    let is_entry = path == *entry_path;
     let base_dir = path.parent().unwrap_or(Path::new("."));
 
     for import in imports {

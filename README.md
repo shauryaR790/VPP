@@ -6,11 +6,16 @@ A small compiled language: Python-ish syntax, static types, native binaries via 
 
 ## Quick start (Windows)
 
+**Easiest:** download **`vpp-1.0.5-setup.exe`** from [GitHub Releases](https://github.com/shauryaR790/VPP/releases/latest) — no Rust needed.
+
+**From a git clone:**
+
 ```powershell
-# 1. Install vpp-1.0.5-setup.exe from GitHub Releases
-# 2. Install "v++ Language" in VS Code (publisher: vpp-lang)
-vpp run examples\hello.vpp
+.\setup.ps1          # downloads prebuilt v1.0.5 + installs editor extension
+.\vpp.ps1 run examples\hello.vpp
 ```
+
+Developers only: `.\setup.ps1 -Dev` (builds from source; needs Rust).
 
 Docs: [website](https://shauryaR790.github.io/VPP/) · [hello-world guide](docs/getting-started/hello-world.md)
 

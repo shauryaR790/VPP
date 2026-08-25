@@ -71,7 +71,7 @@ pub fn load_program(path: &Path) -> VppResult<LoadedProgram> {
 }
 
 #[cfg(feature = "codegen")]
-pub fn emit_ir(source: &str, source_path: &Path, ir_path: &Path) -> VppResult<()> {
+pub fn emit_ir(_source: &str, source_path: &Path, ir_path: &Path) -> VppResult<()> {
     let typed = check_path(source_path)?;
     crate::codegen::compile(&typed, source_path, None, Some(ir_path))
 }
