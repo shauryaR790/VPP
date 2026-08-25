@@ -1430,6 +1430,15 @@ impl<'ctx> Emit<'ctx> {
         }
     }
 
+    /// LLVM type for a field inside a v++ struct aggregate (enums stored as tag i64).
+    pub(super) fn llvm_struct_field_type(&self, ty: &IrType) -> BasicTypeEnum<'ctx> {
+        if ty.is_enum() {
+            self.i64_type.into()
+        } else {
+            self.llvm_value_type(ty)
+        }
+    }
+
     /// LLVM type for a v++ value stored in a local, parameter, or return slot.
     pub(super) fn llvm_value_type(&self, ty: &IrType) -> BasicTypeEnum<'ctx> {
         match ty {

@@ -36,11 +36,16 @@ jobs:
           & C:\LLVM\bin\clang.exe --version
       - name: Native smoke test
         shell: pwsh
+        env:
+          LLVM_SYS_221_PREFIX: C:\LLVM
         run: |
+          $env:Path = "C:\LLVM\bin;" + $env:Path
           cargo build --features codegen --bin vpp
+          Copy-Item C:\LLVM\bin\LLVM*.dll, C:\LLVM\bin\lib*.dll target\debug\ -ErrorAction SilentlyContinue
           cargo test --features codegen --test typecheck --test lexer --test parser -- --test-threads=1
-          cargo run --features codegen -- run examples/hello.vpp
-          cargo run --features codegen -- build examples/hello.vpp -o $env:TEMP\vpp-hello.exe
+          & target\debug\vpp.exe run examples/hello.vpp
+          & target\debug\vpp.exe build examples/hello.vpp -o $env:TEMP\vpp-hello.exe
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           & $env:TEMP\vpp-hello.exe
 
   test-lsp:
@@ -79,11 +84,14 @@ jobs:
           sudo apt-get install -y clang-22 lld-22 llvm-22-dev libclang-22-dev
           echo "LLVM_SYS_221_PREFIX=$(llvm-config-22 --prefix)" >> "$GITHUB_ENV"
           echo "$(llvm-config-22 --prefix)/bin" >> "$GITHUB_PATH"
+          echo "LD_LIBRARY_PATH=$(llvm-config-22 --libdir)" >> "$GITHUB_ENV"
           llvm-config-22 --version
           llvm-config-22 --libs core native | head -c 200
       - name: Native smoke test
         run: |
+          export PATH="$(llvm-config-22 --prefix)/bin:$PATH"
+          export LD_LIBRARY_PATH="$(llvm-config-22 --libdir):${LD_LIBRARY_PATH:-}"
           cargo build --release --features codegen,lsp --bin vpp --bin vppls
-          cargo run --release --features codegen -- run examples/hello.vpp
-          cargo run --release --features codegen -- build examples/hello.vpp -o /tmp/vpp-hello
+          target/release/vpp run examples/hello.vpp
+          target/release/vpp build examples/hello.vpp -o /tmp/vpp-hello
           /tmp/vpp-hello

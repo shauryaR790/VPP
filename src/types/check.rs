@@ -161,12 +161,12 @@ impl<'source> TypeChecker<'source> {
                 message: format!("struct `{}` is already defined", s.name),
             });
         }
-        let mut fields = HashMap::new();
+        let mut fields = Vec::new();
         for field in &s.fields {
-            fields.insert(
+            fields.push((
                 field.name.clone(),
                 self.resolve_ann(&field.ty),
-            );
+            ));
         }
         self.symbols.insert(
             s.name.clone(),
@@ -344,7 +344,7 @@ impl<'source> TypeChecker<'source> {
                         fields: self
                             .structs
                             .get(&imp.type_name)
-                            .map(|s| s.fields.clone())
+                            .map(|s| s.fields_map())
                             .unwrap_or_default(),
                     }
                 } else {
@@ -407,7 +407,7 @@ impl<'source> TypeChecker<'source> {
                 if let Some(s) = self.structs.get(type_name) {
                     Type::Struct {
                         name: type_name.to_string(),
-                        fields: s.fields.clone(),
+                        fields: s.fields_map(),
                     }
                 } else {
                     Type::Struct {
@@ -1238,14 +1238,14 @@ impl<'source> TypeChecker<'source> {
 
         let mut typed_fields = Vec::new();
         for (field_name, expr) in fields {
-            let expected = struct_info.fields.get(field_name).ok_or_else(|| VppError::Other {
+            let expected = struct_info.field_type(field_name).ok_or_else(|| VppError::Other {
                 message: format!("struct `{struct_name}` has no field `{field_name}`"),
             })?;
             let typed = self.with_expected(expected.clone(), |this| this.check_expr(expr))?;
             typed_fields.push((field_name.clone(), typed));
         }
 
-        for field_name in struct_info.fields.keys() {
+        for (field_name, _) in &struct_info.fields {
             if !fields.iter().any(|(n, _)| n == field_name) {
                 return Err(VppError::Other {
                     message: format!("missing field `{field_name}` in `{struct_name}` literal"),
@@ -1258,7 +1258,7 @@ impl<'source> TypeChecker<'source> {
             fields: typed_fields,
             ty: Type::Struct {
                 name: struct_name,
-                fields: struct_info.fields,
+                fields: struct_info.fields_map(),
             },
         })
     }

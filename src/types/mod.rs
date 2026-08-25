@@ -58,7 +58,7 @@ impl Type {
                 if let Some(s) = structs.get(name) {
                     Type::Struct {
                         name: name.clone(),
-                        fields: s.fields.clone(),
+                        fields: s.fields_map(),
                     }
                 } else if let Some(e) = enums.get(name) {
                     Type::Enum {
@@ -132,8 +132,18 @@ impl fmt::Display for Type {
 #[derive(Debug, Clone)]
 pub struct StructInfo {
     pub name: String,
-    pub fields: HashMap<String, Type>,
+    pub fields: Vec<(String, Type)>,
     pub span: Span,
+}
+
+impl StructInfo {
+    pub fn field_type(&self, name: &str) -> Option<&Type> {
+        self.fields.iter().find(|(n, _)| n == name).map(|(_, t)| t)
+    }
+
+    pub fn fields_map(&self) -> HashMap<String, Type> {
+        self.fields.iter().cloned().collect()
+    }
 }
 
 #[derive(Debug, Clone)]

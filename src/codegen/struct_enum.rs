@@ -22,7 +22,7 @@ impl<'ctx> Emit<'ctx> {
         for (name, fields) in &self.struct_defs.clone() {
             let field_tys: Vec<BasicTypeEnum<'ctx>> = fields
                 .iter()
-                .map(|(_, t)| self.llvm_value_type(t))
+                .map(|(_, t)| self.llvm_struct_field_type(t))
                 .collect();
             let st = self.context.struct_type(&field_tys, false);
             self.struct_types.insert(name.clone(), st);
@@ -299,7 +299,31 @@ impl<'ctx> Emit<'ctx> {
                 message: format!("struct `{struct_name}` has no field `{field}`"),
             })?;
         let fty = self.struct_defs[&struct_name][idx].1.clone();
-        self.extract_struct_field(&struct_name, &val, field, idx, &fty)
+        let raw = self.extract_struct_field(&struct_name, &val, field, idx, &fty)?;
+        if fty.is_enum() {
+            let enum_name = fty.enum_key().ok_or_else(|| VppError::Other {
+                message: format!("struct `{struct_name}` field `{field}` has invalid enum type"),
+            })?;
+            return self.enum_from_tag(enum_name, raw.into_int_value());
+        }
+        Ok(raw)
+    }
+
+    fn enum_from_tag(
+        &self,
+        enum_name: &str,
+        tag: IntValue<'ctx>,
+    ) -> VppResult<BasicValueEnum<'ctx>> {
+        let st = *self.enum_types.get(enum_name).ok_or_else(|| VppError::Other {
+            message: format!("unknown enum `{enum_name}`"),
+        })?;
+        let mut agg = st.get_undef();
+        agg = self
+            .builder
+            .build_insert_value(agg, tag, 0u32, "tag")
+            .unwrap()
+            .into_struct_value();
+        Ok(agg.into())
     }
 
     pub(super) fn compile_struct_lit(
@@ -329,7 +353,12 @@ impl<'ctx> Emit<'ctx> {
                 })?;
             let fty = &def[idx].1;
             let mut val = self.compile_value(field_val_ir)?;
-            if *fty == IrType::String {
+            if fty.is_enum() {
+                let enum_name = fty.enum_key().ok_or_else(|| VppError::Other {
+                    message: format!("struct `{name}` field `{field_name}` has invalid enum type"),
+                })?;
+                val = self.extract_enum_tag(enum_name, &val)?.into();
+            } else if *fty == IrType::String {
                 let retain = self.module.get_function("vpp_string_retain").unwrap();
                 val = self.call_value(
                     self.builder

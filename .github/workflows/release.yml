@@ -37,7 +37,12 @@ jobs:
           "C:\LLVM\bin" | Out-File -FilePath $env:GITHUB_PATH -Append
 
       - name: Build release
-        run: cargo build --release --features codegen,lsp --bin vpp --bin vppls
+        shell: pwsh
+        env:
+          LLVM_SYS_221_PREFIX: C:\LLVM
+        run: |
+          $env:Path = "C:\LLVM\bin;" + $env:Path
+          cargo build --release --features codegen,lsp --bin vpp --bin vppls
 
       - name: Stage Windows files
         shell: pwsh
@@ -162,9 +167,12 @@ jobs:
           sudo apt-get install -y clang-22 lld-22 llvm-22-dev libclang-22-dev
           echo "LLVM_SYS_221_PREFIX=$(llvm-config-22 --prefix)" >> "$GITHUB_ENV"
           echo "$(llvm-config-22 --prefix)/bin" >> "$GITHUB_PATH"
+          echo "LD_LIBRARY_PATH=$(llvm-config-22 --libdir)" >> "$GITHUB_ENV"
 
       - name: Build release
-        run: cargo build --release --features codegen,lsp --bin vpp --bin vppls
+        run: |
+          export LD_LIBRARY_PATH="$(llvm-config-22 --libdir):${LD_LIBRARY_PATH:-}"
+          cargo build --release --features codegen,lsp --bin vpp --bin vppls
 
       - name: Package Linux bundle
         run: |
