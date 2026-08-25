@@ -760,7 +760,7 @@ impl<'source> TypeChecker<'source> {
         &self,
         scrutinee_ty: &Type,
         arms: &[TypedMatchArm],
-        _span: Span,
+        span: Span,
     ) -> VppResult<()> {
         if arms
             .iter()
