@@ -59,6 +59,30 @@ jobs:
           Copy-Item C:\LLVM\bin\clang*.exe, C:\LLVM\bin\lld*.exe, C:\LLVM\bin\LLVM*.dll, C:\LLVM\bin\lib*.dll -ErrorAction SilentlyContinue $staging/llvm/bin/
           "VERSION=$version" | Out-File -FilePath $env:GITHUB_ENV -Append
 
+      - name: Package portable zip
+        shell: pwsh
+        run: |
+          $version = "v$env:VERSION"
+          $dir = "vpp-$version-windows-x64"
+          Copy-Item -Recurse staging $dir
+          Copy-Item GO.bat, RELEASE.txt, START-HERE.txt $dir/
+          $zip = "$dir.zip"
+          Compress-Archive -Path $dir -DestinationPath $zip -Force
+          Get-FileHash $zip -Algorithm SHA256 | ForEach-Object { "$($_.Hash)  $(Split-Path $zip -Leaf)" } | Set-Content "$zip.sha256"
+
+      - name: Package VSIX
+        shell: pwsh
+        run: |
+          npm install -g @vscode/vsce
+          Push-Location editor/vscode-vpp
+          try {
+            $extVer = (Get-Content package.json -Raw | ConvertFrom-Json).version
+            vsce package -o "../../vplusplus-$extVer.vsix"
+            if (-not (Test-Path "../../vplusplus-$extVer.vsix")) { throw "vsce package failed" }
+          } finally {
+            Pop-Location
+          }
+
       - name: Install Inno Setup
         shell: pwsh
         run: |
@@ -79,31 +103,7 @@ jobs:
           } finally {
             Pop-Location
           }
-
-      - name: Package portable zip
-        shell: pwsh
-        run: |
-          $version = "v$env:VERSION"
-          $dir = "vpp-$version-windows-x64"
-          Copy-Item -Recurse staging $dir
-          Copy-Item GO.bat, RELEASE.txt, START-HERE.txt $dir/
-          $zip = "$dir.zip"
-          Compress-Archive -Path $dir -DestinationPath $zip -Force
-          Get-FileHash $zip -Algorithm SHA256 | ForEach-Object { "$($_.Hash)  $(Split-Path $zip -Leaf)" } | Set-Content "$zip.sha256"
           Get-FileHash "output/vpp-$env:VERSION-setup.exe" -Algorithm SHA256 | ForEach-Object { "$($_.Hash)  vpp-$($env:VERSION)-setup.exe" } | Set-Content "output/vpp-$env:VERSION-setup.exe.sha256"
-
-      - name: Package VSIX
-        shell: pwsh
-        run: |
-          npm install -g @vscode/vsce
-          Push-Location editor/vscode-vpp
-          try {
-            $extVer = (Get-Content package.json -Raw | ConvertFrom-Json).version
-            vsce package -o "../../vplusplus-$extVer.vsix"
-            if (-not (Test-Path "../../vplusplus-$extVer.vsix")) { throw "vsce package failed" }
-          } finally {
-            Pop-Location
-          }
 
       - name: Upload Windows release artifacts
         uses: actions/upload-artifact@v4
@@ -143,7 +143,7 @@ jobs:
             vpp-*-windows-x64.zip
             vpp-*-windows-x64.zip.sha256
             vplusplus-*.vsix
-          body_path: RELEASE_NOTES_v1.2.3.md
+          body_path: RELEASE_NOTES_v1.0.5.md
 
   build-linux:
     runs-on: ubuntu-latest

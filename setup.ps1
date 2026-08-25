@@ -79,22 +79,45 @@ function Get-ReleaseDownload {
 
     $repo = "shauryaR790/VPP"
     $tag = "v$Version"
-    $zipName = "vpp-$tag-windows-x64.zip"
-    $primary = "https://github.com/$repo/releases/download/$tag/$zipName"
+
+    function Find-ZipAsset($release) {
+        return $release.assets | Where-Object { $_.name -like "vpp-v*-windows-x64.zip" } | Select-Object -First 1
+    }
 
     try {
-        Invoke-WebRequest -Uri $primary -Method Head -UseBasicParsing | Out-Null
-        return @{ Url = $primary; Label = $tag }
+        $release = Invoke-RestMethod -Uri "https://api.github.com/repos/$repo/releases/tags/$tag" -UseBasicParsing
+        $asset = Find-ZipAsset $release
+        if ($asset) {
+            return @{ Url = $asset.browser_download_url; Label = $tag; Exact = $true }
+        }
     } catch {
-        Write-Host "  $tag zip not on Releases yet, trying latest..." -ForegroundColor DarkYellow
+        Write-Host ""
+        Write-Host "  $tag is not on GitHub Releases yet (CI may still be publishing)." -ForegroundColor Yellow
+        Write-Host "  Status: https://github.com/$repo/actions" -ForegroundColor DarkGray
+        Write-Host "  Waiting 90s for Release CI, then retrying..." -ForegroundColor DarkGray
+        Start-Sleep -Seconds 90
+        try {
+            $release = Invoke-RestMethod -Uri "https://api.github.com/repos/$repo/releases/tags/$tag" -UseBasicParsing
+            $asset = Find-ZipAsset $release
+            if ($asset) {
+                return @{ Url = $asset.browser_download_url; Label = $tag; Exact = $true }
+            }
+        } catch { }
+        Write-Host "  $tag still not published - falling back to latest release..." -ForegroundColor DarkYellow
     }
 
     $latest = Invoke-RestMethod -Uri "https://api.github.com/repos/$repo/releases/latest" -UseBasicParsing
-    $asset = $latest.assets | Where-Object { $_.name -like "vpp-v*-windows-x64.zip" } | Select-Object -First 1
+    $asset = Find-ZipAsset $latest
     if (-not $asset) {
         throw "No Windows zip found on GitHub Releases."
     }
-    return @{ Url = $asset.browser_download_url; Label = $latest.tag_name }
+    if ($latest.tag_name -ne $tag) {
+        Write-Host ""
+        Write-Host "  Wanted $tag but downloading $($latest.tag_name) for now." -ForegroundColor Yellow
+        Write-Host "  Re-run .\setup.ps1 after $tag appears on Releases." -ForegroundColor Yellow
+        Write-Host ""
+    }
+    return @{ Url = $asset.browser_download_url; Label = $latest.tag_name; Exact = ($latest.tag_name -eq $tag) }
 }
 
 function Install-ReleaseBundle {
