@@ -156,7 +156,7 @@ function Build-FromSource {
 function Install-EditorExtension {
     $extSrc = Join-Path $PSScriptRoot "editor\vscode-vpp"
     if (-not (Test-Path $extSrc)) {
-        Write-Host "Extension sources not found — skip editor install." -ForegroundColor DarkYellow
+        Write-Host "Extension sources not found - skip editor install." -ForegroundColor DarkYellow
         return
     }
 
@@ -168,7 +168,7 @@ function Install-EditorExtension {
         (Join-Path $env:USERPROFILE ".cursor\extensions\$extId-$extVersion")
     )
 
-    Write-Host "Installing v++ editor extension ($extId@$extVersion)..." -ForegroundColor Yellow
+    Write-Host ("Installing v++ editor extension ({0}@{1})..." -f $extId, $extVersion) -ForegroundColor Yellow
 
     foreach ($legacyRoot in @(
             (Join-Path $env:USERPROFILE ".vscode\extensions"),
@@ -238,6 +238,6 @@ if (Test-Path $hello) {
     Write-Host "Smoke test: vpp run examples\hello.vpp" -ForegroundColor Cyan
     & $vppExe run $hello
     if ($LASTEXITCODE -ne 0) {
-        Write-Host "Smoke test failed (compiler is installed — check examples\hello.vpp)." -ForegroundColor Yellow
+        Write-Host "Smoke test failed (compiler is installed - check examples\hello.vpp)." -ForegroundColor Yellow
     }
 }
