@@ -313,3 +313,30 @@ void vpp_log_line(VppString* level, VppString* message) {
     fprintf(stderr, "[%s] %s\n", vpp_string_cstr(level), vpp_string_cstr(message));
     fflush(stderr);
 }
+
+typedef struct {
+    VppString* name;
+    VppString* program;
+    VppArray* args;
+    VppString* cwd;
+    int64_t timeout_ms;
+} VppWorkflowTask;
+
+int64_t vpp_workflow_parallel_tasks(VppArray* tasks) {
+    if (!tasks) return 0;
+    int64_t n = vpp_array_len(tasks);
+    int64_t failed = 0;
+    for (int64_t i = 0; i < n; i++) {
+        VppWorkflowTask** slot = (VppWorkflowTask**)vpp_array_index_ptr(tasks, i);
+        if (!slot || !*slot) {
+            failed = 1;
+            continue;
+        }
+        VppWorkflowTask* t = *slot;
+        int64_t code = vpp_command_run(t->program, t->args, t->cwd, t->timeout_ms);
+        if (code != 0) {
+            failed = 1;
+        }
+    }
+    return failed;
+}

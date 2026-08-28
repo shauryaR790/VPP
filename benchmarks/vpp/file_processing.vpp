@@ -1,0 +1,19 @@
+import std.fs
+
+// BENCH_FILE_LINES=5000
+fn file_workload(path: string, lines: int) -> int {
+    let mut body = ""
+    let mut i = 0
+    while i < lines {
+        body = body + "benchmark-line\n"
+        i = i + 1
+    }
+    fs.write(path, body)
+    let read_back = fs.read(path)
+    return len(read_back)
+}
+
+fn main() -> int {
+    print(file_workload("benchmarks/results/tmp/bench-io.txt", 5000))
+    return 0
+}

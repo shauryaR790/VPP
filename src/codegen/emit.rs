@@ -39,6 +39,7 @@ pub(super) struct Emit<'ctx> {
     pub(super) enum_types: HashMap<String, StructType<'ctx>>,
     pub(super) variant_tags: HashMap<(String, String), i64>,
     pub(super) loop_stack: Vec<(BasicBlock<'ctx>, BasicBlock<'ctx>)>,
+    pub(super) scope_base_depth: usize,
     pub(super) i64_type: inkwell::types::IntType<'ctx>,
     pub(super) f64_type: inkwell::types::FloatType<'ctx>,
     pub(super) i1_type: inkwell::types::IntType<'ctx>,
@@ -176,6 +177,7 @@ impl<'ctx> Emit<'ctx> {
             enum_types: HashMap::new(),
             variant_tags: HashMap::new(),
             loop_stack: Vec::new(),
+            scope_base_depth: 0,
             i64_type: context.i64_type(),
             f64_type: context.f64_type(),
             i1_type: context.bool_type(),
@@ -392,6 +394,11 @@ impl<'ctx> Emit<'ctx> {
             void.fn_type(&[str_ptr.into(), str_ptr.into()], false),
             None,
         );
+        self.module.add_function(
+            "vpp_workflow_parallel_tasks",
+            i64.fn_type(&[arr_ptr.into()], false),
+            None,
+        );
         Ok(())
     }
 
@@ -423,6 +430,7 @@ impl<'ctx> Emit<'ctx> {
         self.builder.position_at_end(entry);
 
         self.enter_scope();
+        self.scope_base_depth = self.locals_stack.len();
         for (i, (name, ty)) in func.params.iter().enumerate() {
             let alloca = self.builder.build_alloca(self.llvm_value_type(ty), name).unwrap();
             let param = function.get_nth_param(i as u32).unwrap();
@@ -457,6 +465,7 @@ impl<'ctx> Emit<'ctx> {
         self.builder.position_at_end(entry);
 
         self.enter_scope();
+        self.scope_base_depth = self.locals_stack.len();
         for stmt in &ir.top_level {
             self.compile_stmt(stmt)?;
         }
@@ -625,15 +634,11 @@ impl<'ctx> Emit<'ctx> {
                 self.compile_for_array(var, array, elem_ty, body)?;
             }
             IrStmt::Return { value } => {
-                while self.locals_stack.len() > 1 {
-                    self.exit_scope();
-                }
                 let ret_val = if let Some(v) = value {
                     Some(self.compile_value(v)?)
                 } else {
                     None
                 };
-                self.release_current_scope_heap();
                 if let Some(compiled) = ret_val {
                     self.builder.build_return(Some(&compiled)).unwrap();
                 } else {
@@ -919,6 +924,7 @@ impl<'ctx> Emit<'ctx> {
                 BuiltinKind::DirExists => self.emit_dir_exists(args),
                 BuiltinKind::DirCreate => self.emit_unary_runtime_void("vpp_dir_create", args),
                 BuiltinKind::LogLine => self.emit_binary_runtime_void("vpp_log_line", args),
+                BuiltinKind::WorkflowParallelTasks => self.emit_workflow_parallel_tasks(args),
                 _ => Err(VppError::Other {
                     message: format!("native codegen: `{name}` not supported yet"),
                 }),
@@ -1078,6 +1084,24 @@ impl<'ctx> Emit<'ctx> {
                     &[program.into(), argv.into(), cwd.into(), timeout.into()],
                     "command_run",
                 )
+                .unwrap(),
+        ))
+    }
+
+    fn emit_workflow_parallel_tasks(&mut self, args: &[IrValue]) -> VppResult<BasicValueEnum<'ctx>> {
+        let mut arr = self.compile_value(&args[0])?;
+        if args[0].ty().is_array() {
+            let retain = self.module.get_function("vpp_array_retain").unwrap();
+            arr = self.call_value(
+                self.builder
+                    .build_call(retain, &[arr.into()], "wf_arr_retain")
+                    .unwrap(),
+            );
+        }
+        let f = self.module.get_function("vpp_workflow_parallel_tasks").unwrap();
+        Ok(self.call_value(
+            self.builder
+                .build_call(f, &[arr.into()], "workflow_parallel")
                 .unwrap(),
         ))
     }

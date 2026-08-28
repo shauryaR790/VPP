@@ -1,0 +1,46 @@
+// BENCH_MAP_SIZE=5000 BENCH_MAP_LOOKUPS=50000 BENCH_SORT_SEED=42
+fn key_at(i: int) -> int {
+    return i * 3 + 7
+}
+
+fn value_at(i: int) -> int {
+    return i * 31 + 13
+}
+
+fn lookup(keys_size: int, target: int) -> int {
+    let mut i = 0
+    while i < keys_size {
+        if key_at(i) == target {
+            return value_at(i)
+        }
+        i = i + 1
+    }
+    return -1
+}
+
+fn lcg_next(state: int) -> int {
+    let mut s = state * 1103515245 + 12345
+    if s < 0 {
+        s = 0 - s
+    }
+    return s
+}
+
+fn map_workload(map_size: int, lookups: int, seed: int) -> int {
+    let mut sum = 0
+    let mut state = seed
+    let mut n = 0
+    while n < lookups {
+        state = lcg_next(state)
+        let idx = state % map_size
+        let key = key_at(idx)
+        sum = sum + lookup(map_size, key)
+        n = n + 1
+    }
+    return sum
+}
+
+fn main() -> int {
+    print(map_workload(5000, 50000, 42))
+    return 0
+}

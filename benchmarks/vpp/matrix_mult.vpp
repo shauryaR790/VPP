@@ -1,0 +1,31 @@
+// BENCH_MATRIX_SIZE=128
+fn mat_value(row: int, col: int, n: int) -> int {
+    return (row * 131 + col * 17) % 997
+}
+
+fn matrix_multiply(n: int) -> int {
+    let mut checksum = 0
+    let mut i = 0
+    while i < n {
+        let mut j = 0
+        while j < n {
+            let mut total = 0
+            let mut k = 0
+            while k < n {
+                let a = mat_value(i, k, n)
+                let b = mat_value(k, j, n)
+                total = total + a * b
+                k = k + 1
+            }
+            checksum = checksum + total
+            j = j + 1
+        }
+        i = i + 1
+    }
+    return checksum
+}
+
+fn main() -> int {
+    print(matrix_multiply(128))
+    return 0
+}

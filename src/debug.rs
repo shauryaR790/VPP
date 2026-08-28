@@ -41,6 +41,7 @@ struct DebugSession {
     paused_line: Option<u32>,
     top_ip: usize,
     finished: bool,
+    dap_print_rx: Option<std::sync::mpsc::Receiver<String>>,
 }
 
 impl DebugSession {
@@ -59,7 +60,24 @@ impl DebugSession {
             paused_line: None,
             top_ip: 0,
             finished: false,
+            dap_print_rx: None,
         })
+    }
+
+    fn flush_dap_output(&mut self, stdout: &mut io::Stdout) -> VppResult<()> {
+        if let Some(rx) = &self.dap_print_rx {
+            while let Ok(line) = rx.try_recv() {
+                send_event(
+                    stdout,
+                    "output",
+                    json!({
+                        "category": "stdout",
+                        "output": format!("{line}\n"),
+                    }),
+                )?;
+            }
+        }
+        Ok(())
     }
 
     fn run_cli(&mut self) -> VppResult<()> {
@@ -224,6 +242,10 @@ impl DebugSession {
     }
 
     fn run_dap(&mut self, path: &Path) -> VppResult<()> {
+        let (tx, rx) = std::sync::mpsc::channel();
+        self.interp.set_dap_print_tx(tx);
+        self.dap_print_rx = Some(rx);
+
         let stdin = io::stdin();
         let mut stdout = io::stdout();
         let mut seq = 1u64;
@@ -272,6 +294,7 @@ impl DebugSession {
                 }
                 "configurationDone" => {
                     self.run_until_pause()?;
+                    self.flush_dap_output(&mut stdout)?;
                     send_event(&mut stdout, "stopped", json!({ "reason": "entry", "threadId": 1 }))?;
                     json!({})
                 }
@@ -316,6 +339,7 @@ impl DebugSession {
                     self.interp.debug_mut().paused_line = None;
                     self.interp.debug_mut().resume_pending = true;
                     self.run_until_pause()?;
+                    self.flush_dap_output(&mut stdout)?;
                     if self.finished {
                         send_event(&mut stdout, "terminated", json!({}))?;
                     } else {

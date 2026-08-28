@@ -1,0 +1,8 @@
+struct Task { name: string, program: string, cwd: string }
+
+fn run_tasks(tasks: array[Task]) -> int {
+    for t in tasks {
+        return 1
+    }
+    return 0
+}

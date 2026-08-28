@@ -1,0 +1,18 @@
+{
+  "comment": "Shared workload parameters  -  every implementation must use these values.",
+  "runs_default": 5,
+  "warmup_default": 1,
+  "fibonacci_n": 35,
+  "primes_limit": 500000,
+  "sort_size": 2000,
+  "sort_seed": 42,
+  "array_size": 5000000,
+  "string_iters": 3000,
+  "string_chunk": "benchmark-chunk-0123456789",
+  "matrix_size": 128,
+  "map_size": 5000,
+  "map_lookups": 50000,
+  "file_lines": 5000,
+  "recursive_depth": 20,
+  "arithmetic_iters": 500000000
+}

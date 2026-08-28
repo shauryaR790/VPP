@@ -1,0 +1,90 @@
+// Composable automation workflows (v2.0.0).
+import std.process
+import std.logging
+
+pub struct Task {
+    name: string
+    program: string
+    args: array[string]
+    cwd: string
+    timeout_ms: int
+}
+
+pub fn task(name: string, program: string, args: array[string]) -> Task {
+    return Task {
+        name: name
+        program: program
+        args: args
+        cwd: ""
+        timeout_ms: 0
+    }
+}
+
+pub fn with_cwd(t: Task, cwd: string) -> Task {
+    return Task {
+        name: t.name
+        program: t.program
+        args: t.args
+        cwd: cwd
+        timeout_ms: t.timeout_ms
+    }
+}
+
+pub fn sequence(tasks: array[Task]) -> Result<int, string> {
+    for t in tasks {
+        logging.info("sequence: " + t.name)
+        let code = command_run(t.program, t.args, t.cwd, t.timeout_ms)
+        if code == -2 {
+            return Err(t.name + ": timed out")
+        }
+        if code != 0 {
+            return Err(t.name + " failed")
+        }
+    }
+    return Ok(0)
+}
+
+pub fn parallel(tasks: array[Task]) -> Result<int, string> {
+    for t in tasks {
+        logging.info("parallel: " + t.name)
+    }
+    let code = workflow_parallel_tasks(tasks)
+    if code != 0 {
+        return Err("parallel workflow failed")
+    }
+    return Ok(0)
+}
+
+pub fn retry(n: int, t: Task) -> Result<ProcessOutput, string> {
+    let mut attempt = 0
+    while attempt < n {
+        let code = command_run(t.program, t.args, t.cwd, t.timeout_ms)
+        if code == 0 {
+            let out = ProcessOutput {
+                exit_code: code
+                stdout: command_stdout()
+                stderr: command_stderr()
+            }
+            return Ok(out)
+        }
+        logging.warn("retry " + t.name)
+        attempt = attempt + 1
+    }
+    return Err(t.name + " failed after retries")
+}
+
+pub fn with_timeout(ms: int, t: Task) -> Result<ProcessOutput, string> {
+    let code = command_run(t.program, t.args, t.cwd, ms)
+    if code == -2 {
+        return Err(t.name + ": timed out")
+    }
+    let out = ProcessOutput {
+        exit_code: code
+        stdout: command_stdout()
+        stderr: command_stderr()
+    }
+    if code != 0 {
+        return Err(t.name + " failed")
+    }
+    return Ok(out)
+}

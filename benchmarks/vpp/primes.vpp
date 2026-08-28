@@ -1,0 +1,31 @@
+// BENCH_PRIMES_LIMIT=500000
+fn is_prime(n: int) -> bool {
+    if n < 2 {
+        return false
+    }
+    let mut d = 2
+    while d * d <= n {
+        if n % d == 0 {
+            return false
+        }
+        d = d + 1
+    }
+    return true
+}
+
+fn count_primes(limit: int) -> int {
+    let mut count = 0
+    let mut n = 2
+    while n <= limit {
+        if is_prime(n) {
+            count = count + 1
+        }
+        n = n + 1
+    }
+    return count
+}
+
+fn main() -> int {
+    print(count_primes(500000))
+    return 0
+}

@@ -1,0 +1,15 @@
+﻿{
+    "timestamp_utc":  "2026-08-22T10:19:05.5168029Z",
+    "os":  "Microsoft Windows 11 Home Single Language",
+    "cpu":  "12th Gen Intel(R) Core(TM) i5-12450HX",
+    "ram_gb":  11.7,
+    "vpp":  "vpp 1.0.3",
+    "vpp_path":  "C:\\Users\\shaur\\v++\\target\\release\\vpp.exe",
+    "python":  "Python 3.12.7",
+    "rust":  "rustc 1.97.1 (8bab26f4f 2026-07-14)",
+    "cargo":  "cargo 1.97.1 (c980f4866 2026-06-30)",
+    "cpp":  "C:\\Program Files\\LLVM\\bin\\clang++.exe -O3 -std=c++17",
+    "runs":  1,
+    "warmup":  0,
+    "repo_root":  "C:\\Users\\shaur\\v++"
+}

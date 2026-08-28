@@ -1,0 +1,18 @@
+import std.process
+
+fn check_exec() -> int {
+    let r = process.exec("git", ["--version"], process.default_options())
+    match r {
+        Ok(out) => {
+            return out.exit_code
+        }
+        Err(e) => {
+            print(e)
+            return 1
+        }
+    }
+}
+
+fn main() -> int {
+    return check_exec()
+}

@@ -1,0 +1,50 @@
+[package]
+name = "vpp-benchmarks"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[[bin]]
+name = "fibonacci"
+path = "src/bin/fibonacci.rs"
+
+[[bin]]
+name = "primes"
+path = "src/bin/primes.rs"
+
+[[bin]]
+name = "sorting"
+path = "src/bin/sorting.rs"
+
+[[bin]]
+name = "array_iteration"
+path = "src/bin/array_iteration.rs"
+
+[[bin]]
+name = "string_processing"
+path = "src/bin/string_processing.rs"
+
+[[bin]]
+name = "matrix_mult"
+path = "src/bin/matrix_mult.rs"
+
+[[bin]]
+name = "map_lookup"
+path = "src/bin/map_lookup.rs"
+
+[[bin]]
+name = "file_processing"
+path = "src/bin/file_processing.rs"
+
+[[bin]]
+name = "recursive"
+path = "src/bin/recursive.rs"
+
+[[bin]]
+name = "arithmetic"
+path = "src/bin/arithmetic.rs"
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1

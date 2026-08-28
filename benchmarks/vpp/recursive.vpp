@@ -1,0 +1,12 @@
+// BENCH_RECURSIVE_DEPTH=20
+fn recurse(depth: int) -> int {
+    if depth == 0 {
+        return 1
+    }
+    return recurse(depth - 1) + recurse(depth - 1)
+}
+
+fn main() -> int {
+    print(recurse(20))
+    return 0
+}

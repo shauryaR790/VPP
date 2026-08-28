@@ -1,0 +1,15 @@
+// BENCH_STRING_ITERS=3000 BENCH_STRING_CHUNK="benchmark-chunk-0123456789"
+fn build_string(iters: int, chunk: string) -> int {
+    let mut out = ""
+    let mut i = 0
+    while i < iters {
+        out = out + chunk
+        i = i + 1
+    }
+    return len(out)
+}
+
+fn main() -> int {
+    print(build_string(3000, "benchmark-chunk-0123456789"))
+    return 0
+}

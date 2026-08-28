@@ -142,6 +142,7 @@ pub(crate) struct Interpreter {
     breaking: bool,
     continuing: bool,
     debug: Option<DebugState>,
+    dap_print_tx: Option<std::sync::mpsc::Sender<String>>,
 }
 
 pub fn run(program: &TypedProgram) -> VppResult<()> {
@@ -209,7 +210,12 @@ impl Interpreter {
                 resume_pending: false,
                 saved: None,
             }),
+            dap_print_tx: None,
         }
+    }
+
+    pub fn set_dap_print_tx(&mut self, tx: std::sync::mpsc::Sender<String>) {
+        self.dap_print_tx = Some(tx);
     }
 
     pub fn debug_mut(&mut self) -> &mut DebugState {
@@ -275,6 +281,7 @@ impl Interpreter {
             breaking: false,
             continuing: false,
             debug: None,
+            dap_print_tx: None,
         }
     }
 
@@ -522,7 +529,11 @@ impl Interpreter {
         if name == "print" {
             for arg in args {
                 let val = self.eval_expr(arg)?;
-                println!("{}", val.display_string());
+                let line = val.display_string();
+                if let Some(tx) = &self.dap_print_tx {
+                    let _ = tx.send(line.clone());
+                }
+                println!("{line}");
             }
             return Ok(Value::Void);
         }
@@ -840,6 +851,25 @@ impl Interpreter {
             return Ok(Value::Void);
         }
 
+        if name == "workflow_parallel_tasks" {
+            let tasks = match self.eval_expr(&args[0])? {
+                Value::Array(items) => items,
+                other => {
+                    return Err(VppError::Other {
+                        message: format!(
+                            "workflow_parallel_tasks expects array[Task], found {other:?}"
+                        ),
+                    });
+                }
+            };
+            let mut specs = Vec::new();
+            for item in tasks.iter() {
+                specs.push(parse_task_spec(item)?);
+            }
+            let code = crate::automation::parallel_tasks(specs)?;
+            return Ok(Value::Int(code));
+        }
+
         let func = self
             .functions
             .get(name)
@@ -848,7 +878,7 @@ impl Interpreter {
                 message: format!("undefined function `{name}`"),
             })?;
 
-        if self.debug.is_some() && !matches!(name, "print" | "len" | "assert" | "assert_eq" | "read_file" | "write_file" | "file_exists" | "json_parse" | "json_stringify" | "process_run" | "command_run" | "command_stdout" | "command_stderr" | "env_get" | "env_set" | "dir_list" | "dir_exists" | "dir_create" | "log_line") {
+        if self.debug.is_some() && !matches!(name, "print" | "len" | "assert" | "assert_eq" | "read_file" | "write_file" | "file_exists" | "json_parse" | "json_stringify" | "process_run" | "command_run" | "command_stdout" | "command_stderr" | "env_get" | "env_set" | "dir_list" | "dir_exists" | "dir_create" | "log_line" | "workflow_parallel_tasks") {
             if let Some(dbg) = &mut self.debug {
                 dbg.call_depth += 1;
             }
@@ -887,7 +917,7 @@ impl Interpreter {
         self.return_value = saved_return;
         self.pop_scope();
 
-        if self.debug.is_some() && !matches!(name, "print" | "len" | "assert" | "assert_eq" | "read_file" | "write_file" | "file_exists" | "json_parse" | "json_stringify" | "process_run" | "command_run" | "command_stdout" | "command_stderr" | "env_get" | "env_set" | "dir_list" | "dir_exists" | "dir_create" | "log_line") {
+        if self.debug.is_some() && !matches!(name, "print" | "len" | "assert" | "assert_eq" | "read_file" | "write_file" | "file_exists" | "json_parse" | "json_stringify" | "process_run" | "command_run" | "command_stdout" | "command_stderr" | "env_get" | "env_set" | "dir_list" | "dir_exists" | "dir_create" | "log_line" | "workflow_parallel_tasks") {
             if let Some(dbg) = &mut self.debug {
                 dbg.call_depth = dbg.call_depth.saturating_sub(1);
             }
@@ -1301,6 +1331,61 @@ pub fn run_repl() -> crate::VppResult<()> {
         }
     }
     Ok(())
+}
+
+fn parse_task_spec(value: &Value) -> VppResult<crate::automation::TaskSpec> {
+    let fields = match value {
+        Value::Struct { fields, .. } => fields,
+        other => {
+            return Err(VppError::Other {
+                message: format!("expected Task struct, found {other:?}"),
+            });
+        }
+    };
+    let field_str = |key: &str| -> VppResult<String> {
+        match fields.get(key) {
+            Some(Value::String(s)) => Ok(s.to_string()),
+            other => Err(VppError::Other {
+                message: format!("Task.{key} expects string, found {other:?}"),
+            }),
+        }
+    };
+    let args = match fields.get("args") {
+        Some(Value::Array(items)) => {
+            let mut out = Vec::new();
+            for item in items.iter() {
+                match item {
+                    Value::String(s) => out.push(s.to_string()),
+                    other => {
+                        return Err(VppError::Other {
+                            message: format!("Task.args must be strings, found {other:?}"),
+                        });
+                    }
+                }
+            }
+            out
+        }
+        other => {
+            return Err(VppError::Other {
+                message: format!("Task.args expects array[string], found {other:?}"),
+            });
+        }
+    };
+    let timeout_ms = match fields.get("timeout_ms") {
+        Some(Value::Int(n)) => *n,
+        other => {
+            return Err(VppError::Other {
+                message: format!("Task.timeout_ms expects int, found {other:?}"),
+            });
+        }
+    };
+    Ok(crate::automation::TaskSpec {
+        name: field_str("name")?,
+        program: field_str("program")?,
+        args,
+        cwd: field_str("cwd")?,
+        timeout_ms,
+    })
 }
 
 #[cfg(test)]

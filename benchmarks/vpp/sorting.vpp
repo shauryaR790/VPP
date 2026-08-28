@@ -1,0 +1,35 @@
+// BENCH_SORT_SIZE=2000 BENCH_SORT_SEED=42
+fn rand_at(i: int, seed: int) -> int {
+    let mut s = seed + i * 1103515245
+    if s < 0 {
+        s = 0 - s
+    }
+    return s % 1000000
+}
+
+fn sort_kernel(size: int, seed: int) -> int {
+    let mut comparisons = 0
+    let mut checksum = 0
+    let mut i = 0
+    while i < size {
+        let mut j = i + 1
+        while j < size {
+            let a = rand_at(i, seed)
+            let b = rand_at(j, seed)
+            comparisons = comparisons + 1
+            if a > b {
+                checksum = checksum + (a - b)
+            } else {
+                checksum = checksum + (b - a)
+            }
+            j = j + 1
+        }
+        i = i + 1
+    }
+    return comparisons + checksum
+}
+
+fn main() -> int {
+    print(sort_kernel(2000, 42))
+    return 0
+}

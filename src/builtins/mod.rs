@@ -25,6 +25,7 @@ pub enum BuiltinKind {
     DirExists,
     DirCreate,
     LogLine,
+    WorkflowParallelTasks,
     Some,
     Ok,
     Err,
@@ -58,7 +59,7 @@ impl BuiltinSig {
     }
 }
 
-static BUILTINS: [BuiltinSig; 22] = [
+static BUILTINS: [BuiltinSig; 23] = [
     BuiltinSig::variadic("print", BuiltinKind::Print),
     BuiltinSig::fixed("len", BuiltinKind::Len, 1),
     BuiltinSig::fixed("assert", BuiltinKind::Assert, 1),
@@ -78,6 +79,7 @@ static BUILTINS: [BuiltinSig; 22] = [
     BuiltinSig::fixed("dir_exists", BuiltinKind::DirExists, 1),
     BuiltinSig::fixed("dir_create", BuiltinKind::DirCreate, 1),
     BuiltinSig::fixed("log_line", BuiltinKind::LogLine, 2),
+    BuiltinSig::fixed("workflow_parallel_tasks", BuiltinKind::WorkflowParallelTasks, 1),
     BuiltinSig::fixed("Some", BuiltinKind::Some, 1),
     BuiltinSig::fixed("Ok", BuiltinKind::Ok, 1),
     BuiltinSig::fixed("Err", BuiltinKind::Err, 1),

@@ -1,0 +1,6 @@
+"benchmark","language","compile_ms"
+"array_iteration","vpp_native_compile","626.761"
+"array_iteration","cpp_compile","1364.732"
+"recursive","vpp_native_compile","661.87"
+"recursive","cpp_compile","1085.674"
+"all","rust_release_build","77.748"

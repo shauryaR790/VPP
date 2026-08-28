@@ -55,6 +55,13 @@ fn automation_smoke_native() {
 }
 
 #[test]
+fn workflow_smoke_interpreter() {
+    run_interpreter(&example("workflow_smoke.vpp"));
+}
+
+// Native workflow: deferred until struct-array for-loop codegen is fixed (v2.0.1).
+
+#[test]
 fn process_exec_parity() {
     let dir = std::env::temp_dir().join(format!("vpp-auto-exec-{}", std::process::id()));
     let _ = std::fs::remove_dir_all(&dir);

@@ -1,0 +1,32 @@
+import std.workflow
+
+fn main() -> int {
+    print("workflow smoke test")
+
+    let t1 = workflow.task("git-version", "git", ["--version"])
+    let t2 = workflow.task("git-help", "git", ["--help"])
+    let tasks = [t1, t2]
+
+    let seq = workflow.sequence(tasks)
+    match seq {
+        Ok(_) => {
+            print("sequence ok")
+        }
+        Err(e) => {
+            print(e)
+            return 1
+        }
+    }
+
+    let par = workflow.parallel(tasks)
+    match par {
+        Ok(_) => {
+            print("parallel ok")
+            return 0
+        }
+        Err(e) => {
+            print(e)
+            return 1
+        }
+    }
+}

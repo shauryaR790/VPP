@@ -79,3 +79,54 @@ pub(crate) fn command_run(
 pub(crate) fn set_last_cmd_io(stdout: String, stderr: String) {
     LAST_CMD_IO.with(|cell| *cell.borrow_mut() = (stdout, stderr));
 }
+
+#[derive(Debug, Clone)]
+pub(crate) struct TaskSpec {
+    pub name: String,
+    pub program: String,
+    pub args: Vec<String>,
+    pub cwd: String,
+    pub timeout_ms: i64,
+}
+
+/// Run tasks concurrently. Returns 0 if all succeeded, 1 if any failed.
+pub(crate) fn parallel_tasks(specs: Vec<TaskSpec>) -> VppResult<i64> {
+    if specs.is_empty() {
+        return Ok(0);
+    }
+
+    use std::sync::mpsc;
+    use std::thread;
+
+    let count = specs.len();
+    let (tx, rx) = mpsc::channel();
+    for spec in specs {
+        let tx = tx.clone();
+        thread::spawn(move || {
+            let code = command_run(
+                &spec.program,
+                &spec.args.iter().map(|s| Rc::new(s.clone())).collect::<Vec<_>>(),
+                &spec.cwd,
+                spec.timeout_ms,
+            )
+            .unwrap_or(-1);
+            let ok = code == 0;
+            let _ = tx.send((spec.name, ok));
+        });
+    }
+    drop(tx);
+
+    let mut failed = false;
+    for _ in 0..count {
+        match rx.recv() {
+            Ok((_name, ok)) if !ok => failed = true,
+            Ok(_) => {}
+            Err(_) => {
+                failed = true;
+                break;
+            }
+        }
+    }
+
+    Ok(if failed { 1 } else { 0 })
+}

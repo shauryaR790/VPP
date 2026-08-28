@@ -1,0 +1,19 @@
+// BENCH_ARITHMETIC_ITERS=500000000
+fn arithmetic(iters: int) -> int {
+    let mut x = 1
+    let mut i = 0
+    while i < iters {
+        x = x + (x * 3) % 1000003
+        if x < 0 {
+            x = 0 - x
+        }
+        x = x - (x / 4)
+        i = i + 1
+    }
+    return x
+}
+
+fn main() -> int {
+    print(arithmetic(500000000))
+    return 0
+}

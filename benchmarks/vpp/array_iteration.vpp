@@ -1,0 +1,15 @@
+// BENCH_ARRAY_SIZE=5000000
+fn sum_range(n: int) -> int {
+    let mut total = 0
+    let mut i = 0
+    while i < n {
+        total = total + i
+        i = i + 1
+    }
+    return total
+}
+
+fn main() -> int {
+    print(sum_range(5000000))
+    return 0
+}

@@ -2,7 +2,7 @@
   "name": "vplusplus",
   "displayName": "v++ Language",
   "description": "Official v++ extension. Debug, run, watch, REPL, tests, format, LSP.",
-  "version": "1.2.3",
+  "version": "2.0.0",
   "publisher": "vpp-lang",
   "license": "MIT",
   "icon": "icon.png",
@@ -140,12 +140,12 @@
     "menus": {
       "editor/title/run": [
         {
-          "command": "vpp.debugFile",
+          "command": "vpp.runFile",
           "when": "resourceLangId == vpp",
           "group": "navigation@0"
         },
         {
-          "command": "vpp.runFile",
+          "command": "vpp.debugFile",
           "when": "resourceLangId == vpp",
           "group": "navigation"
         },
@@ -213,12 +213,12 @@
     "keybindings": [
       {
         "command": "vpp.runFile",
-        "key": "ctrl+shift+r",
+        "key": "f5",
         "when": "resourceLangId == vpp && editorTextFocus"
       },
       {
         "command": "vpp.debugFile",
-        "key": "f5",
+        "key": "shift+f5",
         "when": "resourceLangId == vpp && editorTextFocus"
       },
       {

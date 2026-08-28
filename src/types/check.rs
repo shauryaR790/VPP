@@ -1904,6 +1904,30 @@ impl<'source> TypeChecker<'source> {
                 args: vec![a0, a1],
                 ty: Type::Void,
             })
+        } else if name == "workflow_parallel_tasks" {
+            if args.len() != 1 {
+                return Err(VppError::WrongArgCount {
+                    name: name.to_string(),
+                    expected: 1,
+                    found: args.len(),
+                    span: span_to_source(self.source, span),
+                });
+            }
+            let tasks = self.check_expr(&args[0])?;
+            if !matches!(tasks.ty(), Type::Array(_)) {
+                return Err(type_mismatch(
+                    self.source,
+                    args[0].span(),
+                    "array[Task]",
+                    &tasks.ty().name(),
+                    "pass an array of workflow Task values",
+                ));
+            }
+            Ok(TypedExpr::Call {
+                name: name.to_string(),
+                args: vec![tasks],
+                ty: Type::Int,
+            })
         } else if name == "dir_create" {
             if args.len() != 1 {
                 return Err(VppError::WrongArgCount {

@@ -830,7 +830,7 @@ function activate(context) {
     context.globalState.update(welcomeKey, true);
     vscode.window
       .showInformationMessage(
-        "v++ Language 1.0.0  -  stable. F5 debug, Test Explorer, registry search. Same .vpp for run/repl/watch/build.",
+        "v++ 2.0.0 — F5 runs in terminal. Shift+F5 debug. Workflows, automation, LSP.",
         "Open docs",
         "Settings"
       )
