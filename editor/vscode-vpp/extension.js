@@ -190,7 +190,11 @@ function runInTerminal(subcommand, filePath) {
     return false;
   }
 
-  const { command, argv } = runRunner(runner, [subcommand, filePath]);
+  const runArgs = [subcommand, filePath];
+  if (subcommand === "run" && vscode.workspace.getConfiguration("vpp").get("optimizeRun", false)) {
+    runArgs.splice(1, 0, "-O");
+  }
+  const { command, argv } = runRunner(runner, runArgs);
   const label = subcommand === "run" ? "v++ run" : `v++ ${subcommand}`;
   const term =
     vscode.window.terminals.find((t) => t.name === label) ??

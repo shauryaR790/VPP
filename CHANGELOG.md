@@ -2,6 +2,29 @@
 
 All notable changes to v++ are documented here.
 
+## [2.1.0] — 2026-10-09
+
+### Added — Light runtime optimizations
+
+- **`vpp run -O` / `--optimize`** — sets `VPP_OPT=1` (quieter `std/workflow`, reuse module parse cache in-process)
+- **`std/opt`** — `opt.enabled()` reads `VPP_OPT`
+- **Parallel workflows** — cap concurrent task threads at 8
+- **Extension 2.1.0** — optional `vpp.optimizeRun` for terminal runs
+
+## [2.0.0]  -  2026-08-28
+
+### Added  -  Workflows + terminal run
+
+- **`std/workflow`** — `sequence`, `parallel`, `retry`, `with_timeout` over typed `Task` steps
+- **`workflow_parallel_tasks`** builtin — concurrent steps (interpreter); native sequential fallback
+- **Codegen fixes** — `return` in match/for scopes; struct-array for-loop native fix deferred to v2.0.1
+
+### Extension 2.0.0 (Marketplace live)
+
+- **F5** → run in integrated terminal; **Shift+F5** → debug
+- DAP `print()` → Debug Console
+- [Marketplace](https://marketplace.visualstudio.com/items?itemName=vpp-lang.vplusplus) · `vplusplus-2.0.0.vsix` on Releases
+
 ## [1.0.5]  -  2026-08-24
 
 ### Added  -  Automation foundation

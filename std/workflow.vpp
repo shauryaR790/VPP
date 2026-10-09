@@ -1,6 +1,7 @@
-// Composable automation workflows (v2.0.0).
+// Composable automation workflows (v2.0.0+).
 import std.process
 import std.logging
+import std.env
 
 pub struct Task {
     name: string
@@ -30,9 +31,15 @@ pub fn with_cwd(t: Task, cwd: string) -> Task {
     }
 }
 
+fn opt_quiet() -> bool {
+    return env.get("VPP_OPT") == "1"
+}
+
 pub fn sequence(tasks: array[Task]) -> Result<int, string> {
     for t in tasks {
-        logging.info("sequence: " + t.name)
+        if not opt_quiet() {
+            logging.info("sequence: " + t.name)
+        }
         let code = command_run(t.program, t.args, t.cwd, t.timeout_ms)
         if code == -2 {
             return Err(t.name + ": timed out")
@@ -45,8 +52,10 @@ pub fn sequence(tasks: array[Task]) -> Result<int, string> {
 }
 
 pub fn parallel(tasks: array[Task]) -> Result<int, string> {
-    for t in tasks {
-        logging.info("parallel: " + t.name)
+    if not opt_quiet() {
+        for t in tasks {
+            logging.info("parallel: " + t.name)
+        }
     }
     let code = workflow_parallel_tasks(tasks)
     if code != 0 {

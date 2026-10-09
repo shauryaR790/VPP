@@ -1,5 +1,24 @@
 # Changelog
 
+## 2.1.0 (2026-10-09)
+
+Pairs with compiler **v2.1.0**.
+
+- **`vpp.optimizeRun`** — terminal run passes `-O` when enabled
+- Upload **`vplusplus-2.1.0.vsix`** to Marketplace
+
+## 2.0.0 (2026-08-28)
+
+Pairs with compiler **v2.0.0** (workflows + terminal run).
+
+**Live on [VS Marketplace](https://marketplace.visualstudio.com/items?itemName=vpp-lang.vplusplus)** (publisher: `vpp-lang`).
+
+- **F5** runs in the integrated terminal (same as `vpp run`); **Shift+F5** debugs
+- **Ctrl+F5** run without debug (terminal)
+- Debug Console shows `print()` output via DAP
+- Toolbar: Run before Debug
+- Download: `vplusplus-2.0.0.vsix` on [GitHub Releases](https://github.com/shauryaR790/VPP/releases/tag/v2.0.0)
+
 ## 1.2.3 (2026-08-24)
 
 Pairs with compiler **v1.0.5** (automation foundation).

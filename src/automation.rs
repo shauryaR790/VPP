@@ -98,33 +98,43 @@ pub(crate) fn parallel_tasks(specs: Vec<TaskSpec>) -> VppResult<i64> {
     use std::sync::mpsc;
     use std::thread;
 
-    let count = specs.len();
-    let (tx, rx) = mpsc::channel();
-    for spec in specs {
-        let tx = tx.clone();
-        thread::spawn(move || {
-            let code = command_run(
-                &spec.program,
-                &spec.args.iter().map(|s| Rc::new(s.clone())).collect::<Vec<_>>(),
-                &spec.cwd,
-                spec.timeout_ms,
-            )
-            .unwrap_or(-1);
-            let ok = code == 0;
-            let _ = tx.send((spec.name, ok));
-        });
-    }
-    drop(tx);
-
+    const MAX_PARALLEL: usize = 8;
     let mut failed = false;
-    for _ in 0..count {
-        match rx.recv() {
-            Ok((_name, ok)) if !ok => failed = true,
-            Ok(_) => {}
-            Err(_) => {
-                failed = true;
-                break;
+
+    for batch in specs.chunks(MAX_PARALLEL) {
+        let (tx, rx) = mpsc::channel();
+        for spec in batch {
+            let tx = tx.clone();
+            let spec = spec.clone();
+            thread::spawn(move || {
+                let code = command_run(
+                    &spec.program,
+                    &spec.args
+                        .iter()
+                        .map(|s| Rc::new(s.clone()))
+                        .collect::<Vec<_>>(),
+                    &spec.cwd,
+                    spec.timeout_ms,
+                )
+                .unwrap_or(-1);
+                let ok = code == 0;
+                let _ = tx.send((spec.name, ok));
+            });
+        }
+        drop(tx);
+
+        for _ in batch {
+            match rx.recv() {
+                Ok((_name, ok)) if !ok => failed = true,
+                Ok(_) => {}
+                Err(_) => {
+                    failed = true;
+                    break;
+                }
             }
+        }
+        if failed {
+            break;
         }
     }
 

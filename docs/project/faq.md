@@ -2,7 +2,7 @@
 
 ## What is v++?
 
-A statically typed language with readable syntax, an interpreter for development, and native compilation to `.exe` via LLVM. Open source (MIT). **v1.0.5** (compiler + extension).
+A statically typed language with readable syntax, an interpreter for development, and native compilation to `.exe` via LLVM. Open source (MIT). **v2.0.0** (compiler + extension).
 
 ## How is v++ different from Python?
 
@@ -55,11 +55,11 @@ If you know Python or JavaScript, expect a few days for syntax; a few weeks for 
 
 ## Where do I download?
 
-[GitHub Releases](https://github.com/shauryaR790/VPP/releases/latest)  -  **`vpp-1.0.5-setup.exe`** for Windows (portable zip on the same page).
+[GitHub Releases](https://github.com/shauryaR790/VPP/releases/latest)  -  **`vpp-2.0.0-setup.exe`** for Windows (portable zip on the same page).
 
 ## Which VS Code extension is official?
 
-**v++ Language**  -  publisher `vpp-lang` (`vpp-lang.vplusplus`). Extension **1.2.3** (pairs with compiler **v1.0.5**).
+**v++ Language**  -  publisher `vpp-lang` ([Marketplace](https://marketplace.visualstudio.com/items?itemName=vpp-lang.vplusplus)). Extension **2.0.0** (pairs with compiler **v2.0.0**). **F5** runs in terminal; **Shift+F5** debugs.
 
 ## Can I contribute?
 

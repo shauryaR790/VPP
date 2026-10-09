@@ -2,22 +2,33 @@
 
 ## Highlights
 
-- **Terminal run everywhere** — F5 runs in the integrated terminal (extension 2.0.0); Shift+F5 debugs with `print()` in the Debug Console
-- **`std/workflow`** — `sequence`, `parallel`, `retry`, `with_timeout` over typed `Task` steps (uses `process.exec`)
-- **CLI parity** — `vpp run`, `vpp.ps1`, and the extension use the same compiler path
+- **Terminal run everywhere** — F5 runs in the integrated terminal; Shift+F5 debugs; `print()` in Debug Console
+- **`std/workflow`** — `sequence`, `parallel`, `retry`, `with_timeout` over typed `Task` steps
+- **CLI parity** — `vpp run`, `vpp.ps1`, and the extension use the same compiler
 
-## Install
+## Install (Windows)
 
-- Windows: `vpp-2.0.0-setup.exe` or portable zip from [Releases](https://github.com/shauryaR790/VPP/releases)
-- Dev clone: `.\setup.ps1` (downloads prebuilt 2.0.0; no Rust required)
+- **Compiler:** `vpp-2.0.0-setup.exe` or `vpp-v2.0.0-windows-x64.zip` (below)
+- **Dev clone:** `.\setup.ps1` (downloads prebuilt 2.0.0; no Rust required)
 
-## Extension
+## VS Code extension 2.0.0
 
-- Marketplace / VSIX: **v++ Language 2.0.0**
-- **F5** — run file in terminal
-- **Shift+F5** — debug (interpreter DAP)
-- **Ctrl+F5** — run without debug (terminal)
+**[Live on Marketplace](https://marketplace.visualstudio.com/items?itemName=vpp-lang.vplusplus)** (publisher: `vpp-lang`)
+
+| Key | Action |
+|-----|--------|
+| **F5** | Run in terminal |
+| **Shift+F5** | Debug |
+| **Ctrl+F5** | Run without debug |
+
+Also attached: **`vplusplus-2.0.0.vsix`** (same build as Marketplace).
+
+## Assets
+
+- `vpp-2.0.0-setup.exe` — Windows installer (when CI completes)
+- `vpp-v2.0.0-windows-x64.zip` — portable bundle
+- `vplusplus-2.0.0.vsix` — VS Code / Cursor extension
 
 ## Roadmap
 
-Full automation plan: [AUTOMATION_ROADMAP.md](docs/project/AUTOMATION_ROADMAP.md)
+[AUTOMATION_ROADMAP.md](docs/project/AUTOMATION_ROADMAP.md)

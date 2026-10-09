@@ -1,5 +1,7 @@
 use std::collections::{HashMap, HashSet};
 use std::path::{Path, PathBuf};
+use std::sync::{LazyLock, Mutex};
+use std::time::SystemTime;
 
 use crate::ast::{ImportDecl, ImportSpec, Item, Program};
 use crate::error::{VppError, VppResult};
@@ -32,6 +34,58 @@ pub struct LoadedProgram {
     pub entry_path: PathBuf,
     pub modules: ModuleGraph,
     pub sources: HashMap<PathBuf, String>,
+}
+
+#[derive(Clone)]
+struct ParseCacheEntry {
+    mtime: SystemTime,
+    text: String,
+    program: Program,
+}
+
+static PARSE_CACHE: LazyLock<Mutex<HashMap<PathBuf, ParseCacheEntry>>> =
+    LazyLock::new(|| Mutex::new(HashMap::new()));
+
+/// Drop cached parses (tests or after large std edits in long-lived processes).
+pub fn clear_parse_cache() {
+    if let Ok(mut cache) = PARSE_CACHE.lock() {
+        cache.clear();
+    }
+}
+
+fn parse_source_file(path: &Path) -> VppResult<(String, Program)> {
+    let mtime = std::fs::metadata(path)
+        .and_then(|m| m.modified())
+        .map_err(|e| VppError::Other {
+            message: format!("failed to read `{}`: {e}", path.display()),
+        })?;
+
+    if let Ok(cache) = PARSE_CACHE.lock() {
+        if let Some(entry) = cache.get(path) {
+            if entry.mtime == mtime {
+                return Ok((entry.text.clone(), entry.program.clone()));
+            }
+        }
+    }
+
+    let text = std::fs::read_to_string(path).map_err(|e| VppError::Other {
+        message: format!("failed to read `{}`: {e}", path.display()),
+    })?;
+    let tokens = Lexer::new(&text).tokenize()?;
+    let program = Parser::new(text.clone(), tokens).parse_program()?;
+
+    if let Ok(mut cache) = PARSE_CACHE.lock() {
+        cache.insert(
+            path.to_path_buf(),
+            ParseCacheEntry {
+                mtime,
+                text: text.clone(),
+                program: program.clone(),
+            },
+        );
+    }
+
+    Ok((text, program))
 }
 
 pub fn load(entry_path: &Path) -> VppResult<LoadedProgram> {
@@ -201,13 +255,8 @@ fn load_recursive(
         });
     }
 
-    let text = std::fs::read_to_string(&path).map_err(|e| VppError::Other {
-        message: format!("failed to read `{}`: {e}", path.display()),
-    })?;
+    let (text, mut program) = parse_source_file(&path)?;
     sources.insert(path.clone(), text.clone());
-
-    let tokens = Lexer::new(&text).tokenize()?;
-    let mut program = Parser::new(text.clone(), tokens).parse_program()?;
 
     let imports: Vec<ImportDecl> = program
         .items

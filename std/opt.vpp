@@ -1,0 +1,6 @@
+// Runtime optimization flags (v2.1.0).
+import std.env
+
+pub fn enabled() -> bool {
+    return env.get("VPP_OPT") == "1"
+}

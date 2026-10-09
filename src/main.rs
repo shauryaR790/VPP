@@ -26,6 +26,9 @@ enum Commands {
     /// Compile and run a v++ file (or project entry when no file is given)
     Run {
         file: Option<PathBuf>,
+        /// Fast interpreter path: module parse cache + quieter workflows (`VPP_OPT=1`)
+        #[arg(short = 'O', long)]
+        optimize: bool,
     },
     /// Emit LLVM IR for debugging
     Compile {
@@ -174,7 +177,7 @@ fn main() -> ExitCode {
     let result = match cli.command {
         Commands::Check { file } => cmd_check(&file),
         Commands::Build { file, output } => cmd_build(file.as_ref(), output),
-        Commands::Run { file } => cmd_run(file.as_ref()),
+        Commands::Run { file, optimize } => cmd_run(file.as_ref(), optimize),
         Commands::Compile { file, output } => cmd_compile(&file, output),
         Commands::Fmt { file } => cmd_fmt(&file),
         Commands::Lsp => cmd_lsp(),
@@ -242,7 +245,10 @@ fn cmd_build(file: Option<&PathBuf>, output: Option<PathBuf>) -> miette::Result<
     Ok(())
 }
 
-fn cmd_run(file: Option<&PathBuf>) -> miette::Result<()> {
+fn cmd_run(file: Option<&PathBuf>, optimize: bool) -> miette::Result<()> {
+    if optimize {
+        std::env::set_var("VPP_OPT", "1");
+    }
     let path = resolve_run_path(&file.cloned())?;
     let source = read_source(&path)?;
     vpp::run(&source, &path).map_err(|e| e.with_source(source))
