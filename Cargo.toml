@@ -2,7 +2,7 @@
 name = "vpp"
 version = "3.0.0"
 edition = "2021"
-description = "v++ — compact typed language optimized for LLM training and low-token tooling"
+description = "v++ — compact typed language for LLM corpora and native tools; shrink, tokens, run, build"
 license = "MIT"
 default-run = "vpp"
 

@@ -1,52 +1,58 @@
 # v++ Language
 
-Official VS Code support for [v++](https://github.com/shauryaR790/VPP): a compact, typed language tuned for **LLM training and tool use** — fast runs, readable syntax, **minimal tokens**.
+The official editor for **v++** — a compact typed language built for models, agents, and people who care about **speed** and **small source**.
 
-**Extension 3.0.0** · **Compiler v3.0.0** · [Marketplace](https://marketplace.visualstudio.com/items?itemName=vpp-lang.vplusplus) · [Releases](https://github.com/shauryaR790/VPP/releases/latest) · **26k+ installs**
+**26k+ installs** · publisher **vpp-lang** · [GitHub](https://github.com/shauryaR790/VPP) · [Releases](https://github.com/shauryaR790/VPP/releases/latest)
 
-## Quick start
+---
 
-1. Install **vpp-3.0.0-setup.exe** from [GitHub Releases](https://github.com/shauryaR790/VPP/releases/latest) (Windows), or run `.\setup.ps1` from a clone.
-2. Install this extension — search **v++ Language** (publisher **vpp-lang**), or install `vplusplus-3.0.0.vsix` from Releases.
-3. Open a `.vpp` file. **F5** to run; **Shift+F5** to debug.
+## What this is
+
+`.vpp` files. One toolchain. Run in the terminal, debug with breakpoints, minify for training data, count tokens before you burn context.
+
+v3 is **LLM-first**: less noise in the file, same semantics after `shrink`.
+
+## Get going
+
+1. Grab **vpp-3.0.0-setup.exe** from [Releases](https://github.com/shauryaR790/VPP/releases/latest), or `.\setup.ps1` in a clone.
+2. You already found the extension — good.
+3. Open a `.vpp` file. **F5** run. **Shift+F5** debug.
 
 ```powershell
 vpp run examples\hello.vpp
-vpp shrink examples\hello.vpp    # minify for corpora / prompts
-vpp tokens examples\hello.vpp    # budget lexer symbols
-vpp debug examples\hello.vpp
-vpp test
+vpp shrink examples\hello.vpp
+vpp tokens examples\hello.vpp
 ```
 
-## v3.0 — LLM-first tooling
+## In the editor
 
-| Command | What |
-|---------|------|
-| `vpp shrink` | Strip layout noise; smaller files for training data |
-| `vpp tokens` | Lexer-symbol estimate per file |
-| `std/llm` | `est_text_tokens`, `est_bytes_tokens` in scripts |
+| | |
+|--|--|
+| **F5** / Ctrl+F5 | Run in integrated terminal |
+| **Shift+F5** | Debug — breakpoints, step, locals, `print()` in Debug Console |
+| Command palette | **Shrink for LLM**, **Token Count**, Watch, REPL, tests |
+| Save | Optional format via `vpp fmt` |
+| Open a `.vpp` | LSP diagnostics, completion, go-to-def |
+
+## v++ CLI (pairs with this extension)
+
+| Command | |
+|---------|--|
+| `vpp shrink` | Minify in place — corpora, prompts, exports |
+| `vpp tokens` | Lexer-symbol estimate |
+| `std/llm` | Token helpers in your scripts |
+| `vpp run` / `build` / `test` | Interpreter, native binary, project tests |
 
 Roadmap: [LLM_ROADMAP.md](https://github.com/shauryaR790/VPP/blob/main/docs/project/LLM_ROADMAP.md)
 
-## Editor features
+## You need
 
-| Feature | Shortcut | What you get |
-|---------|----------|----------------|
-| Run | **F5** / Ctrl+F5 | `vpp run` in the integrated terminal |
-| Debug | **Shift+F5** | Breakpoints, step, locals; `print()` in Debug Console |
-| Watch | command | Re-run on save (`vpp watch`) |
-| Test Explorer | sidebar | Tests from `test "..."` blocks |
-| Format on save | — | `vpp fmt` |
-| LSP | auto | Diagnostics, completion, go-to-definition (`vppls`) |
-
-## Requirements
-
-- **vpp** on PATH (run, shrink, tokens, debug, fmt, test) — installer or `setup.ps1`
-- **vppls** for LSP (bundled in the Windows installer)
-- **LLVM** only for `vpp build` native codegen
+- **vpp** on PATH — installer or `setup.ps1`
+- **vppls** for LSP (in the Windows bundle)
+- **LLVM** only if you `vpp build` native code
 
 ## Links
 
-- [Docs site](https://shauryaR790.github.io/VPP/docs.html)
+- [Docs](https://shauryaR790.github.io/VPP/docs.html)
 - [Issues](https://github.com/shauryaR790/VPP/issues)
-- [MIT License](https://github.com/shauryaR790/VPP/blob/main/LICENSE)
+- [MIT](https://github.com/shauryaR790/VPP/blob/main/LICENSE)

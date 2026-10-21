@@ -2,7 +2,7 @@
 
 ## Windows (recommended)
 
-**Option A — installer (easiest, no Rust):**
+**Option A — installer (easiest):**
 
 1. Download **`vpp-3.0.0-setup.exe`** from [GitHub Releases](https://github.com/shauryaR790/VPP/releases/latest).
 2. Run the installer. If Windows SmartScreen appears, choose **More info → Run anyway**.
@@ -22,7 +22,7 @@ cd VPP
 .\vpp.ps1 run examples\hello.vpp
 ```
 
-`setup.ps1` downloads the prebuilt compiler from Releases. Rust is **not** required unless you pass `-Dev` to build from source.
+`setup.ps1` downloads the prebuilt compiler from Releases. A local compiler build is only needed if you pass `-Dev`.
 
 If `vpp` is not found, add the install folder to PATH:
 

@@ -15,7 +15,7 @@
 
 - **Corpus pipeline** — batch `shrink` + token report for `examples/` and stdlib
 - **Compact syntax profile** — optional shorter keywords / import forms (spec-gated)
-- **Benchmark vs Python/JSON** — tokens-per-task on canonical snippets
+- **Token density benchmarks** — tokens-per-task on canonical v++ snippets
 - **Training export** — stable JSONL of (prompt, v++ solution) pairs from tests
 
 ## Principles

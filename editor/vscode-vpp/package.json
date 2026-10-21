@@ -1,8 +1,8 @@
 {
   "name": "vplusplus",
   "displayName": "v++ Language",
-  "description": "Official v++ extension — LLM-optimized language: run, debug, shrink, token count, LSP.",
-  "version": "3.0.0",
+  "description": "Official v++ language support — typed .vpp source, shrink & token tools, run, debug, LSP. 26k+ installs.",
+  "version": "3.0.1",
   "publisher": "vpp-lang",
   "license": "MIT",
   "icon": "icon.png",
@@ -17,11 +17,13 @@
     "vpp-lang",
     "native",
     "compiled",
-    "python-like",
     "debugger",
     "llm",
     "tokens",
-    "training"
+    "training",
+    "vpp-lang",
+    "shrink",
+    "corpus"
   ],
   "repository": {
     "type": "git",

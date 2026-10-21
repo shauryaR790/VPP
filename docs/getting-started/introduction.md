@@ -1,70 +1,49 @@
 # Introduction to v++
 
-v++ is a compact statically typed language with readable syntax, a fast interpreter, and native compilation via LLVM — from **v3.0** onward focused on **LLM training and minimal token use**.
+v++ is a compact statically typed language: readable `.vpp` source, a fast interpreter, native compilation through LLVM, and from **v3** a clear focus on **LLM training and minimal tokens**.
 
-**Write it simply. Shrink it for models. Compile it natively when you need speed.**
+**Write it. Shrink it. Run it. Build it.**
 
 ## What v++ is
 
-v++ targets developers who want Python-style readability without giving up compile-time safety or native performance. You start with `vpp run` during learning and prototyping, then ship the same source with `vpp build` when you need a `.exe` with no runtime dependency.
+v++ is its own language — not a dialect, not a transpile target. You iterate with `vpp run`, tighten files with `shrink` and `tokens`, then ship with `vpp build` when you want a standalone binary.
 
-The toolchain includes a type checker, formatter, package manager, test runner, VS Code language server, and twenty guided projects from beginner to advanced.
+The repo ships a type checker, formatter, shrinker, package manager, test runner, language server, VS Code extension, and guided projects.
 
-## How v++ compares
+## Why v++
 
-| | Python | Rust | C/C++ | v++ |
-|---|--------|------|-------|-----|
-| Syntax | Very readable | Steeper | Verbose | Readable, minimal |
-| Typing | Dynamic (optional hints) | Static, strict | Static | Static + inference |
-| First run | Interpreter | Compile | Compile | Interpreter (`vpp run`) |
-| Native output | No (without extra tools) | Yes | Yes | Yes (`vpp build`) |
-| Learning curve | Low | High | Medium–high | Low → medium |
-| Ecosystem | Massive | Large | Huge | Growing (v1.0+) |
-
-**vs Python:** v++ catches type errors before run, produces native binaries, and keeps similar control-flow and function syntax. You trade PyPI's scale for a smaller, focused stdlib and a compiler that fits in one repo.
-
-**vs Rust:** v++ avoids ownership/borrowing complexity upfront. Memory is ARC-managed in native builds; you get structs, enums, `match`, generics, and traits without the full Rust learning cliff.
-
-**vs C/C++:** v++ removes manual memory management and header boilerplate. You still get native code and predictable performance for the supported subset.
-
-## Why use v++ now
-
-- **One language, two modes**  -  interpret while learning, compile when shipping.
-- **Errors before run**  -  static types and exhaustiveness checking on `match`.
-- **Real toolchain**  -  CLI, LSP, VS Code extension, packages, tests, not a toy parser.
-- **Open source**  -  MIT licensed, compiler and docs in one repository.
-- **Honest scope**  -  v1.0 SPEC is frozen; Windows is the primary native platform; Unix bundles improving.
+- **One source, two speeds** — interpret while you work, compile when you ship.
+- **Types before run** — static checking and exhaustive `match`.
+- **LLM tooling built in** — `shrink`, `tokens`, `std/llm`.
+- **Full stack in one place** — CLI, LSP, debugger, Test Explorer, **26k+** extension installs.
+- **Open** — MIT, entire compiler and docs in this repository.
 
 ## How to learn v++
 
-1. [Install](install.md) the Windows installer or build from source.
-2. Write your [first program](hello-world.md)  -  types, `fn main`, run/check/build.
-3. Scaffold a [project](first-project.md) with `vpp new` and run tests.
-4. Work through the [20 projects](../../projects/README.md) in order  -  each builds on the last.
-5. Read the [language overview](../language/README.md) and [FAQ](../project/faq.md).
-6. Use [Documentation](../../docs.html) as reference while coding.
+1. [Install](install.md)
+2. [First program](hello-world.md)
+3. [First project](first-project.md)
+4. [20 projects](../../projects/README.md)
+5. [Language overview](../language/README.md) · [FAQ](../project/faq.md)
 
-Expect **1–2 weeks** to feel comfortable with syntax and types if you know Python or JavaScript. Expect **another few weeks** for structs, enums, generics, traits, and native builds.
+Give it a week for syntax and types; a few more for structs, enums, generics, traits, and native builds.
 
 ## Common difficulties
 
 | Challenge | What helps |
 |-----------|------------|
-| **Types feel strict** | Start with `vpp check` and read error messages; locals are inferred. |
-| **Native build fails** | Install LLVM 22 + clang; run `vpp doctor`. |
-| **Small ecosystem** | Stdlib covers io, fs, json, process; contribute or vendor code. |
-| **Language still evolving** | Pin a release; watch [CHANGELOG](../../CHANGELOG.md) before upgrading. |
-| **Windows-first** | Primary CI and installers are Windows; other platforms are best-effort. |
+| **Types feel strict** | `vpp check` and read the errors; locals infer. |
+| **Native build fails** | LLVM 22 + clang; `vpp doctor`. |
+| **Small registry** | Stdlib covers io, fs, json, process; vendor or contribute. |
+| **Upgrades** | Pin a release; read [CHANGELOG](../../CHANGELOG.md). |
+| **Windows-first** | Installers and CI lead on Windows; other platforms catching up. |
 
-## When v++ is not the right choice
+## Scope
 
-- You need a mature package ecosystem (use Python, Node, or Rust).
-- You need mobile, WebAssembly, or embedded targets today (not primary focus).
-- You need Linux/macOS prebuilt native bundles today (Windows installer is fully supported).
+v++ is strong for typed tools, LLM corpora, learning, and native CLI programs on Windows. Mobile, WASM, and embedded are not the current focus. See [roadmap](../project/roadmap.md).
 
 ## Next steps
 
 - [Install](install.md)
 - [First program](hello-world.md)
 - [Language overview](../language/README.md)
-- [Full documentation](../README.md)

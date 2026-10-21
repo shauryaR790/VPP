@@ -2,72 +2,52 @@
 
 ## What is v++?
 
-A compact statically typed language tuned for **LLM training and low-token tooling**: readable syntax, fast `vpp run`, native `.exe` via LLVM. Open source (MIT). **v3.0.0** (compiler + extension).
+A compact statically typed language for **LLM corpora, agents, and native tools**. `.vpp` source, fast `vpp run`, optional native `.exe` via LLVM. MIT. **v3.0.0** compiler + extension.
 
-## How is v++ different from Python?
+## What makes v++ v++?
 
-| | Python | v++ |
-|---|--------|-----|
-| Typing | Dynamic (optional hints) | Static + inference |
-| Run | Interpreter default | Interpreter + native `.exe` |
-| Errors | Mostly at runtime | Types and exhaustiveness at compile time |
-| Ecosystem | Huge (PyPI) | Small stdlib + growing registry |
-| Best for | Scripts, ML, web backends | Learning, CLI tools, typed native programs |
-
-Python is better when you need libraries and speed of prototyping across domains. v++ is better when you want types and a native binary without switching languages later.
-
-## How is v++ different from Rust?
-
-Rust enforces ownership and borrowing at compile time for maximum safety and performance. v++ uses ARC for heap values in native mode and skips the borrow checker  -  easier to learn, less control over allocation patterns.
-
-Choose Rust for systems programming at scale. Choose v++ to learn typed languages or ship small native tools with Python-like syntax.
-
-## How is v++ different from Go or TypeScript?
-
-Go is statically typed with a large ecosystem and goroutines. TypeScript adds types to JavaScript but still runs on Node/V8. v++ is a standalone language with its own interpreter and LLVM backend  -  not a host-VM language.
+- Typed source that stays readable and **shrinks** for models.
+- Same files for **run**, **debug**, **test**, and **build**.
+- **`vpp shrink`** and **`vpp tokens`** — first-class, not an afterthought.
+- Official **vpp-lang** extension — **26k+ installs** on the Marketplace.
 
 ## How do I learn v++?
 
-1. Read [Introduction](../getting-started/introduction.md).
-2. [Install](../getting-started/install.md) and write the [first program](../getting-started/hello-world.md).
-3. Complete the [20 projects](../../projects/README.md).
-4. Reference [language docs](../language/README.md) and [guides](../guides/README.md).
-
-If you know Python or JavaScript, expect a few days for syntax; a few weeks for types, structs, and native builds.
+1. [Introduction](../getting-started/introduction.md)
+2. [Install](../getting-started/install.md) → [hello world](../getting-started/hello-world.md)
+3. [20 projects](../../projects/README.md)
+4. [Language docs](../language/README.md) · [guides](../guides/README.md)
 
 ## What are the main difficulties?
 
-- **Strict types**  -  function signatures and match exhaustiveness are enforced.
-- **Native builds**  -  require LLVM 22 + clang; **Windows** has full installer support today.
-- **Young ecosystem**  -  fewer third-party packages than Python or Rust.
-- **Unix bundles**  -  Linux/macOS native tarballs are still maturing on CI.
+- **Strict types** — signatures and `match` exhaustiveness are enforced.
+- **Native builds** — LLVM 22 + clang; Windows installer is the smooth path.
+- **Young registry** — focused stdlib; growing package story.
+- **Unix bundles** — improving; Windows is the reference platform today.
 
 ## Why would I choose v++?
 
-- Readable syntax with real static typing.
-- Same source for interpret (`vpp run`), debug (F5), and native ship (`vpp build`).
-- Integrated toolchain: fmt, test, debug, watch, packages, LSP, VS Code extension.
-- Full compiler source available to read and contribute to.
+You want a real language with a real toolchain, tuned for **small source** and **fast iteration**, with an editor experience that already has a large install base.
 
 ## Is v++ ready for production?
 
-**v1.0**  -  SPEC frozen, Parity Promise, debugger, Test Explorer. Best on **Windows** for native builds. Suitable for learning, personal tools, and small native programs. Not a drop-in replacement for Python or Rust at huge scale. See [roadmap](roadmap.md).
+**v1.0+** SPEC, Parity Promise, debugger, Test Explorer. Solid for personal tools, LLM dataset prep, and native CLI on Windows. See [roadmap](roadmap.md).
 
 ## Where do I download?
 
-[GitHub Releases](https://github.com/shauryaR790/VPP/releases/latest)  -  **`vpp-3.0.0-setup.exe`** for Windows (portable zip on the same page).
+[GitHub Releases](https://github.com/shauryaR790/VPP/releases/latest) — **`vpp-3.0.0-setup.exe`** (Windows) and portable zip.
 
 ## Which VS Code extension is official?
 
-**v++ Language**  -  publisher `vpp-lang` ([Marketplace](https://marketplace.visualstudio.com/items?itemName=vpp-lang.vplusplus), **26k+ installs**). Extension **3.0.0** (pairs with compiler **v3.0.0**). **F5** runs in terminal; **Shift+F5** debugs; `vpp shrink` / `vpp tokens` for LLM corpora.
+**v++ Language**, publisher **`vpp-lang`**: [Marketplace](https://marketplace.visualstudio.com/items?itemName=vpp-lang.vplusplus). **F5** run, **Shift+F5** debug, shrink/token commands in the palette.
 
 ## Can I contribute?
 
-**Yes.** The project is open source (MIT). Open an [issue](https://github.com/shauryaR790/VPP/issues) or PR  -  see [CONTRIBUTING.md](../../CONTRIBUTING.md). Docs, tests, stdlib, examples, and extension polish are great starting points. Language-design changes should be discussed in an issue first.
+Yes — MIT, [CONTRIBUTING.md](../../CONTRIBUTING.md), [issues](https://github.com/shauryaR790/VPP/issues). Language design changes: discuss in an issue first.
 
 ## Does v++ collect data?
 
-No telemetry. Static docs site, no analytics. See [PRIVACY.md](../PRIVACY.md).
+No telemetry. [PRIVACY.md](../PRIVACY.md).
 
 ## How do I report bugs?
 

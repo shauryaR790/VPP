@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.0.1 (2026-10-21)
+
+Brand-forward Marketplace README and descriptions — v++ on its own terms, no comparison copy.
+
 ## 3.0.0 (2026-10-21)
 
 Pairs with compiler **v3.0.0**. **LLM-first** release — shrink/token tooling, updated Marketplace copy (**26k+ installs**).
