@@ -1,23 +1,34 @@
 # v++ Language
 
-Official VS Code support for [v++](https://github.com/shauryaR790/VPP): Python-ish syntax, static types, native binaries.
+Official VS Code support for [v++](https://github.com/shauryaR790/VPP): a compact, typed language tuned for **LLM training and tool use** — fast runs, readable syntax, **minimal tokens**.
 
-**Extension 2.0.0** · **Compiler v2.0.0** · [Marketplace](https://marketplace.visualstudio.com/items?itemName=vpp-lang.vplusplus) · [Releases](https://github.com/shauryaR790/VPP/releases/latest)
+**Extension 3.0.0** · **Compiler v3.0.0** · [Marketplace](https://marketplace.visualstudio.com/items?itemName=vpp-lang.vplusplus) · [Releases](https://github.com/shauryaR790/VPP/releases/latest) · **26k+ installs**
 
 ## Quick start
 
-1. Install **vpp-2.0.0-setup.exe** from [GitHub Releases](https://github.com/shauryaR790/VPP/releases/latest) (Windows), or run `.\setup.ps1` from a clone.
-2. Install this extension — search **v++ Language** on the Marketplace (publisher **vpp-lang**), or install `vplusplus-2.0.0.vsix` from Releases.
-3. Open a `.vpp` file. **F5** to run in the terminal; **Shift+F5** to debug.
+1. Install **vpp-3.0.0-setup.exe** from [GitHub Releases](https://github.com/shauryaR790/VPP/releases/latest) (Windows), or run `.\setup.ps1` from a clone.
+2. Install this extension — search **v++ Language** (publisher **vpp-lang**), or install `vplusplus-3.0.0.vsix` from Releases.
+3. Open a `.vpp` file. **F5** to run; **Shift+F5** to debug.
 
 ```powershell
 vpp run examples\hello.vpp
-vpp run examples\workflow_smoke.vpp
+vpp shrink examples\hello.vpp    # minify for corpora / prompts
+vpp tokens examples\hello.vpp    # budget lexer symbols
 vpp debug examples\hello.vpp
 vpp test
 ```
 
-## Features
+## v3.0 — LLM-first tooling
+
+| Command | What |
+|---------|------|
+| `vpp shrink` | Strip layout noise; smaller files for training data |
+| `vpp tokens` | Lexer-symbol estimate per file |
+| `std/llm` | `est_text_tokens`, `est_bytes_tokens` in scripts |
+
+Roadmap: [LLM_ROADMAP.md](https://github.com/shauryaR790/VPP/blob/main/docs/project/LLM_ROADMAP.md)
+
+## Editor features
 
 | Feature | Shortcut | What you get |
 |---------|----------|----------------|
@@ -28,19 +39,9 @@ vpp test
 | Format on save | — | `vpp fmt` |
 | LSP | auto | Diagnostics, completion, go-to-definition (`vppls`) |
 
-## v2.0.0 workflows
-
-Works with compiler **v2.0.0** stdlib (interpreter; native workflow parity in progress):
-
-- `std.workflow` — `sequence`, `parallel`, `retry`, `with_timeout`
-- `std.process.exec` — typed process I/O
-- `std.env`, `std.dir`, `std.logging`
-
-See [AUTOMATION_ROADMAP.md](https://github.com/shauryaR790/VPP/blob/main/docs/project/AUTOMATION_ROADMAP.md).
-
 ## Requirements
 
-- **vpp** on PATH (run, debug, fmt, test) — installer or `setup.ps1`
+- **vpp** on PATH (run, shrink, tokens, debug, fmt, test) — installer or `setup.ps1`
 - **vppls** for LSP (bundled in the Windows installer)
 - **LLVM** only for `vpp build` native codegen
 

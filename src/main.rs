@@ -40,6 +40,14 @@ enum Commands {
     Fmt {
         file: PathBuf,
     },
+    /// Minify a v++ file in place (fewer bytes/tokens for LLM corpora)
+    Shrink {
+        file: PathBuf,
+    },
+    /// Estimate lexer-token count for LLM context budgeting
+    Tokens {
+        file: PathBuf,
+    },
     /// Start the v++ language server (stdio)
     Lsp,
     /// Run tests in the current v++ project
@@ -180,6 +188,8 @@ fn main() -> ExitCode {
         Commands::Run { file, optimize } => cmd_run(file.as_ref(), optimize),
         Commands::Compile { file, output } => cmd_compile(&file, output),
         Commands::Fmt { file } => cmd_fmt(&file),
+        Commands::Shrink { file } => cmd_shrink(&file),
+        Commands::Tokens { file } => cmd_tokens(&file),
         Commands::Lsp => cmd_lsp(),
         Commands::Test { path, list } => cmd_test(path.as_deref(), list),
         Commands::New { name, path } | Commands::Init { name, path } => {
@@ -404,5 +414,42 @@ fn cmd_fmt(file: &PathBuf) -> miette::Result<()> {
         }
     })?;
     println!("Formatted `{}`", file.display());
+    Ok(())
+}
+
+fn cmd_shrink(file: &PathBuf) -> miette::Result<()> {
+    let (before, after) = vpp::fmt::shrink_file(file).map_err(|e| {
+        if let Ok(source) = std::fs::read_to_string(file) {
+            e.with_source(source)
+        } else {
+            miette::Report::new(e)
+        }
+    })?;
+    let saved = before.len().saturating_sub(after.len());
+    let tok_before = vpp::fmt::estimate_tokens(&before).unwrap_or(0);
+    let tok_after = vpp::fmt::estimate_tokens(&after).unwrap_or(0);
+    println!(
+        "Shrunk `{}`  bytes {}→{} (−{})  est. tokens {}→{} (−{})",
+        file.display(),
+        before.len(),
+        after.len(),
+        saved,
+        tok_before,
+        tok_after,
+        tok_before.saturating_sub(tok_after)
+    );
+    Ok(())
+}
+
+fn cmd_tokens(file: &PathBuf) -> miette::Result<()> {
+    let source = read_source(file)?;
+    let n = vpp::fmt::estimate_tokens(&source).map_err(|e| e.with_source(source.clone()))?;
+    let bytes = source.len();
+    println!(
+        "{}: ~{} tokens (lexer symbols), {} bytes",
+        file.display(),
+        n,
+        bytes
+    );
     Ok(())
 }

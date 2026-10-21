@@ -6,6 +6,8 @@ vpp build [file] -o X  Compile native executable
 vpp check [file]       Type-check only
 vpp compile [file]     Emit LLVM IR (.ll)
 vpp fmt [file]         Format source in place
+vpp shrink [file]      Minify for LLM corpora (in place)
+vpp tokens [file]      Lexer-symbol token estimate
 vpp test               Run test blocks in project
 vpp init [name]        Create new project scaffold
 vpp new NAME --path P  Create project at path

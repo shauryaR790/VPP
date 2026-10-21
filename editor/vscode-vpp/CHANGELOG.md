@@ -1,5 +1,12 @@
 # Changelog
 
+## 3.0.0 (2026-10-21)
+
+Pairs with compiler **v3.0.0**. **LLM-first** release — shrink/token tooling, updated Marketplace copy (**26k+ installs**).
+
+- README highlights `vpp shrink`, `vpp tokens`, `std/llm`
+- Upload **`vplusplus-3.0.0.vsix`**
+
 ## 2.1.0 (2026-10-09)
 
 Pairs with compiler **v2.1.0**.

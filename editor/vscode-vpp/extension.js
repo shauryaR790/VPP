@@ -733,6 +733,24 @@ function activate(context) {
         });
       }
     }),
+    vscode.commands.registerCommand("vpp.shrinkFile", async () => {
+      const editor = vscode.window.activeTextEditor;
+      if (!editor || editor.document.languageId !== "vpp") {
+        return;
+      }
+      const ok = await runVpp("shrink", editor.document.uri.fsPath);
+      if (ok) {
+        await vscode.commands.executeCommand("workbench.action.files.revert");
+        vscode.window.showInformationMessage("v++: file shrunk (LLM minify).");
+      }
+    }),
+    vscode.commands.registerCommand("vpp.tokenCount", async () => {
+      const editor = vscode.window.activeTextEditor;
+      if (!editor || editor.document.languageId !== "vpp") {
+        return;
+      }
+      await runVpp("tokens", editor.document.uri.fsPath);
+    }),
     vscode.commands.registerCommand("vpp.startRepl", () => {
       const root = workspaceRoot();
       if (!root) {

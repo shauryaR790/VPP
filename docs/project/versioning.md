@@ -1,13 +1,13 @@
 # Version numbers
 
-Compiler and VS Code extension share the **2.0.0** line for this release.
+Compiler and VS Code extension share the **3.0.0** line for this release.
 
 | Product | Version | Where |
 |---------|---------|--------|
-| **Compiler** (`vpp`) | **v2.0.0** | [GitHub Releases](https://github.com/shauryaR790/VPP/releases) |
-| **VS Code extension** | **2.0.0** | [Marketplace](https://marketplace.visualstudio.com/items?itemName=vpp-lang.vplusplus) |
+| **Compiler** (`vpp`) | **v3.0.0** | [GitHub Releases](https://github.com/shauryaR790/VPP/releases) |
+| **VS Code extension** | **3.0.0** | [Marketplace](https://marketplace.visualstudio.com/items?itemName=vpp-lang.vplusplus) |
 
-Install both for the full toolchain: `vpp` CLI + run-in-terminal, debug, LSP, Test Explorer.
+Install both for the full toolchain: shrink/tokens, run, debug, LSP, Test Explorer.
 
 ## Releasing (maintainers)
 

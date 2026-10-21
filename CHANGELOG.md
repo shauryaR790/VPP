@@ -2,6 +2,20 @@
 
 All notable changes to v++ are documented here.
 
+## [3.0.0] — 2026-10-21
+
+### Direction — v++ for LLMs
+
+From v3, the north star is **speed** and **minimum tokens** for training data, evals, and agent tool loops.
+
+### Added
+
+- **`vpp shrink`** — minify `.vpp` in place; reports bytes and estimated lexer tokens saved
+- **`vpp tokens`** — per-file token (lexer symbol) estimate
+- **`std/llm`** — `est_text_tokens`, `est_bytes_tokens`
+- **[LLM_ROADMAP.md](docs/project/LLM_ROADMAP.md)** — v3.x plan
+- **Extension 3.0.0** — Marketplace/README copy updated for LLM-first positioning (**26k+ installs**)
+
 ## [2.1.0] — 2026-10-09
 
 ### Added — Light runtime optimizations

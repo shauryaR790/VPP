@@ -1,8 +1,8 @@
 # Introduction to v++
 
-v++ is a statically typed programming language with readable syntax, a fast interpreter for development, and native compilation to standalone executables via LLVM.
+v++ is a compact statically typed language with readable syntax, a fast interpreter, and native compilation via LLVM — from **v3.0** onward focused on **LLM training and minimal token use**.
 
-**Write it simply. Compile it natively. Grow into control when you need it.**
+**Write it simply. Shrink it for models. Compile it natively when you need speed.**
 
 ## What v++ is
 

@@ -155,6 +155,112 @@ pub fn format_file(path: &std::path::Path) -> VppResult<()> {
     std::fs::write(path, formatted).map_err(|source| VppError::Io { source })
 }
 
+/// Minify v++ for LLM corpora: drop line breaks and indentation, keep semantics.
+pub fn shrink(source: &str) -> VppResult<String> {
+    let tokens = Lexer::new(source).tokenize()?;
+    let mut out = String::new();
+    let mut paren_depth = 0usize;
+    let mut prev: Option<&TokenKind> = None;
+
+    for token in &tokens {
+        let kind = &token.kind;
+        if matches!(kind, TokenKind::Eof | TokenKind::Newline) {
+            continue;
+        }
+
+        if let Some(p) = prev {
+            if needs_space_between(p, kind) {
+                out.push(' ');
+            }
+        }
+
+        match kind {
+            TokenKind::LParen => {
+                paren_depth += 1;
+                out.push('(');
+            }
+            TokenKind::RParen => {
+                paren_depth = paren_depth.saturating_sub(1);
+                out.push(')');
+            }
+            TokenKind::LBrace => out.push('{'),
+            TokenKind::RBrace => out.push('}'),
+            TokenKind::LBracket => out.push('['),
+            TokenKind::RBracket => out.push(']'),
+            TokenKind::Comma => out.push(','),
+            TokenKind::Colon => out.push(':'),
+            TokenKind::Arrow => out.push_str("->"),
+            TokenKind::DotDot => out.push_str(".."),
+            TokenKind::Eq => out.push('='),
+            TokenKind::EqEq => out.push_str("=="),
+            TokenKind::BangEq => out.push_str("!="),
+            TokenKind::Lt => out.push('<'),
+            TokenKind::LtEq => out.push_str("<="),
+            TokenKind::Gt => out.push('>'),
+            TokenKind::GtEq => out.push_str(">="),
+            TokenKind::AndAnd => out.push_str("&&"),
+            TokenKind::OrOr => out.push_str("||"),
+            TokenKind::Plus => out.push('+'),
+            TokenKind::Minus => out.push('-'),
+            TokenKind::Star => out.push('*'),
+            TokenKind::Slash => out.push('/'),
+            TokenKind::Percent => out.push('%'),
+            TokenKind::Bang => out.push('!'),
+            TokenKind::StringLit(s) => {
+                out.push('"');
+                out.push_str(s);
+                out.push('"');
+            }
+            other => out.push_str(&other.to_string()),
+        }
+
+        prev = Some(kind);
+    }
+
+    Ok(out)
+}
+
+fn needs_space_between(prev: &TokenKind, next: &TokenKind) -> bool {
+    if matches!(
+        next,
+        TokenKind::Comma
+            | TokenKind::RParen
+            | TokenKind::RBracket
+            | TokenKind::RBrace
+            | TokenKind::Colon
+            | TokenKind::DotDot
+    ) {
+        return false;
+    }
+    if matches!(
+        prev,
+        TokenKind::LParen
+            | TokenKind::LBrace
+            | TokenKind::LBracket
+            | TokenKind::Bang
+            | TokenKind::Minus
+    ) {
+        return false;
+    }
+    needs_space_after(prev, Some(next))
+}
+
+/// Rough tokenizer count for LLM budget planning (one token ≈ one lexer symbol).
+pub fn estimate_tokens(source: &str) -> VppResult<usize> {
+    let tokens = Lexer::new(source).tokenize()?;
+    Ok(tokens
+        .iter()
+        .filter(|t| !matches!(t.kind, TokenKind::Eof | TokenKind::Newline))
+        .count())
+}
+
+pub fn shrink_file(path: &std::path::Path) -> VppResult<(String, String)> {
+    let source = std::fs::read_to_string(path).map_err(|source| VppError::Io { source })?;
+    let shrunk = shrink(&source)?;
+    std::fs::write(path, &shrunk).map_err(|source| VppError::Io { source })?;
+    Ok((source, shrunk))
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -173,5 +279,20 @@ mod tests {
         let out = format("if x > 0 { print(x) }").unwrap();
         assert!(out.contains("if x"));
         assert!(out.contains("{\n"));
+    }
+
+    #[test]
+    fn shrink_drops_whitespace() {
+        let src = "fn add(a: int, b: int) -> int {\n    return a + b\n}\n";
+        let out = shrink(src).unwrap();
+        assert!(!out.contains('\n'));
+        assert!(out.contains("fn add"));
+        assert!(out.len() < src.len());
+    }
+
+    #[test]
+    fn estimate_tokens_counts_symbols() {
+        let n = estimate_tokens("let x = 1").unwrap();
+        assert!(n >= 4);
     }
 }

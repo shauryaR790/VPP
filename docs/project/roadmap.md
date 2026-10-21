@@ -1,5 +1,9 @@
 # Roadmap
 
+## v3.0+ (current) — LLM-first
+
+See **[LLM_ROADMAP.md](LLM_ROADMAP.md)** — shrink/tokens shipped in v3.0.0; compact syntax and corpus pipelines next.
+
 ## v1.0 (shipped)
 
 - [x] Frozen language spec  -  [SPEC.md](../SPEC.md)

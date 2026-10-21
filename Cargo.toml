@@ -1,8 +1,8 @@
 [package]
 name = "vpp"
-version = "2.1.0"
+version = "3.0.0"
 edition = "2021"
-description = "The v++ programming language compiler"
+description = "v++ — compact typed language optimized for LLM training and low-token tooling"
 license = "MIT"
 default-run = "vpp"
 

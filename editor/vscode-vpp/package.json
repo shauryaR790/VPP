@@ -1,8 +1,8 @@
 {
   "name": "vplusplus",
   "displayName": "v++ Language",
-  "description": "Official v++ extension. Debug, run, watch, REPL, tests, format, LSP.",
-  "version": "2.1.0",
+  "description": "Official v++ extension — LLM-optimized language: run, debug, shrink, token count, LSP.",
+  "version": "3.0.0",
   "publisher": "vpp-lang",
   "license": "MIT",
   "icon": "icon.png",
@@ -18,7 +18,10 @@
     "native",
     "compiled",
     "python-like",
-    "debugger"
+    "debugger",
+    "llm",
+    "tokens",
+    "training"
   ],
   "repository": {
     "type": "git",
@@ -93,6 +96,16 @@
         "command": "vpp.formatDocument",
         "title": "v++: Format Document",
         "icon": "$(symbol-keyword)"
+      },
+      {
+        "command": "vpp.shrinkFile",
+        "title": "v++: Shrink for LLM (minify)",
+        "icon": "$(fold)"
+      },
+      {
+        "command": "vpp.tokenCount",
+        "title": "v++: Token Count",
+        "icon": "$(symbol-number)"
       },
       {
         "command": "vpp.startRepl",

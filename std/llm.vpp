@@ -1,0 +1,14 @@
+// LLM / training-corpus helpers (v3.0+).
+import std.string
+
+/// Rough byte→token estimate (~4 chars per token for Latin source).
+pub fn est_bytes_tokens(n: int) -> int {
+    if n <= 0 {
+        return 0
+    }
+    return (n + 3) / 4
+}
+
+pub fn est_text_tokens(text: string) -> int {
+    return est_bytes_tokens(string.len_str(text))
+}

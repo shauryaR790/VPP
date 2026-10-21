@@ -1,32 +1,34 @@
 # v++
 
-A small compiled language: Python-ish syntax, static types, native binaries via LLVM.
+A compact typed language for **LLM training and agent tooling**: Python-ish syntax, static types, native binaries — optimized for **speed** and **fewer tokens**.
 
-**License:** MIT · **Version:** 2.0.0 · [Releases](https://github.com/shauryaR790/VPP/releases)
+**License:** MIT · **Version:** 3.0.0 · [Releases](https://github.com/shauryaR790/VPP/releases) · [VS Code extension](https://marketplace.visualstudio.com/items?itemName=vpp-lang.vplusplus) (**26k+ installs**)
 
 ## Quick start (Windows)
 
-**Easiest:** download **`vpp-2.0.0-setup.exe`** from [GitHub Releases](https://github.com/shauryaR790/VPP/releases/latest) — no Rust needed.
+**Easiest:** download **`vpp-3.0.0-setup.exe`** from [GitHub Releases](https://github.com/shauryaR790/VPP/releases/latest) — no Rust needed.
 
 **From a git clone:**
 
 ```powershell
-.\setup.ps1          # downloads prebuilt v2.0.0 + installs editor extension
+.\setup.ps1          # prebuilt v3.0.0 + extension
 .\vpp.ps1 run examples\hello.vpp
+.\vpp.ps1 shrink examples\hello.vpp
+.\vpp.ps1 tokens examples\hello.vpp
 ```
 
-Developers only: `.\setup.ps1 -Dev` (builds from source; needs Rust).
+Developers: `.\setup.ps1 -Dev` (build from source; needs Rust).
 
-Docs: [website](https://shauryaR790.github.io/VPP/) · [hello-world guide](docs/getting-started/hello-world.md)
+Docs: [website](https://shauryaR790.github.io/VPP/) · [LLM roadmap](docs/project/LLM_ROADMAP.md)
 
-## What works
+## v3.0 — direction
 
-- `vpp run` interpreter + `vpp build` native codegen
-- **Workflows v2.0.0:** `std/workflow` — sequence, parallel, retry, timeout ([roadmap](docs/project/AUTOMATION_ROADMAP.md))
-- Typed `process.exec`, env, dirs, structured logging
-- LSP, debugger (Shift+F5), tests, fmt, packages (`vpp.toml`)
-- VS Code extension **2.0.0** (F5 = run in terminal)
-- Windows installer with bundled LLVM; Unix from source
+From v3 onward the product focus is **token-efficient source**, fast interpreter loops, and tooling for corpus prep — not only general automation.
+
+- **`vpp shrink`** — minify `.vpp` for datasets and prompts
+- **`vpp tokens`** — per-file lexer-symbol budget
+- **`std/llm`** — token estimates in user scripts
+- Still: `vpp run`, `vpp build`, LSP, debugger, tests, packages
 
 ## Build from source
 
@@ -43,7 +45,6 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) · [SPEC.md](SPEC.md)
 
 | | |
 |---|---|
-| Releases | https://github.com/shauryaR790/VPP/releases |
-| Extension | https://marketplace.visualstudio.com/items?itemName=vpp-lang.vplusplus |
-| Issues | https://github.com/shauryaR790/VPP/issues |
-| CMake | [docs/guides/cmake.md](docs/guides/cmake.md) |
+| Docs | [shauryaR790.github.io/VPP](https://shauryaR790.github.io/VPP/) |
+| Changelog | [CHANGELOG.md](CHANGELOG.md) |
+| Roadmap | [docs/project/LLM_ROADMAP.md](docs/project/LLM_ROADMAP.md) |
