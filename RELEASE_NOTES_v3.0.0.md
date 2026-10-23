@@ -11,7 +11,7 @@ New direction: **optimize for speed and the fewest tokens** when models read or 
 
 ## VS Code extension 3.0.0
 
-- Marketplace README highlights LLM tooling and **26k+** installs
+- Marketplace README highlights LLM tooling
 - Upload **`vplusplus-3.0.0.vsix`**
 
 ## Upgrade

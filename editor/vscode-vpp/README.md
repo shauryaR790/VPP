@@ -2,7 +2,7 @@
 
 The official editor for **v++** — a compact typed language built for models, agents, and people who care about **speed** and **small source**.
 
-**26k+ installs** · publisher **vpp-lang** · [GitHub](https://github.com/shauryaR790/VPP) · [Releases](https://github.com/shauryaR790/VPP/releases/latest)
+**vpp-lang** · official extension · [GitHub](https://github.com/shauryaR790/VPP) · [Releases](https://github.com/shauryaR790/VPP/releases/latest)
 
 ---
 

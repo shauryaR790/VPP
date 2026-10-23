@@ -15,7 +15,7 @@ The repo ships a type checker, formatter, shrinker, package manager, test runner
 - **One source, two speeds** — interpret while you work, compile when you ship.
 - **Types before run** — static checking and exhaustive `match`.
 - **LLM tooling built in** — `shrink`, `tokens`, `std/llm`.
-- **Full stack in one place** — CLI, LSP, debugger, Test Explorer, **26k+** extension installs.
+- **Full stack in one place** — CLI, LSP, debugger, Test Explorer, official **vpp-lang** extension.
 - **Open** — MIT, entire compiler and docs in this repository.
 
 ## How to learn v++

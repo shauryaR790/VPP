@@ -14,7 +14,7 @@ From v3, the north star is **speed** and **minimum tokens** for training data, e
 - **`vpp tokens`** — per-file token (lexer symbol) estimate
 - **`std/llm`** — `est_text_tokens`, `est_bytes_tokens`
 - **[LLM_ROADMAP.md](docs/project/LLM_ROADMAP.md)** — v3.x plan
-- **Extension 3.0.0** — Marketplace/README copy updated for LLM-first positioning (**26k+ installs**)
+- **Extension 3.0.0** — Marketplace/README copy updated for LLM-first positioning
 
 ## [2.1.0] — 2026-10-09
 

@@ -2,7 +2,7 @@
 
 **v++** — compact, typed, built for **LLMs and shipping**. Readable `.vpp` source, fewer tokens, fast `vpp run`, native output when you `build`.
 
-**MIT** · **v3.0.0** · [Releases](https://github.com/shauryaR790/VPP/releases) · [Extension](https://marketplace.visualstudio.com/items?itemName=vpp-lang.vplusplus) (**26k+ installs**)
+**MIT** · **v3.0.0** · [Releases](https://github.com/shauryaR790/VPP/releases) · [Extension](https://marketplace.visualstudio.com/items?itemName=vpp-lang.vplusplus)
 
 ## Start (Windows)
 

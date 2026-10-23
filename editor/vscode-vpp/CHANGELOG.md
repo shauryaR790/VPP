@@ -1,12 +1,16 @@
 # Changelog
 
+## 3.0.2 (2026-10-23)
+
+Marketplace description and README — brand copy only; install count lives on the listing stats.
+
 ## 3.0.1 (2026-10-21)
 
 Brand-forward Marketplace README and descriptions — v++ on its own terms, no comparison copy.
 
 ## 3.0.0 (2026-10-21)
 
-Pairs with compiler **v3.0.0**. **LLM-first** release — shrink/token tooling, updated Marketplace copy (**26k+ installs**).
+Pairs with compiler **v3.0.0**. **LLM-first** release — shrink/token tooling, updated Marketplace copy.
 
 - README highlights `vpp shrink`, `vpp tokens`, `std/llm`
 - Upload **`vplusplus-3.0.0.vsix`**

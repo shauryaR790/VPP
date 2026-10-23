@@ -9,7 +9,7 @@ A compact statically typed language for **LLM corpora, agents, and native tools*
 - Typed source that stays readable and **shrinks** for models.
 - Same files for **run**, **debug**, **test**, and **build**.
 - **`vpp shrink`** and **`vpp tokens`** — first-class, not an afterthought.
-- Official **vpp-lang** extension — **26k+ installs** on the Marketplace.
+- Official **vpp-lang** extension on the [Marketplace](https://marketplace.visualstudio.com/items?itemName=vpp-lang.vplusplus).
 
 ## How do I learn v++?
 
@@ -27,7 +27,7 @@ A compact statically typed language for **LLM corpora, agents, and native tools*
 
 ## Why would I choose v++?
 
-You want a real language with a real toolchain, tuned for **small source** and **fast iteration**, with an editor experience that already has a large install base.
+You want a real language with a real toolchain, tuned for **small source** and **fast iteration**, with a first-class editor experience.
 
 ## Is v++ ready for production?
 
