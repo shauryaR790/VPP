@@ -1,8 +1,12 @@
 # Changelog
 
+## 3.0.3 (2026-10-23)
+
+Marketplace Overview rewrite — no install stats in README or description (listing counter only).
+
 ## 3.0.2 (2026-10-23)
 
-Marketplace description and README — brand copy only; install count lives on the listing stats.
+Removed install-count text from `package.json` description.
 
 ## 3.0.1 (2026-10-21)
 
